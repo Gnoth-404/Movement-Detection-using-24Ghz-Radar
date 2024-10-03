@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Arduino_MountingHole")(type "KiCad")(uri "${KIPRJMOD}/Arduino_MountingHole.pretty")(options "")(descr ""))
+  (lib (name "radar_connector")(type "KiCad")(uri "${KIPRJMOD}/radar_connector.pretty")(options "")(descr ""))
+)

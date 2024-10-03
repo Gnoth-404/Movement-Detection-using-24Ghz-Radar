@@ -1,0 +1,25 @@
+Questionable use of curly braces in ".measure ac f_lower when v(out)={gain_max/sqrt(2)}"
+    Error: undefined symbol in: "[gain_max]/sqrt(2)"
+LTspice 24.0.12 for Windows
+Circuit: * C:\users\gnothha\Documents\hda_psoc\SS24_Lab\SDHD_Lab\10_HW_v7\XX_PCB_template\10_work\20_SubCircuit_4thFilter\20_Simulation\sdhd_lab.asc
+Start Time: Sun Jul  7 14:32:39 2024
+Number of points per octave reduced from 10000 to 3802.
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = modified trap
+WARNING: Less than two connections to node out.  This node is used by r7.
+Direct Newton iteration for .op point succeeded.
+.measure f_upper when v(out)/v(in) = gain_max/sqrt(2) from 1mhz
+  Error: Both a point and interval trigger are specified.
+.measure f_low when v(out)/v(in) = gain_max/sqrt(2) from 1hz
+  Error: Both a point and interval trigger are specified.
+.measure f_high when v(out)/v(in) = gain_max/sqrt(2) from 1mhz
+  Error: Both a point and interval trigger are specified.
+
+gain_max: MAX(v(out)/v(in))=(49.2428dB,-4.15614°) FROM 1 TO 1e+06
+f_lower: v(out)=(gain_max/sqrt(2)) AT 21.3446
+
+Total elapsed time: 0.631 seconds.
+

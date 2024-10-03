@@ -1,0 +1,1889 @@
+Archive member included to satisfy reference by file (symbol)
+
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_yellow_Write)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_red_Write)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+                              .\CortexM3\ARM_GCC_541\Debug\led.o (LED_green_Write)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (isr_button_StartEx)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (isr_rx_StartEx)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (Button_ClearInterrupt)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (CyDmacConfigure)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (CyHalt)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o) (CyPmReadStatus)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (DMA_ADC_DmaInitialize)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                              .\CortexM3\ARM_GCC_541\Debug\logging.o (UART_LOG_Start)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (ADC_Start)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (ADC_ISR1)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o) (UART_LOG_IntClock_Start)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (ADC_AMux_Select)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (ADC_Ext_CP_Clk_SetModeRegister)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (ADC_theACLK_SetModeRegister)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (WaveDAC8_Enable)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o) (WaveDAC8_DacClk_Start)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o) (WaveDAC8_Wave1_DMA_DmaInitialize)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o) (WaveDAC8_Wave2_DMA_DmaInitialize)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o) (WaveDAC8_VDAC8_Enable)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o) (WaveDAC8_BuffAmp_Enable)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+                              .\CortexM3\ARM_GCC_541\Debug\main.o (Status_Reg_1_Read)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (CyDelayCycles)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o) (CyFlash_SetWaitCycles)
+.\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o) (CySpcStart)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (__aeabi_f2d)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (__aeabi_dcmpgt)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (__aeabi_ui2f)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (__aeabi_fmul)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o) (__aeabi_f2uiz)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o (__errno)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                              .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o (memcpy)
+c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                              c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o (memset)
+
+Allocating common symbols
+Common symbol       size              file
+
+ADC_CountsPerVolt   0x4               .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+DMA_ADC_TD          0x1               .\CortexM3\ARM_GCC_541\Debug\main.o
+dieTemperature      0x2               .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+DMA_ADC_Chan        0x1               .\CortexM3\ARM_GCC_541\Debug\main.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .data          0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text          0x00000000       0x74 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .text.LOG_send
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .rodata        0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .text.LED_Toggle
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.SetAnalogRoutingPumps
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .data          0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text._exit    0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text._sbrk    0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .text.LED_yellow_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .text.LED_yellow_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .text.LED_yellow_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .text.LED_red_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .text.LED_red_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .text.LED_red_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .text.LED_green_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .text.LED_green_Read
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .text.LED_green_ReadDataReg
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_Interrupt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_GetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_GetPriority
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_GetState
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_Stop
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text.isr_button_SetPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_Interrupt
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_GetVector
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_GetPriority
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_GetState
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_Stop
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_SetPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text.isr_rx_ClearPending
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text.Button_Write
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text.Button_SetDriveMode
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text.Button_Read
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text.Button_ReadDataReg
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text.Button_SetInterruptMode
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmacError
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmacClearError
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmacErrorAddress
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChAlloc
+                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChFree
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaClearPendingDrq
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChSetRequest
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChGetRequest
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChStatus
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaTdFree
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaTdFreeCount
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaTdGetConfiguration
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaTdGetAddress
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text.CyDmaChRoundRobin
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .bss           0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyUSB_PowerOnCheck
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyBusClk_Internal_SetDivider
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyPLL_OUT_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_EnableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_DisableDoubler
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyMasterClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyMasterClk_SetDivider
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyBusClk_SetDivider
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyUsbClk_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Start1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Stop1K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Start100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Stop100K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyPLL_OUT_Start
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_Start
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Enable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_Disable33K
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_SetSource
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyILO_SetPowerMode
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Stop
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_32KHZ_ReadStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_Start
+                0x00000000       0xac .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_Stop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_EnableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_DisableErrStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_ReadStatus
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_EnableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_DisableFaultRecovery
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_SetStartup
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_SetFbVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_SetWdVoltage
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyPLL_OUT_SetPQ
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyPLL_OUT_SetSource
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_SetTrimValue
+                0x00000000       0xcc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_SetFreq
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIMO_SetSource
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySoftwareReset
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyDelay  0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_32KHZ_SetPowerMode
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyXTAL_32KHZ_Start
+                0x00000000       0x74 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyWdtStart
+                0x00000000       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyWdtClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdStickyStatus
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdLvDigitEnable
+                0x00000000       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdLvAnalogEnable
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdLvDigitDisable
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdLvAnalogDisable
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdHvAnalogEnable
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdHvAnalogDisable
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyVdRealTimeStatus
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyFlushCache
+                0x00000000       0x44 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickSetClockSource
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickGetClockSource
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .bss           0x00000000       0x43 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibSlpSaveSet
+                0x00000000      0x1dc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibSlpRestore
+                0x00000000       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHviLviSaveDisable
+                0x00000000       0xa0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibSaveSet
+                0x00000000       0x98 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHviLviRestore
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibRestore
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmSaveClocks
+                0x00000000      0x218 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmRestoreClocks
+                0x00000000      0x24c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmAltAct
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmSleep
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibernateEx
+                0x00000000       0xf4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmHibernate
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmReadStatus
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmCtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmOppsSet
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text.CyPmFtwSetInterval
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .rodata        0x00000000        0xf .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .text.DMA_ADC_DmaRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_Stop
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_ReadControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_WriteControlRegister
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetRxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_ReadRxStatus
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_GetChar
+                0x00000000       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_GetByte
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_GetRxBufferSize
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_ClearRxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress1
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetRxAddress2
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetTxInterruptMode
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_WriteTxData
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_ReadTxStatus
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_PutArray
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_PutCRLF
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_GetTxBufferSize
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_ClearTxBuffer
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SendBreak
+                0x00000000       0x58 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text.UART_LOG_SetTxAddressMode
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_Stop
+                0x00000000       0xe4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetBufferGain
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetCoherency
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetGCOR
+                0x00000000       0x74 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_ReadGCOR
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_IsEndConversion
+                0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_GetResult8
+                0x00000000       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_GetResult16
+                0x00000000       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_GetResult32
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetOffset
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetGain
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_CountsTo_mVolts
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_CountsTo_Volts
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_CountsTo_uVolts
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SelectConfiguration
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_Read8
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_Read16
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_Read32
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .text.ADC_ISR2
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .text.ADC_ISR3
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .text.ADC_ISR4
+                0x00000000        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetDividerRegister
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text.UART_LOG_IntClock_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .text.ADC_AMux_FastSelect
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text.ADC_Ext_CP_Clk_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_SetPhaseRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text.ADC_theACLK_GetPhaseRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .text.WaveDAC8_Stop
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .text.WaveDAC8_StartEx
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_StopBlock
+                0x00000000       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_StandbyPower
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_GetDividerRegister
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_SetModeRegister
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_ClearModeRegister
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_GetModeRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_GetSourceRegister
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_SetDividerRegister
+                0x00000000       0xdc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text.WaveDAC8_DacClk_SetSourceRegister
+                0x00000000       0x5c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .text.WaveDAC8_Wave1_DMA_DmaRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .text.WaveDAC8_Wave2_DMA_DmaRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .bss           0x00000000        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .text.WaveDAC8_VDAC8_Stop
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .text.WaveDAC8_VDAC8_Start
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .bss           0x00000000        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .text.WaveDAC8_BuffAmp_Stop
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .text.WaveDAC8_BuffAmp_Start
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .text.Status_Reg_1_InterruptEnable
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .text.Status_Reg_1_InterruptDisable
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .text.Status_Reg_1_WriteMask
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .text.Status_Reg_1_ReadMask
+                0x00000000        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CySetTempInt
+                0x00000000       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyFlash_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyFlash_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyFlash_EraseRow
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyFlashGetSpcAlgorithm
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CySetTemp
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CySetFlashEEBuffer
+                0x00000000       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyWriteRowFull
+                0x00000000       0xf8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyWriteRowData
+                0x00000000       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyFlash_SetWaitCycles
+                0x00000000       0x7c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyEEPROM_Start
+                0x00000000       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyEEPROM_Stop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyEEPROM_ReadReserve
+                0x00000000       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text.CyEEPROM_ReadRelease
+                0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ COMMON         0x00000000        0x2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .bss           0x00000000        0x8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcStart
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcStop
+                0x00000000       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcReadData
+                0x00000000       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcLoadMultiByte
+                0x00000000       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcLoadRow
+                0x00000000       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcLoadRowFull
+                0x00000000       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcWriteRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcEraseSector
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcEraseRow
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcGetTemp
+                0x00000000       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcLock
+                0x00000000       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcUnlock
+                0x00000000       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text.CySpcGetAlgorithm
+                0x00000000       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .text          0x00000000      0x370 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+ .text          0x00000000      0x110 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+ .text          0x00000000      0x21c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+ .text          0x00000000      0x2a0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+ .text          0x00000000       0x40 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00040000         xr
+ram              0x1fff8000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+START GROUP
+LOAD .\CortexM3\ARM_GCC_541\Debug\cfar.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\main.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\logging.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\led.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a
+LOAD C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
+END GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000100                CY_FLASH_ROW_SIZE = 0x100
+                0x00000020                CY_ECC_ROW_SIZE = 0x20
+                0x00000000                CY_EE_IN_BTLDR = 0x0
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000800                CY_EE_SIZE = 0x800
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000000                CY_APPL_LOADABLE = 0x0
+                0x00000000                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x0, CY_FLASH_ROW_SIZE)
+                [!provide]                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20008000                PROVIDE (__cy_stack, (ORIGIN (ram) + LENGTH (ram)))
+                [!provide]                PROVIDE (__cy_heap_end, (__cy_stack - 0x800))
+
+.cybootloader   0x00000000        0x0
+ *(.cybootloader)
+                0x00000000                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x0001ff00                appl2_start = (appl1_start + ALIGN ((((LENGTH (rom) - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00000000                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000000                ecc_offset = ((appl_start / CY_FLASH_ROW_SIZE) * CY_ECC_ROW_SIZE)
+                0x00000000                ee_offset = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?((CY_EE_SIZE / CY_APPL_MAX) * (CY_APPL_NUM - 0x1)):0x0
+                0x00000800                ee_size = (CY_APPL_LOADABLE && ! (CY_EE_IN_BTLDR))?(CY_EE_SIZE / CY_APPL_MAX):CY_EE_SIZE
+                [!provide]                PROVIDE (CY_ECC_OFFSET, ecc_offset)
+
+.text           0x00000000     0x14c6
+ CREATE_OBJECT_SYMBOLS
+                0x00000000                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00000000       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000000                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00000010                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00000010       0x18 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000010                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.dma_init)
+                0x00000001                ASSERT ((((appl_start + .) <= 0x10000) || 0x1), DMA Init must be within the first 64k of flash)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00000028       0x5c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .text.isr_button_handler
+                0x00000084       0x20 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000084                isr_button_handler
+ .text.isr_rx_handler
+                0x000000a4       0x24 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000000a4                isr_rx_handler
+ .text.DMA_Config
+                0x000000c8       0x50 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x000000c8                DMA_Config
+ .text.shieldInit
+                0x00000118       0x2c .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000118                shieldInit
+ .text.main     0x00000144      0x10c .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x00000144                main
+ .text.LOG_Init
+                0x00000250       0x2c .\CortexM3\ARM_GCC_541\Debug\logging.o
+                0x00000250                LOG_Init
+ .text.LED_Set  0x0000027c       0x60 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x0000027c                LED_Set
+ .text.LED_Init
+                0x000002dc       0x28 .\CortexM3\ARM_GCC_541\Debug\led.o
+                0x000002dc                LED_Init
+ .text.CyClockStartupError
+                0x00000304        0x4 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.cfg_write_bytes32
+                0x00000308       0x34 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.AnalogSetDefault
+                0x0000033c       0x54 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYMEMZERO
+                0x00000390        0xc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.CYCONFIGCPY
+                0x0000039c        0x8 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.ClockSetup
+                0x000003a4       0xfc .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text.ADC_AMux_Set
+                0x000004a0       0x1c .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000004a0                ADC_AMux_Set
+ .text.ADC_AMux_Unset
+                0x000004bc       0x1c .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000004bc                ADC_AMux_Unset
+ .text.cyfitter_cfg
+                0x000004d8      0x154 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000004d8                cyfitter_cfg
+ .text.IntDefaultHandler
+                0x0000062c       0x10 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000062c                IntDefaultHandler
+ .text.Start_c  0x0000063c       0x4c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x0000063c                Start_c
+ .text.initialize_psoc
+                0x00000688       0x6c .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00000688                initialize_psoc
+ .text.LED_yellow_Write
+                0x000006f4       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+                0x000006f4                LED_yellow_Write
+ .text.LED_red_Write
+                0x0000070c       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+                0x0000070c                LED_red_Write
+ .text.LED_green_Write
+                0x00000724       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+                0x00000724                LED_green_Write
+ .text.isr_button_SetVector
+                0x0000073c        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x0000073c                isr_button_SetVector
+ .text.isr_button_SetPriority
+                0x00000748       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x00000748                isr_button_SetPriority
+ .text.isr_button_Enable
+                0x00000758        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x00000758                isr_button_Enable
+ .text.isr_button_Disable
+                0x00000764        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x00000764                isr_button_Disable
+ .text.isr_button_StartEx
+                0x00000770       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x00000770                isr_button_StartEx
+ .text.isr_button_ClearPending
+                0x0000078c        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                0x0000078c                isr_button_ClearPending
+ .text.isr_rx_SetVector
+                0x00000798        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                0x00000798                isr_rx_SetVector
+ .text.isr_rx_SetPriority
+                0x000007a4       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                0x000007a4                isr_rx_SetPriority
+ .text.isr_rx_Enable
+                0x000007b4        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                0x000007b4                isr_rx_Enable
+ .text.isr_rx_Disable
+                0x000007c0        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                0x000007c0                isr_rx_Disable
+ .text.isr_rx_StartEx
+                0x000007cc       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                0x000007cc                isr_rx_StartEx
+ .text.Button_ClearInterrupt
+                0x000007e8        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+                0x000007e8                Button_ClearInterrupt
+ .text.CyDmacConfigure
+                0x000007f4       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x000007f4                CyDmacConfigure
+ .text.CyDmaChEnable
+                0x00000828       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x00000828                CyDmaChEnable
+ .text.CyDmaChDisable
+                0x00000860       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x00000860                CyDmaChDisable
+ .text.CyDmaChPriority
+                0x00000884       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x00000884                CyDmaChPriority
+ .text.CyDmaChSetExtendedAddress
+                0x000008a8       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x000008a8                CyDmaChSetExtendedAddress
+ .text.CyDmaChSetInitialTd
+                0x000008dc       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x000008dc                CyDmaChSetInitialTd
+ .text.CyDmaChSetConfiguration
+                0x000008f4       0x44 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x000008f4                CyDmaChSetConfiguration
+ .text.CyDmaTdAllocate
+                0x00000938       0x34 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x00000938                CyDmaTdAllocate
+ .text.CyDmaTdSetConfiguration
+                0x0000096c       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x0000096c                CyDmaTdSetConfiguration
+ .text.CyDmaTdSetAddress
+                0x00000994       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                0x00000994                CyDmaTdSetAddress
+ .text.CyHalt   0x000009b0        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x000009b0                CyHalt
+ .text.CyDelayUs
+                0x000009b4       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x000009b4                CyDelayUs
+ .text.CyIntSetVector
+                0x000009c8       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x000009c8                CyIntSetVector
+ .text.CyIntSetPriority
+                0x000009f0       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x000009f0                CyIntSetPriority
+ .text.DMA_ADC_DmaInitialize
+                0x00000a20       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+                0x00000a20                DMA_ADC_DmaInitialize
+ .text.UART_LOG_Init
+                0x00000a5c       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000a5c                UART_LOG_Init
+ .text.UART_LOG_Enable
+                0x00000a80       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000a80                UART_LOG_Enable
+ .text.UART_LOG_Start
+                0x00000ab8       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000ab8                UART_LOG_Start
+ .text.UART_LOG_ReadRxData
+                0x00000ad4        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000ad4                UART_LOG_ReadRxData
+ .text.UART_LOG_PutChar
+                0x00000ae0       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000ae0                UART_LOG_PutChar
+ .text.UART_LOG_PutString
+                0x00000af8       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x00000af8                UART_LOG_PutString
+ .text.ADC_GainCompensation
+                0x00000b1c       0xdc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_SetDSMRef0Reg
+                0x00000bf8       0x4c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_InitConfig
+                0x00000c44       0xe8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .text.ADC_Init
+                0x00000d2c       0xc4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x00000d2c                ADC_Init
+ .text.ADC_Enable
+                0x00000df0       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x00000df0                ADC_Enable
+ .text.ADC_Start
+                0x00000ec8       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x00000ec8                ADC_Start
+ .text.ADC_StartConvert
+                0x00000ef0       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x00000ef0                ADC_StartConvert
+ .text.ADC_StopConvert
+                0x00000f00       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x00000f00                ADC_StopConvert
+ .text.ADC_ISR1
+                0x00000f10        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+                0x00000f10                ADC_ISR1
+ .text.UART_LOG_IntClock_Start
+                0x00000f14       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+                0x00000f14                UART_LOG_IntClock_Start
+ .text.ADC_AMux_Start
+                0x00000f30       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+                0x00000f30                ADC_AMux_Start
+ .text.ADC_AMux_Select
+                0x00000f50       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+                0x00000f50                ADC_AMux_Select
+ .text.ADC_Ext_CP_Clk_GetDividerRegister
+                0x00000f68        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                0x00000f68                ADC_Ext_CP_Clk_GetDividerRegister
+ .text.ADC_Ext_CP_Clk_SetModeRegister
+                0x00000f74       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                0x00000f74                ADC_Ext_CP_Clk_SetModeRegister
+ .text.ADC_Ext_CP_Clk_GetSourceRegister
+                0x00000f88       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                0x00000f88                ADC_Ext_CP_Clk_GetSourceRegister
+ .text.ADC_Ext_CP_Clk_SetDividerRegister
+                0x00000f98       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                0x00000f98                ADC_Ext_CP_Clk_SetDividerRegister
+ .text.ADC_theACLK_GetDividerRegister
+                0x00001070        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                0x00001070                ADC_theACLK_GetDividerRegister
+ .text.ADC_theACLK_SetModeRegister
+                0x0000107c       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                0x0000107c                ADC_theACLK_SetModeRegister
+ .text.ADC_theACLK_GetSourceRegister
+                0x00001090       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                0x00001090                ADC_theACLK_GetSourceRegister
+ .text.ADC_theACLK_SetDividerRegister
+                0x000010a0       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                0x000010a0                ADC_theACLK_SetDividerRegister
+ .text.WaveDAC8_Enable
+                0x00001178       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x00001178                WaveDAC8_Enable
+ .text.WaveDAC8_Wave1Setup
+                0x000011a4       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x000011a4                WaveDAC8_Wave1Setup
+ .text.WaveDAC8_Wave2Setup
+                0x000011e4       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x000011e4                WaveDAC8_Wave2Setup
+ .text.WaveDAC8_Init
+                0x00001224       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x00001224                WaveDAC8_Init
+ .text.WaveDAC8_Start
+                0x00001264       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x00001264                WaveDAC8_Start
+ .text.WaveDAC8_DacClk_Start
+                0x00001280       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+                0x00001280                WaveDAC8_DacClk_Start
+ .text.WaveDAC8_Wave1_DMA_DmaInitialize
+                0x0000129c       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+                0x0000129c                WaveDAC8_Wave1_DMA_DmaInitialize
+ .text.WaveDAC8_Wave2_DMA_DmaInitialize
+                0x000012d8       0x3c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+                0x000012d8                WaveDAC8_Wave2_DMA_DmaInitialize
+ .text.WaveDAC8_VDAC8_Enable
+                0x00001314       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x00001314                WaveDAC8_VDAC8_Enable
+ .text.WaveDAC8_VDAC8_SetSpeed
+                0x00001330       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x00001330                WaveDAC8_VDAC8_SetSpeed
+ .text.WaveDAC8_VDAC8_SetValue
+                0x0000134c        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x0000134c                WaveDAC8_VDAC8_SetValue
+ .text.WaveDAC8_VDAC8_DacTrim
+                0x00001358       0x24 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x00001358                WaveDAC8_VDAC8_DacTrim
+ .text.WaveDAC8_VDAC8_SetRange
+                0x0000137c       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x0000137c                WaveDAC8_VDAC8_SetRange
+ .text.WaveDAC8_VDAC8_Init
+                0x0000139c       0x2c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                0x0000139c                WaveDAC8_VDAC8_Init
+ .text.WaveDAC8_BuffAmp_Enable
+                0x000013c8       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+                0x000013c8                WaveDAC8_BuffAmp_Enable
+ .text.WaveDAC8_BuffAmp_SetPower
+                0x000013f0       0x1c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+                0x000013f0                WaveDAC8_BuffAmp_SetPower
+ .text.WaveDAC8_BuffAmp_Init
+                0x0000140c        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+                0x0000140c                WaveDAC8_BuffAmp_Init
+ .text.Status_Reg_1_Read
+                0x00001418        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+                0x00001418                Status_Reg_1_Read
+ *fill*         0x00001424        0x4 
+ .text          0x00001428       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+                0x00001428                CyDelayCycles
+                0x00001438                CyEnterCriticalSection
+                0x00001440                CyExitCriticalSection
+ .text.__errno  0x00001448        0xc c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00001448                __errno
+ .text.__libc_init_array
+                0x00001454       0x4c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00001454                __libc_init_array
+ .text.memcpy   0x000014a0       0x16 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x000014a0                memcpy
+ .text.memset   0x000014b6       0x10 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000014b6                memset
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x000014c6        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x000014c6        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x000014c6        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x000014c8        0x0
+ .v4_bx         0x000014c8        0x0 linker stubs
+
+.iplt           0x000014c8        0x0
+ .iplt          0x000014c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x000014c8        0x4
+ *(.eh_frame)
+ .eh_frame      0x000014c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .eh_frame      0x000014c8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+                [!provide]                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000014cc                __exidx_end = .
+
+.rodata         0x000014cc      0x16c
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x000014cc       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .rodata        0x000014e4       0x52 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x000014e4                ADC_AMux__addrTable
+                0x000014ec                ADC_AMux__maskTable
+ *fill*         0x00001536        0x2 
+ .rodata        0x00001538       0xc8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x00001538                WaveDAC8_wave1
+                0x0000159c                WaveDAC8_wave2
+ .rodata.str1.1
+                0x00001600        0x2 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00001604                . = ALIGN (0x4)
+ *fill*         0x00001602        0x2 
+ *(.init)
+ .init          0x00001604        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001604                _init
+ .init          0x00001608        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001610                . = ALIGN (0x4)
+                0x00001610                __preinit_array_start = .
+ *(.preinit_array)
+                0x00001610                __preinit_array_end = .
+                0x00001610                . = ALIGN (0x4)
+                0x00001610                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00001610        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .init_array    0x00001614        0x4 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x00001618                __init_array_end = .
+                0x00001618                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00001618        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+                0x00001618                _fini
+ .fini          0x0000161c        0x8 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00001624                . = ALIGN (0x4)
+                0x00001624                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x00001624        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00001628                __fini_array_end = .
+                0x00001628                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x00001628                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x00001628                . = ALIGN (0x4)
+                0x00001628                __cy_regions = .
+                0x00001628        0x4 LONG 0x1638 __cy_region_init_ram
+                0x0000162c        0x4 LONG 0x1fff80c8 __cy_region_start_data
+                0x00001630        0x4 LONG 0x88 __cy_region_init_size_ram
+                0x00001634        0x4 LONG 0x848 __cy_region_zero_size_ram
+                0x00001638                __cy_regions_end = .
+                0x00001638                . = ALIGN (0x8)
+                0x00001638                _etext = .
+
+.cy_checksum_exclude
+                0x00001638        0x0
+ *(.cy_checksum_exclude)
+
+.ramvectors     0x1fff8000       0xc0
+                0x1fff8000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x1fff8000       0xc0 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x1fff8000                CyRamVectors
+
+.noinit         0x1fff80c0        0x1
+ *(.noinit)
+ .noinit        0x1fff80c0        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x1fff80c0                CyResetStatus
+
+.data           0x1fff80c8       0x88 load address 0x00001638
+                0x1fff80c8                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x1fff80c8        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .jcr           0x1fff80c8        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x1fff80cc        0x8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .data          0x1fff80d4       0x10 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                0x1fff80d4                cydelay_32k_ms
+                0x1fff80d8                cydelay_freq_khz
+                0x1fff80dc                cydelay_freq_mhz
+                0x1fff80e0                cydelay_freq_hz
+ .data          0x1fff80e4        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+                0x1fff80e4                DMA_ADC_DmaHandle
+ .data          0x1fff80e5        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x1fff80e5                ADC_Config
+ .data          0x1fff80e6        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .data          0x1fff80e7        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+                0x1fff80e7                WaveDAC8_Wave1_DMA_DmaHandle
+ .data          0x1fff80e8        0x1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+                0x1fff80e8                WaveDAC8_Wave2_DMA_DmaHandle
+ *fill*         0x1fff80e9        0x3 
+ .data.impure_data
+                0x1fff80ec       0x60 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x1fff814c        0x4 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x1fff814c                _impure_ptr
+                0x1fff8150                . = ALIGN (0x8)
+ *(.ram)
+                0x1fff8150                _edata = .
+
+.igot.plt       0x1fff8150        0x0 load address 0x000016c0
+ .igot.plt      0x1fff8150        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.bss            0x1fff8150      0x848 load address 0x000016c0
+                0x1fff8150                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x1fff8150       0x1c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .bss           0x1fff816c      0x804 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .bss           0x1fff8970        0x3 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .bss           0x1fff8973        0x2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                0x1fff8973                UART_LOG_initVar
+ *fill*         0x1fff8975        0x3 
+ .bss           0x1fff8978        0xc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x1fff897c                ADC_stopConversion
+                0x1fff897d                ADC_convDone
+                0x1fff897e                ADC_initVar
+                0x1fff897f                ADC_started
+                0x1fff8980                ADC_Offset
+ .bss           0x1fff8984        0x5 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                0x1fff8988                WaveDAC8_initVar
+ *(COMMON)
+ *fill*         0x1fff8989        0x3 
+ COMMON         0x1fff898c        0x2 .\CortexM3\ARM_GCC_541\Debug\main.o
+                0x1fff898c                DMA_ADC_TD
+                0x1fff898d                DMA_ADC_Chan
+ *fill*         0x1fff898e        0x2 
+ COMMON         0x1fff8990        0x4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                0x1fff8990                ADC_CountsPerVolt
+                0x1fff8998                . = ALIGN (0x8)
+ *fill*         0x1fff8994        0x4 
+ *(.ram.b)
+                0x1fff8998                _end = .
+                0x1fff8998                __end = .
+                0x1fff8998                PROVIDE (end, .)
+                0x1fff8998                PROVIDE (__bss_end__, .)
+                0x00001638                __cy_region_init_ram = LOADADDR (.data)
+                0x00000088                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000848                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x1fff8998       0x80 load address 0x000016c0
+                0x1fff8998                . = _end
+                0x1fff8a18                . = (. + 0x80)
+ *fill*         0x1fff8998       0x80 
+                0x1fff8a18                __cy_heap_limit = .
+
+.stack          0x20007800      0x800
+                0x20007800                __cy_stack_limit = .
+                0x20008000                . = (. + 0x800)
+ *fill*         0x20007800      0x800 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+                0x00000000                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+
+.cyloadermeta
+ *(.cyloadermeta)
+
+.cyloadablemeta
+ *(.cyloadablemeta)
+
+.cyconfigecc    0x80000000      0x47c
+ *(.cyconfigecc)
+ .cyconfigecc   0x80000000      0x47c .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x80000000                cy_meta_configecc
+
+.cycustnvl      0x90000000        0x4
+ *(.cycustnvl)
+ .cycustnvl     0x90000000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90000000                cy_meta_custnvl
+
+.cywolatch      0x90100000        0x4
+ *(.cywolatch)
+ .cywolatch     0x90100000        0x4 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90100000                cy_meta_wonvl
+
+.cyeeprom       0x90200000        0x0
+ *(.cyeeprom)
+                0x00000001                ASSERT ((. <= ((0x90200000 + ee_offset) + ee_size)), .cyeeprom data will not fit in EEPROM)
+
+.cyflashprotect
+                0x90400000      0x100
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000      0x100 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x90500000                cy_metadata
+
+.rel.dyn        0x000016c0        0x0 load address 0x9050000c
+ .rel.iplt      0x000016c0        0x0 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0xe50
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x18 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .debug_aranges
+                0x00000018       0x40 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_aranges
+                0x00000058       0x28 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_aranges
+                0x00000080       0x30 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_aranges
+                0x000000b0       0x68 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_aranges
+                0x00000118       0x18 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_aranges
+                0x00000130       0x48 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_aranges
+                0x00000178       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_aranges
+                0x000001b0       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_aranges
+                0x000001e8       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_aranges
+                0x00000220       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_aranges
+                0x000002a0       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_aranges
+                0x00000320       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_aranges
+                0x00000368       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_aranges
+                0x00000440      0x2a0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_aranges
+                0x000006e0       0x98 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_aranges
+                0x00000778       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_aranges
+                0x000007a0       0xf0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_aranges
+                0x00000890       0xe8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_aranges
+                0x00000978       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_aranges
+                0x000009b0       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_aranges
+                0x00000a20       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_aranges
+                0x00000a50       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_aranges
+                0x00000ac0       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_aranges
+                0x00000b40       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_aranges
+                0x00000b90       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_aranges
+                0x00000c00       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_aranges
+                0x00000c28       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_aranges
+                0x00000c50       0x58 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_aranges
+                0x00000ca8       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_aranges
+                0x00000ce8       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_aranges
+                0x00000d28       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .debug_aranges
+                0x00000d48       0x88 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_aranges
+                0x00000dd0       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0x8469
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000       0x72 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .debug_info    0x00000072      0x58d .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000005ff      0x347 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_info    0x00000946      0x620 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_info    0x00000f66      0x6ea .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00001650      0x136 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x00001786      0x3cf .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_info    0x00001b55      0x11f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_info    0x00001c74      0x11f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_info    0x00001d93      0x11f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_info    0x00001eb2      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_info    0x00002184      0x2d2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_info    0x00002456      0x174 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_info    0x000025ca      0x94e .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_info    0x00002f18     0x1374 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_info    0x0000428c      0xa2a .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_info    0x00004cb6      0x1a8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_info    0x00004e5e      0x60c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_info    0x0000546a      0xa18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_info    0x00005e82       0xd3 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_info    0x00005f55      0x283 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_info    0x000061d8      0x165 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_info    0x0000633d      0x283 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_info    0x000065c0      0x2c4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_info    0x00006884      0x52f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_info    0x00006db3      0x283 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_info    0x00007036      0x1aa .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_info    0x000071e0      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_info    0x00007387      0x1de .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_info    0x00007565      0x151 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_info    0x000076b6      0x17f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_info    0x00007835       0x97 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .debug_info    0x000078cc      0x64d .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_info    0x00007f19      0x550 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_abbrev   0x00000000     0x2651
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x26 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .debug_abbrev  0x00000026      0x19f .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x000001c5      0x139 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_abbrev  0x000002fe      0x1bb .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_abbrev  0x000004b9      0x22d .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x000006e6       0x77 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x0000075d      0x1e8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_abbrev  0x00000945       0x90 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_abbrev  0x000009d5       0x90 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_abbrev  0x00000a65       0x90 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_abbrev  0x00000af5      0x173 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_abbrev  0x00000c68      0x173 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_abbrev  0x00000ddb       0x90 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_abbrev  0x00000e6b      0x1b2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_abbrev  0x0000101d      0x254 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_abbrev  0x00001271      0x1ab .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_abbrev  0x0000141c       0xcd .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_abbrev  0x000014e9      0x175 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_abbrev  0x0000165e      0x1eb .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_abbrev  0x00001849       0x42 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_abbrev  0x0000188b      0x139 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_abbrev  0x000019c4       0xb1 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_abbrev  0x00001a75      0x139 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_abbrev  0x00001bae      0x121 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_abbrev  0x00001ccf      0x10b .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_abbrev  0x00001dda      0x139 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_abbrev  0x00001f13       0xcd .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_abbrev  0x00001fe0       0xcd .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_abbrev  0x000020ad       0xf7 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_abbrev  0x000021a4       0xb2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_abbrev  0x00002256       0xac .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_abbrev  0x00002302       0x14 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .debug_abbrev  0x00002316      0x1a7 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_abbrev  0x000024bd      0x194 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_line     0x00000000     0x3766
+ *(.debug_line)
+ .debug_line    0x00000000       0x1d .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .debug_line    0x0000001d      0x2b9 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_line    0x000002d6      0x1af .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_line    0x00000485      0x25a .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_line    0x000006df      0x22a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x00000909      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x00000a4a      0x241 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_line    0x00000c8b       0x97 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_line    0x00000d22       0x94 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_line    0x00000db6       0x96 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_line    0x00000e4c      0x137 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_line    0x00000f83      0x133 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_line    0x000010b6       0xb7 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_line    0x0000116d      0x2e4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_line    0x00001451      0x816 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_line    0x00001c67      0x367 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_line    0x00001fce       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_line    0x00002052      0x2c4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_line    0x00002316      0x34f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_line    0x00002665       0x80 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_line    0x000026e5      0x180 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_line    0x00002865       0xac .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_line    0x00002911      0x17d .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_line    0x00002a8e      0x19d .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_line    0x00002c2b      0x16a .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_line    0x00002d95      0x17e .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_line    0x00002f13       0x8f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_line    0x00002fa2       0x8f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_line    0x00003031       0xea .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_line    0x0000311b       0xb3 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_line    0x000031ce       0xb8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_line    0x00003286       0x66 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .debug_line    0x000032ec      0x21a .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_line    0x00003506      0x260 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_frame    0x00000000     0x2204
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x98 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x00000098       0x48 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_frame   0x000000e0       0x6c .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_frame   0x0000014c      0x104 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x00000250       0xb8 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_frame   0x00000308       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_frame   0x00000358       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_frame   0x000003a8       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_frame   0x000003f8      0x104 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_frame   0x000004fc      0x104 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_frame   0x00000600       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_frame   0x00000670      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_frame   0x00000868      0x738 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_frame   0x00000fa0      0x1f8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_frame   0x00001198       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_frame   0x000011ec      0x250 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_frame   0x0000143c      0x278 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_frame   0x000016b4       0x50 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_frame   0x00001704       0xe0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_frame   0x000017e4       0x64 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_frame   0x00001848       0xe0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_frame   0x00001928      0x100 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_frame   0x00001a28       0xe0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_frame   0x00001b08       0xe0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_frame   0x00001be8       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_frame   0x00001c3c       0x54 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_frame   0x00001c90       0xb4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_frame   0x00001d44       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_frame   0x00001dbc       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_frame   0x00001e34      0x194 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_frame   0x00001fc8      0x180 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .debug_frame   0x00002148       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00002168       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x00002190       0x2c c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x000021bc       0x28 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x000021e4       0x20 c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+
+.debug_str      0x00000000     0x30da
+ *(.debug_str)
+ .debug_str     0x00000000      0x138 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+                                0x16b (size before relaxing)
+ .debug_str     0x00000138      0x2d4 .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x46b (size before relaxing)
+ .debug_str     0x0000040c      0x299 .\CortexM3\ARM_GCC_541\Debug\logging.o
+                                0x443 (size before relaxing)
+ .debug_str     0x000006a5       0xbb .\CortexM3\ARM_GCC_541\Debug\led.o
+                                0x476 (size before relaxing)
+ .debug_str     0x00000760      0x1e9 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x397 (size before relaxing)
+ .debug_str     0x00000949       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x1eb (size before relaxing)
+ .debug_str     0x000009be      0x154 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x321 (size before relaxing)
+ .debug_str     0x00000b12       0x73 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+                                0x202 (size before relaxing)
+ .debug_str     0x00000b85       0x57 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+                                0x1f3 (size before relaxing)
+ .debug_str     0x00000bdc       0x5f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+                                0x1fd (size before relaxing)
+ .debug_str     0x00000c3b      0x119 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+                                0x2f3 (size before relaxing)
+ .debug_str     0x00000d54       0xe5 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+                                0x2bb (size before relaxing)
+ .debug_str     0x00000e39       0x81 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+                                0x22c (size before relaxing)
+ .debug_str     0x00000eba      0x310 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+                                0x551 (size before relaxing)
+ .debug_str     0x000011ca      0x7e5 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+                                0xa4e (size before relaxing)
+ .debug_str     0x000019af      0x365 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+                                0x73a (size before relaxing)
+ .debug_str     0x00001d14       0x85 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+                                0x27b (size before relaxing)
+ .debug_str     0x00001d99      0x2dc .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+                                0x4f8 (size before relaxing)
+ .debug_str     0x00002075      0x33b .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+                                0x5d0 (size before relaxing)
+ .debug_str     0x000023b0       0x45 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+                                0x1c7 (size before relaxing)
+ .debug_str     0x000023f5      0x1a3 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+                                0x36d (size before relaxing)
+ .debug_str     0x00002598       0x5f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+                                0x206 (size before relaxing)
+ .debug_str     0x000025f7      0x12a .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+                                0x349 (size before relaxing)
+ .debug_str     0x00002721      0x14f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+                                0x368 (size before relaxing)
+ .debug_str     0x00002870      0x24c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+                                0x46c (size before relaxing)
+ .debug_str     0x00002abc      0x14c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+                                0x355 (size before relaxing)
+ .debug_str     0x00002c08       0x6b .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+                                0x2a7 (size before relaxing)
+ .debug_str     0x00002c73       0x6b .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+                                0x2a7 (size before relaxing)
+ .debug_str     0x00002cde       0x77 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+                                0x280 (size before relaxing)
+ .debug_str     0x00002d55       0x90 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+                                0x24b (size before relaxing)
+ .debug_str     0x00002de5       0x8e .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+                                0x26e (size before relaxing)
+ .debug_str     0x00002e73      0x1bb .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+                                0x3c7 (size before relaxing)
+ .debug_str     0x0000302e       0xac .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+                                0x33f (size before relaxing)
+
+.debug_loc      0x00000000     0x3cf8
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x49 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x00000049       0x4d .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_loc     0x00000096      0x2bf .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_loc     0x00000355      0x29c .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x000005f1      0x144 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_loc     0x00000735       0x42 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_loc     0x00000777       0x42 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_loc     0x000007b9       0x42 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_loc     0x000007fb       0x56 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_loc     0x00000851       0x56 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_loc     0x000008a7       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_loc     0x0000092b      0xb8e .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_loc     0x000014b9      0xa11 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_loc     0x00001eca      0x1e4 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_loc     0x000020ae       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_loc     0x00002132      0x258 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_loc     0x0000238a      0x681 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_loc     0x00002a0b      0x128 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_loc     0x00002b33       0x6c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_loc     0x00002b9f      0x12c .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_loc     0x00002ccb      0x14d .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_loc     0x00002e18      0x11b .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_loc     0x00002f33      0x128 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_loc     0x0000305b       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_loc     0x000030df       0x84 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_loc     0x00003163       0x79 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_loc     0x000031dc       0x21 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_loc     0x000031fd       0x44 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_loc     0x00003241      0x3b2 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_loc     0x000035f3      0x705 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000      0xc68
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x30 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x00000030       0x18 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .debug_ranges  0x00000048       0x78 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .debug_ranges  0x000000c0       0x58 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000118       0x38 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .debug_ranges  0x00000150       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .debug_ranges  0x00000178       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .debug_ranges  0x000001a0       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .debug_ranges  0x000001c8       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .debug_ranges  0x00000238       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .debug_ranges  0x000002a8       0x38 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .debug_ranges  0x000002e0       0xc8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .debug_ranges  0x000003a8      0x290 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .debug_ranges  0x00000638       0x88 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .debug_ranges  0x000006c0       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .debug_ranges  0x000006d8       0xe0 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .debug_ranges  0x000007b8       0xd8 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .debug_ranges  0x00000890       0x28 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .debug_ranges  0x000008b8       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .debug_ranges  0x00000918       0x20 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .debug_ranges  0x00000938       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .debug_ranges  0x00000998       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .debug_ranges  0x00000a08       0x40 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .debug_ranges  0x00000a48       0x60 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .debug_ranges  0x00000aa8       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .debug_ranges  0x00000ac0       0x18 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .debug_ranges  0x00000ad8       0x48 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .debug_ranges  0x00000b20       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .debug_ranges  0x00000b50       0x30 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .debug_ranges  0x00000b80       0x78 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .debug_ranges  0x00000bf8       0x70 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e .\CortexM3\ARM_GCC_541\Debug\cfar.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\main.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\led.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x29
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crti.o
+ .ARM.attributes
+                0x0000001d       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x33 .\CortexM3\ARM_GCC_541\Debug\cfar.o
+ .ARM.attributes
+                0x00000098       0x33 .\CortexM3\ARM_GCC_541\Debug\main.o
+ .ARM.attributes
+                0x000000cb       0x33 .\CortexM3\ARM_GCC_541\Debug\logging.o
+ .ARM.attributes
+                0x000000fe       0x33 .\CortexM3\ARM_GCC_541\Debug\led.o
+ .ARM.attributes
+                0x00000131       0x33 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .ARM.attributes
+                0x00000164       0x33 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+ .ARM.attributes
+                0x00000197       0x33 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+ .ARM.attributes
+                0x000001ca       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_yellow.o)
+ .ARM.attributes
+                0x000001fd       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_red.o)
+ .ARM.attributes
+                0x00000230       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(LED_green.o)
+ .ARM.attributes
+                0x00000263       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_button.o)
+ .ARM.attributes
+                0x00000296       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(isr_rx.o)
+ .ARM.attributes
+                0x000002c9       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Button.o)
+ .ARM.attributes
+                0x000002fc       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyDmac.o)
+ .ARM.attributes
+                0x0000032f       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyLib.o)
+ .ARM.attributes
+                0x00000362       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(cyPm.o)
+ .ARM.attributes
+                0x00000395       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(DMA_ADC_dma.o)
+ .ARM.attributes
+                0x000003c8       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG.o)
+ .ARM.attributes
+                0x000003fb       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC.o)
+ .ARM.attributes
+                0x0000042e       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_INT.o)
+ .ARM.attributes
+                0x00000461       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(UART_LOG_IntClock.o)
+ .ARM.attributes
+                0x00000494       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_AMux.o)
+ .ARM.attributes
+                0x000004c7       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_Ext_CP_Clk.o)
+ .ARM.attributes
+                0x000004fa       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(ADC_theACLK.o)
+ .ARM.attributes
+                0x0000052d       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8.o)
+ .ARM.attributes
+                0x00000560       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_DacClk.o)
+ .ARM.attributes
+                0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave1_DMA_dma.o)
+ .ARM.attributes
+                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_Wave2_DMA_dma.o)
+ .ARM.attributes
+                0x000005f9       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_VDAC8.o)
+ .ARM.attributes
+                0x0000062c       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(WaveDAC8_BuffAmp.o)
+ .ARM.attributes
+                0x0000065f       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(Status_Reg_1.o)
+ .ARM.attributes
+                0x00000692       0x21 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x000006b3       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CyFlash.o)
+ .ARM.attributes
+                0x000006e6       0x33 .\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.a(CySpc.o)
+ .ARM.attributes
+                0x00000719       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x00000736       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_cmpdf2.o)
+ .ARM.attributes
+                0x00000753       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+ .ARM.attributes
+                0x00000770       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+ .ARM.attributes
+                0x0000078d       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+ .ARM.attributes
+                0x000007aa       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x000007d7       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000804       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000831       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000085e       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x0000088b       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x000008b8       0x2d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .ARM.attributes
+                0x000008e5       0x1d c:/program files (x86)/cypress/psoc creator/4.4/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\Matlab_FFT.cydsn\CortexM3\ARM_GCC_541\Debug\Matlab_FFT.elf elf32-littlearm)

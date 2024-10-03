@@ -1,0 +1,8 @@
+C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\Matlab_FFT.cydsn\Matlab_FFT.cyprj|d456dd15-cf66-4d8c-bb2c-db834facb34b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1e5ba425-ff18-48f6-9007-e206691fc7b2
+C:\Users\vboxuser\Documents\PSoC Creator\4.4\Downloads ( 4.4).cylib\Downloads ( 4.4).cyprj|43b7a7de-acfe-4a1d-96dc-882d6e2ff29d
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5583cba9-2721-42d5-81bf-cf67f998e075
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|7e909beb-f220-4188-a1bd-8aca7b8e1974
+C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9f2ee56a-8c05-4a11-a936-c1aa1c097814
+C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\PSOC_FFT.cydsn\PSOC_FFT.cyprj|76eb9b34-2331-4f6a-a832-43c639c846d1
+C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\PSOC_MATLAB_CFAR.cydsn\PSOC_MATLAB_CFAR.cyprj|c06dfee2-e355-475b-a662-92e0dd6f041a

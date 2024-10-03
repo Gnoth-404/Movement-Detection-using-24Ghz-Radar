@@ -1,0 +1,3330 @@
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"dsp.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_ui2f
+  20              		.global	__aeabi_f2d
+  21              		.global	__aeabi_dmul
+  22              		.global	__aeabi_d2f
+  23              		.global	__aeabi_fcmpgt
+  24              		.global	__aeabi_fcmplt
+  25              		.global	__aeabi_f2uiz
+  26              		.section	.text.applyHanningWindow,"ax",%progbits
+  27              		.align	2
+  28              		.global	applyHanningWindow
+  29              		.thumb
+  30              		.thumb_func
+  31              		.type	applyHanningWindow, %function
+  32              	applyHanningWindow:
+  33              	.LFB0:
+  34              		.file 1 "dsp.c"
+   1:dsp.c         **** /**
+   2:dsp.c         **** * \file <filename>
+   3:dsp.c         **** * \author <author-name>
+   4:dsp.c         **** * \date <date>
+   5:dsp.c         **** *
+   6:dsp.c         **** * \brief <Symbolic File name>
+   7:dsp.c         **** *
+   8:dsp.c         **** * \copyright Copyright ©2016
+   9:dsp.c         **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:dsp.c         **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:dsp.c         **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:dsp.c         **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:dsp.c         **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:dsp.c         **** *
+  15:dsp.c         **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:dsp.c         **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:dsp.c         **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:dsp.c         **** */
+  19:dsp.c         **** 
+  20:dsp.c         **** /*****************************************************************************/
+  21:dsp.c         **** /* Include files                                                             */
+  22:dsp.c         **** /*****************************************************************************/
+  23:dsp.c         **** 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 2
+
+
+  24:dsp.c         **** #include "dsp.h"
+  25:dsp.c         **** #include <math.h>
+  26:dsp.c         **** #include <stdint.h>
+  27:dsp.c         **** #include <string.h>
+  28:dsp.c         **** /*****************************************************************************/
+  29:dsp.c         **** /* Local pre-processor symbols/macros ('#define')                            */
+  30:dsp.c         **** /*****************************************************************************/
+  31:dsp.c         **** 
+  32:dsp.c         **** /*****************************************************************************/
+  33:dsp.c         **** /* Global variable definitions (declared in header file with 'extern')       */
+  34:dsp.c         **** /*****************************************************************************/
+  35:dsp.c         **** 
+  36:dsp.c         **** /*****************************************************************************/
+  37:dsp.c         **** /* Local type definitions ('typedef')                                        */
+  38:dsp.c         **** /*****************************************************************************/
+  39:dsp.c         **** 
+  40:dsp.c         **** /*****************************************************************************/
+  41:dsp.c         **** /* Local variable definitions ('static')                                     */
+  42:dsp.c         **** /*****************************************************************************/
+  43:dsp.c         **** 
+  44:dsp.c         **** 
+  45:dsp.c         **** 
+  46:dsp.c         **** /*****************************************************************************/
+  47:dsp.c         **** /* Local function prototypes ('static')                                      */
+  48:dsp.c         **** /*****************************************************************************/
+  49:dsp.c         **** 
+  50:dsp.c         **** 
+  51:dsp.c         **** 
+  52:dsp.c         **** 
+  53:dsp.c         **** /*****************************************************************************/
+  54:dsp.c         **** /* Function implementation - global ('extern') and local ('static')          */
+  55:dsp.c         **** /*****************************************************************************/
+  56:dsp.c         **** 
+  57:dsp.c         **** /**
+  58:dsp.c         ****  * <Apply Hanninng  window coefficient>
+  59:dsp.c         ****  * \param uint16_t *samples: ADC Samples input array
+  60:dsp.c         ****  * \param uint16_t length: ADC Sample length
+  61:dsp.c         ****  * \return <return value>
+  62:dsp.c         ****  */
+  63:dsp.c         **** 
+  64:dsp.c         **** 
+  65:dsp.c         **** RC_t applyHanningWindow(uint16_t *samples, uint16_t length) {
+  35              		.loc 1 65 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39              	.LVL0:
+  66:dsp.c         ****     if (samples == NULL || length == 0) {
+  40              		.loc 1 66 0
+  41 0000 0028     		cmp	r0, #0
+  42 0002 39D0     		beq	.L10
+  65:dsp.c         ****     if (samples == NULL || length == 0) {
+  43              		.loc 1 65 0 discriminator 1
+  44 0004 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  45              		.cfi_def_cfa_offset 32
+  46              		.cfi_offset 3, -32
+  47              		.cfi_offset 4, -28
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 3
+
+
+  48              		.cfi_offset 5, -24
+  49              		.cfi_offset 6, -20
+  50              		.cfi_offset 7, -16
+  51              		.cfi_offset 8, -12
+  52              		.cfi_offset 9, -8
+  53              		.cfi_offset 14, -4
+  54 0008 0546     		mov	r5, r0
+  55              		.loc 1 66 0 discriminator 1
+  56 000a 0029     		cmp	r1, #0
+  57 000c 37D0     		beq	.L11
+  58 000e 8846     		mov	r8, r1
+  59 0010 0024     		movs	r4, #0
+  60 0012 2CE0     		b	.L3
+  61              	.LVL1:
+  62              	.L9:
+  63              	.LBB2:
+  64              	.LBB3:
+  67:dsp.c         ****         return RC_ERROR_BAD_PARAM;
+  68:dsp.c         ****     }
+  69:dsp.c         ****     
+  70:dsp.c         ****     for (uint16_t idx = 0; idx < length; ++idx) {
+  71:dsp.c         ****         // Multiply by the Hanning window coefficient (which is between 0 and 1)
+  72:dsp.c         ****         float32_t scaled_sample = (float32_t)samples[idx] * hanning_table[idx];
+  65              		.loc 1 72 0
+  66 0014 4FEA4409 		lsl	r9, r4, #1
+  67 0018 35F81400 		ldrh	r0, [r5, r4, lsl #1]
+  68 001c FFF7FEFF 		bl	__aeabi_ui2f
+  69              	.LVL2:
+  70 0020 194B     		ldr	r3, .L17
+  71 0022 03EBC403 		add	r3, r3, r4, lsl #3
+  72 0026 D3E90067 		ldrd	r6, [r3]
+  73 002a FFF7FEFF 		bl	__aeabi_f2d
+  74              	.LVL3:
+  75 002e 3246     		mov	r2, r6
+  76 0030 3B46     		mov	r3, r7
+  77 0032 FFF7FEFF 		bl	__aeabi_dmul
+  78              	.LVL4:
+  79 0036 FFF7FEFF 		bl	__aeabi_d2f
+  80              	.LVL5:
+  81 003a 0646     		mov	r6, r0
+  82              	.LVL6:
+  73:dsp.c         ****         
+  74:dsp.c         ****         // Clamping the result to the range of uint16_t
+  75:dsp.c         ****         if (scaled_sample > UINT16_MAX) {
+  83              		.loc 1 75 0
+  84 003c 1349     		ldr	r1, .L17+4
+  85 003e FFF7FEFF 		bl	__aeabi_fcmpgt
+  86              	.LVL7:
+  87 0042 20B1     		cbz	r0, .L14
+  76:dsp.c         ****             samples[idx] = UINT16_MAX;
+  88              		.loc 1 76 0
+  89 0044 4FF6FF73 		movw	r3, #65535
+  90 0048 25F81430 		strh	r3, [r5, r4, lsl #1]	@ movhi
+  91 004c 0DE0     		b	.L6
+  92              	.L14:
+  77:dsp.c         ****         } else if (scaled_sample < 0) {
+  93              		.loc 1 77 0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 4
+
+
+  94 004e 0021     		movs	r1, #0
+  95 0050 3046     		mov	r0, r6
+  96 0052 FFF7FEFF 		bl	__aeabi_fcmplt
+  97              	.LVL8:
+  98 0056 18B1     		cbz	r0, .L15
+  78:dsp.c         ****             samples[idx] = 0;
+  99              		.loc 1 78 0
+ 100 0058 0023     		movs	r3, #0
+ 101 005a 25F80930 		strh	r3, [r5, r9]	@ movhi
+ 102 005e 04E0     		b	.L6
+ 103              	.L15:
+  79:dsp.c         ****         } else {
+  80:dsp.c         ****             samples[idx] = (uint16_t)scaled_sample;
+ 104              		.loc 1 80 0
+ 105 0060 3046     		mov	r0, r6
+ 106 0062 FFF7FEFF 		bl	__aeabi_f2uiz
+ 107              	.LVL9:
+ 108 0066 25F80900 		strh	r0, [r5, r9]	@ movhi
+ 109              	.L6:
+ 110              	.LBE3:
+  70:dsp.c         ****         // Multiply by the Hanning window coefficient (which is between 0 and 1)
+ 111              		.loc 1 70 0 discriminator 2
+ 112 006a 0134     		adds	r4, r4, #1
+ 113              	.LVL10:
+ 114 006c A4B2     		uxth	r4, r4
+ 115              	.LVL11:
+ 116              	.L3:
+  70:dsp.c         ****         // Multiply by the Hanning window coefficient (which is between 0 and 1)
+ 117              		.loc 1 70 0 is_stmt 0 discriminator 1
+ 118 006e 4445     		cmp	r4, r8
+ 119 0070 D0D3     		bcc	.L9
+ 120              	.LBE2:
+  81:dsp.c         ****         }
+  82:dsp.c         ****     }
+  83:dsp.c         **** 
+  84:dsp.c         ****     return RC_SUCCESS;
+ 121              		.loc 1 84 0 is_stmt 1
+ 122 0072 0020     		movs	r0, #0
+ 123              	.LBB4:
+ 124 0074 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 125              	.LVL12:
+ 126              	.L10:
+ 127              		.cfi_def_cfa_offset 0
+ 128              		.cfi_restore 3
+ 129              		.cfi_restore 4
+ 130              		.cfi_restore 5
+ 131              		.cfi_restore 6
+ 132              		.cfi_restore 7
+ 133              		.cfi_restore 8
+ 134              		.cfi_restore 9
+ 135              		.cfi_restore 14
+ 136              	.LBE4:
+  67:dsp.c         ****     }
+ 137              		.loc 1 67 0
+ 138 0078 6FF01300 		mvn	r0, #19
+ 139              	.LVL13:
+  85:dsp.c         **** }...
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 5
+
+
+ 140              		.loc 1 85 0
+ 141 007c 7047     		bx	lr
+ 142              	.LVL14:
+ 143              	.L11:
+ 144              		.cfi_def_cfa_offset 32
+ 145              		.cfi_offset 3, -32
+ 146              		.cfi_offset 4, -28
+ 147              		.cfi_offset 5, -24
+ 148              		.cfi_offset 6, -20
+ 149              		.cfi_offset 7, -16
+ 150              		.cfi_offset 8, -12
+ 151              		.cfi_offset 9, -8
+ 152              		.cfi_offset 14, -4
+  67:dsp.c         ****     }
+ 153              		.loc 1 67 0
+ 154 007e 6FF01300 		mvn	r0, #19
+ 155              	.LVL15:
+ 156              		.loc 1 85 0
+ 157 0082 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 158              	.LVL16:
+ 159              	.L18:
+ 160 0086 00BF     		.align	2
+ 161              	.L17:
+ 162 0088 00000000 		.word	.LANCHOR0
+ 163 008c 00FF7F47 		.word	1199570688
+ 164              		.cfi_endproc
+ 165              	.LFE0:
+ 166              		.size	applyHanningWindow, .-applyHanningWindow
+ 167              		.section	.rodata
+ 168              		.align	3
+ 169              		.set	.LANCHOR0,. + 0
+ 170              		.type	hanning_table, %object
+ 171              		.size	hanning_table, 8192
+ 172              	hanning_table:
+ 173 0000 00000000 		.word	0
+ 174 0004 00000000 		.word	0
+ 175 0008 3FABCC94 		.word	-1798526145
+ 176 000c D6DFE23E 		.word	1055055830
+ 177 0010 180AD80E 		.word	249039384
+ 178 0014 46EC033F 		.word	1057221702
+ 179 0018 809F71E1 		.word	-512647296
+ 180 001c 4048163F 		.word	1058424896
+ 181 0020 3D9E961F 		.word	529964605
+ 182 0024 B8CA233F 		.word	1059310264
+ 183 0028 FC6D4F90 		.word	-1873842692
+ 184 002c D8EE2E3F 		.word	1060040408
+ 185 0030 92E9D0E9 		.word	-372184686
+ 186 0034 7937363F 		.word	1060517753
+ 187 0038 B55208E4 		.word	-469216587
+ 188 003c 12473E3F 		.word	1061046034
+ 189 0040 4643C6A3 		.word	-1547287738
+ 190 0044 54C2433F 		.word	1061405268
+ 191 0048 7978CF81 		.word	-2117109639
+ 192 004c E508493F 		.word	1061751013
+ 193 0050 06137F14 		.word	343872262
+ 194 0054 75E64E3F 		.word	1062135413
+ 195 0058 F2B6D26B 		.word	1808971506
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 6
+
+
+ 196 005c B3B1523F 		.word	1062384051
+ 197 0060 0D17B9A7 		.word	-1481042163
+ 198 0064 AB3B563F 		.word	1062615979
+ 199 0068 CD04C3B9 		.word	-1178401587
+ 200 006c 86195A3F 		.word	1062869382
+ 201 0070 39252026 		.word	639640889
+ 202 0074 E1425E3F 		.word	1063142113
+ 203 0078 E7525C55 		.word	1432113895
+ 204 007c F65D613F 		.word	1063345654
+ 205 0080 4643C6A3 		.word	-1547287738
+ 206 0084 54C2633F 		.word	1063502420
+ 207 0088 B9E34D7E 		.word	2119033785
+ 208 008c 8B4E663F 		.word	1063669387
+ 209 0090 821DFF05 		.word	100605314
+ 210 0094 8200693F 		.word	1063846018
+ 211 0098 1D1EC2F8 		.word	-121496035
+ 212 009c 69DC6B3F 		.word	1064033385
+ 213 00a0 0FB8AE98 		.word	-1733380081
+ 214 00a4 11DE6E3F 		.word	1064230417
+ 215 00a8 AB75E272 		.word	1927443883
+ 216 00ac BC02713F 		.word	1064370876
+ 217 00b0 B972F6CE 		.word	-822709575
+ 218 00b4 68AB723F 		.word	1064479592
+ 219 00b8 713C9F01 		.word	27212913
+ 220 00bc F566743F 		.word	1064593141
+ 221 00c0 D4D2DC0A 		.word	182244052
+ 222 00c4 6135763F 		.word	1064711521
+ 223 00c8 A14CA3C9 		.word	-912044895
+ 224 00cc C518783F 		.word	1064835269
+ 225 00d0 1893FE5E 		.word	1593742104
+ 226 00d4 0A0F7A3F 		.word	1064963850
+ 227 00d8 3BA6EECA 		.word	-890329541
+ 228 00dc 2E187C3F 		.word	1065097262
+ 229 00e0 C79C67EC 		.word	-328753977
+ 230 00e4 4B367E3F 		.word	1065236043
+ 231 00e8 50AA7D3A 		.word	981314128
+ 232 00ec 1E33803F 		.word	1065366302
+ 233 00f0 F0F78BD9 		.word	-645138448
+ 234 00f4 9255813F 		.word	1065440658
+ 235 00f8 E7ABE463 		.word	1675930599
+ 236 00fc 7781823F 		.word	1065517431
+ 237 0100 32C687D9 		.word	-645413326
+ 238 0104 CBB6833F 		.word	1065596619
+ 239 0108 834C3272 		.word	1915899011
+ 240 010c 16F6843F 		.word	1065678358
+ 241 0110 2A3927F6 		.word	-165201622
+ 242 0114 D03E863F 		.word	1065762512
+ 243 0118 D591239D 		.word	-1658613291
+ 244 011c 8191873F 		.word	1065849217
+ 245 0120 86562767 		.word	1730631302
+ 246 0124 28EE883F 		.word	1065938472
+ 247 0128 DD7BB8E4 		.word	-457671715
+ 248 012c B8538A3F 		.word	1066030008
+ 249 0130 390D5185 		.word	-2058285767
+ 250 0134 3FC38B3F 		.word	1066124095
+ 251 0138 9A0AF148 		.word	1223756442
+ 252 013c BC3C8D3F 		.word	1066220732
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 7
+
+
+ 253 0140 506EDBF7 		.word	-136614320
+ 254 0144 A8BF8E3F 		.word	1066319784
+ 255 0148 2E1C08C9 		.word	-922215378
+ 256 014c 0226903F 		.word	1066411522
+ 257 0150 5FB4C70B 		.word	197637215
+ 258 0154 E9F0903F 		.word	1066463465
+ 259 0158 BB7F2C44 		.word	1143766971
+ 260 015c 87C0913F 		.word	1066516615
+ 261 0160 1901158E 		.word	-1911226087
+ 262 0164 2095923F 		.word	1066571040
+ 263 0168 A2B5A2CD 		.word	-844974686
+ 264 016c 716E933F 		.word	1066626673
+ 265 0170 569DD502 		.word	47553878
+ 266 0174 7B4C943F 		.word	1066683515
+ 267 0178 35B8AD2D 		.word	766359605
+ 268 017c 3C2F953F 		.word	1066741564
+ 269 0180 1689096A 		.word	1779009814
+ 270 0184 F816963F 		.word	1066800888
+ 271 0188 4A0A2C80 		.word	-2144597430
+ 272 018c 2903973F 		.word	1066861353
+ 273 0190 A9BEF38B 		.word	-1946960215
+ 274 0194 12F4973F 		.word	1066923026
+ 275 0198 0B293FA9 		.word	-1455478517
+ 276 019c F6E9983F 		.word	1066985974
+ 277 01a0 BF4351A0 		.word	-1605286977
+ 278 01a4 4FE4993F 		.word	1067050063
+ 279 01a8 9F91088D 		.word	-1928818273
+ 280 01ac 60E39A3F 		.word	1067115360
+ 281 01b0 A912656F 		.word	1868894889
+ 282 01b4 29E79B3F 		.word	1067181865
+ 283 01b8 DEC66647 		.word	1197917918
+ 284 01bc AAEF9C3F 		.word	1067249578
+ 285 01c0 3EAE0D15 		.word	353218110
+ 286 01c4 E3FC9D3F 		.word	1067318499
+ 287 01c8 F1457BBC 		.word	-1132771855
+ 288 01cc 900E9F3F 		.word	1067388560
+ 289 01d0 6808C72C 		.word	751241320
+ 290 01d4 7B12A03F 		.word	1067455099
+ 291 01d8 6C0723F6 		.word	-165476500
+ 292 01dc 09A0A03F 		.word	1067491337
+ 293 01e0 9A5E622C 		.word	744644250
+ 294 01e4 D32FA13F 		.word	1067528147
+ 295 01e8 5D4F745D 		.word	1567903581
+ 296 01ec F8C1A13F 		.word	1067565560
+ 297 01f0 B6D95889 		.word	-1990665802
+ 298 01f4 7956A23F 		.word	1067603577
+ 299 01f8 38BC2022 		.word	572570680
+ 300 01fc 35EDA23F 		.word	1067642165
+ 301 0200 5038BBB5 		.word	-1246021552
+ 302 0204 4C86A33F 		.word	1067681356
+ 303 0208 910C39B6 		.word	-1237775215
+ 304 020c 9E21A43F 		.word	1067721118
+ 305 0210 FC389A23 		.word	597309692
+ 306 0214 2BBFA43F 		.word	1067761451
+ 307 0218 FCFECD8B 		.word	-1949434116
+ 308 021c 135FA53F 		.word	1067802387
+ 309 0220 261DE560 		.word	1625627942
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 8
+
+
+ 310 0224 3601A63F 		.word	1067843894
+ 311 0228 7993DFA2 		.word	-1562406023
+ 312 022c 93A5A63F 		.word	1067885971
+ 313 0230 F661BD51 		.word	1371365878
+ 314 0234 2B4CA73F 		.word	1067928619
+ 315 0238 08CA6DFB 		.word	-76690936
+ 316 023c 1EF5A73F 		.word	1067971870
+ 317 0240 448A0112 		.word	302090820
+ 318 0244 4DA0A83F 		.word	1068015693
+ 319 0248 3D618907 		.word	126443837
+ 320 024c 944DA93F 		.word	1068060052
+ 321 0250 CCD1E3F7 		.word	-136064564
+ 322 0254 36FDA93F 		.word	1068105014
+ 323 0258 849A2155 		.word	1428265604
+ 324 025c 14AFAA3F 		.word	1068150548
+ 325 0260 FB795391 		.word	-1856800261
+ 326 0264 0A63AB3F 		.word	1068196618
+ 327 0268 06F357C8 		.word	-933760250
+ 328 026c 5C19AC3F 		.word	1068243292
+ 329 0270 CF8250DE 		.word	-565148977
+ 330 0274 C7D1AC3F 		.word	1068290503
+ 331 0278 C26A2C61 		.word	1630300866
+ 332 027c 6D8CAD3F 		.word	1068338285
+ 333 0280 DEAAEB50 		.word	1357621982
+ 334 0284 4D49AE3F 		.word	1068386637
+ 335 0288 B8019F1F 		.word	530514360
+ 336 028c 4608AF3F 		.word	1068435526
+ 337 0290 BCB0355B 		.word	1530245308
+ 338 0294 79C9AF3F 		.word	1068484985
+ 339 0298 3F3BE0BA 		.word	-1159709889
+ 340 029c 6246B03F 		.word	1068516962
+ 341 02a0 344A97FE 		.word	-23639500
+ 342 02a4 25A9B03F 		.word	1068542245
+ 343 02a8 8864C8B1 		.word	-1312267128
+ 344 02ac F50CB13F 		.word	1068567797
+ 345 02b0 3B8A73D4 		.word	-730625477
+ 346 02b4 D171B13F 		.word	1068593617
+ 347 02b8 035C902D 		.word	764435459
+ 348 02bc CBD7B13F 		.word	1068619723
+ 349 02c0 2A3927F6 		.word	-165201622
+ 350 02c4 D03EB23F 		.word	1068646096
+ 351 02c8 65C22FF5 		.word	-181419419
+ 352 02cc F3A6B23F 		.word	1068672755
+ 353 02d0 4AB6BA9C 		.word	-1665485238
+ 354 02d4 1210B33F 		.word	1068699666
+ 355 02d8 8DB5BFB3 		.word	-1279281779
+ 356 02dc 3D7AB33F 		.word	1068726845
+ 357 02e0 E5603601 		.word	20340965
+ 358 02e4 86E5B33F 		.word	1068754310
+ 359 02e8 E6762FF7 		.word	-147884314
+ 360 02ec C951B43F 		.word	1068782025
+ 361 02f0 4698A25C 		.word	1554159686
+ 362 02f4 1ABFB43F 		.word	1068810010
+ 363 02f8 05C58F31 		.word	831505669
+ 364 02fc 772DB53F 		.word	1068838263
+ 365 0300 22FDF675 		.word	1979120930
+ 366 0304 E09CB53F 		.word	1068866784
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 9
+
+
+ 367 0308 9E40D829 		.word	702038174
+ 368 030c 560DB63F 		.word	1068895574
+ 369 0310 C4EE3B86 		.word	-2042892604
+ 370 0314 C77EB63F 		.word	1068924615
+ 371 0318 9207228B 		.word	-1960704110
+ 372 031c 34F1B63F 		.word	1068953908
+ 373 0320 BF2B82FF 		.word	-8246337
+ 374 0324 AD64B73F 		.word	1068983469
+ 375 0328 4B5B5CE3 		.word	-480486581
+ 376 032c 33D9B73F 		.word	1069013299
+ 377 0330 7FF5B86F 		.word	1874392447
+ 378 0334 B54EB83F 		.word	1069043381
+ 379 0338 5DFA97A4 		.word	-1533543843
+ 380 033c 32C5B83F 		.word	1069073714
+ 381 0340 E469F981 		.word	-2114360860
+ 382 0344 AB3CB93F 		.word	1069104299
+ 383 0348 C9E4D4CE 		.word	-824908599
+ 384 034c 30B5B93F 		.word	1069135152
+ 385 0350 A2293BFD 		.word	-46454366
+ 386 0354 A02EBA3F 		.word	1069166240
+ 387 0358 D9791B9B 		.word	-1692698151
+ 388 035c 1DA9BA3F 		.word	1069197597
+ 389 0360 0394861A 		.word	445027331
+ 390 0364 8524BB3F 		.word	1069229189
+ 391 0368 D7187442 		.word	1114904791
+ 392 036c E8A0BB3F 		.word	1069261032
+ 393 0370 09A9DBD9 		.word	-639915767
+ 394 0374 571EBC3F 		.word	1069293143
+ 395 0378 7862D68B 		.word	-1948884360
+ 396 037c A19CBC3F 		.word	1069325473
+ 397 0380 46274BAD 		.word	-1387583674
+ 398 0384 F71BBD3F 		.word	1069358071
+ 399 0388 07B64AB0 		.word	-1337281017
+ 400 038c 389CBD3F 		.word	1069390904
+ 401 0390 71AFCC5B 		.word	1540140913
+ 402 0394 751DBE3F 		.word	1069423989
+ 403 0398 CD72D9E8 		.word	-388402483
+ 404 039c 9C9FBE3F 		.word	1069457308
+ 405 03a0 1D007157 		.word	1467023389
+ 406 03a4 AF22BF3F 		.word	1069490863
+ 407 03a8 16F88A6E 		.word	1854601238
+ 408 03ac BDA6BF3F 		.word	1069524669
+ 409 03b0 A60C1CD0 		.word	-803468122
+ 410 03b4 D215C03F 		.word	1069553106
+ 411 03b8 95D233BD 		.word	-1120677227
+ 412 03bc C458C03F 		.word	1069570244
+ 413 03c0 7EFD101B 		.word	454098302
+ 414 03c4 2C9CC03F 		.word	1069587500
+ 415 03c8 618DB3E9 		.word	-374108831
+ 416 03cc 08E0C03F 		.word	1069604872
+ 417 03d0 3D821B29 		.word	689668669
+ 418 03d4 5B24C13F 		.word	1069622363
+ 419 03d8 12DC48D9 		.word	-649536494
+ 420 03dc 2269C13F 		.word	1069639970
+ 421 03e0 86CABF96 		.word	-1765815674
+ 422 03e4 57AEC13F 		.word	1069657687
+ 423 03e8 F31DFCC4 		.word	-990110221
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 10
+
+
+ 424 03ec 01F4C13F 		.word	1069675521
+ 425 03f0 5AD6FD63 		.word	1677579866
+ 426 03f4 213AC23F 		.word	1069693473
+ 427 03f8 60234910 		.word	273228640
+ 428 03fc AE80C23F 		.word	1069711534
+ 429 0400 0305DEC9 		.word	-908196605
+ 430 0404 A7C7C23F 		.word	1069729703
+ 431 0408 A14B38F4 		.word	-197637215
+ 432 040c 160FC33F 		.word	1069747990
+ 433 0410 DD26DC2B 		.word	735848157
+ 434 0414 F356C33F 		.word	1069766387
+ 435 0418 B796C970 		.word	1892259511
+ 436 041c 3C9FC33F 		.word	1069784892
+ 437 0420 8B6B7C26 		.word	645688203
+ 438 0424 FBE7C33F 		.word	1069803515
+ 439 0428 A304FD85 		.word	-2047015773
+ 440 042c 1E31C43F 		.word	1069822238
+ 441 0430 5932C7F2 		.word	-221826471
+ 442 0434 AE7AC43F 		.word	1069841070
+ 443 0438 AEF4DA6C 		.word	1826288814
+ 444 043c ACC4C43F 		.word	1069860012
+ 445 0440 A14B38F4 		.word	-197637215
+ 446 0444 160FC53F 		.word	1069879062
+ 447 0448 D8666325 		.word	627271384
+ 448 044c E659C53F 		.word	1069898214
+ 449 0450 AD16D863 		.word	1675105965
+ 450 0454 22A5C53F 		.word	1069917474
+ 451 0458 215B96AF 		.word	-1349100767
+ 452 045c CBF0C53F 		.word	1069936843
+ 453 0460 D86322A5 		.word	-1524472872
+ 454 0464 D93CC63F 		.word	1069956313
+ 455 0468 D3307C44 		.word	1148989651
+ 456 046c 4C89C63F 		.word	1069975884
+ 457 0470 12C2A38D 		.word	-1918647790
+ 458 0474 23D6C63F 		.word	1069995555
+ 459 0478 EFE714E4 		.word	-468391953
+ 460 047c 6723C73F 		.word	1070015335
+ 461 0480 B401D880 		.word	-2133327436
+ 462 0484 0871C73F 		.word	1070035208
+ 463 0488 18B0E42A 		.word	719630360
+ 464 048c 16BFC73F 		.word	1070055190
+ 465 0490 6552431B 		.word	457396837
+ 466 0494 800DC83F 		.word	1070075264
+ 467 0498 F5B86FB5 		.word	-1250969355
+ 468 049c 4E5CC83F 		.word	1070095438
+ 469 04a0 C9E369F9 		.word	-110500919
+ 470 04a4 81ABC83F 		.word	1070115713
+ 471 04a8 E1D231E7 		.word	-416165151
+ 472 04ac 19FBC83F 		.word	1070136089
+ 473 04b0 E1B54B1B 		.word	457946593
+ 474 04b4 0E4BC93F 		.word	1070156558
+ 475 04b8 CA8CB795 		.word	-1783132982
+ 476 04bc 5E9BC93F 		.word	1070177118
+ 477 04c0 F627F1B9 		.word	-1175377930
+ 478 04c4 13ECC93F 		.word	1070197779
+ 479 04c8 B0E600C1 		.word	-1056905552
+ 480 04cc 1C3DCA3F 		.word	1070218524
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 11
+
+
+ 481 04d0 083A5AD5 		.word	-715507192
+ 482 04d4 928ECA3F 		.word	1070239378
+ 483 04d8 EEB089CC 		.word	-863391506
+ 484 04dc 5CE0CA3F 		.word	1070260316
+ 485 04e0 BD1B0B0A 		.word	168500157
+ 486 04e4 8332CB3F 		.word	1070281347
+ 487 04e8 19AA622A 		.word	711109145
+ 488 04ec FD84CB3F 		.word	1070302461
+ 489 04f0 B9FC87F4 		.word	-192414535
+ 490 04f4 DBD7CB3F 		.word	1070323675
+ 491 04f8 E77283A1 		.word	-1585220889
+ 492 04fc 0E2BCC3F 		.word	1070344974
+ 493 0500 FDDCD094 		.word	-1798251267
+ 494 0504 9D7ECC3F 		.word	1070366365
+ 495 0508 A16AF46A 		.word	1794402977
+ 496 050c 80D2CC3F 		.word	1070387840
+ 497 0510 2DEC6987 		.word	-2023101395
+ 498 0514 BF26CD3F 		.word	1070409407
+ 499 0518 4791B586 		.word	-2034921145
+ 500 051c 527BCD3F 		.word	1070431058
+ 501 0520 EF59D768 		.word	1758943727
+ 502 0524 39D0CD3F 		.word	1070452793
+ 503 0528 2446CF2D 		.word	768558628
+ 504 052c 7425CE3F 		.word	1070474612
+ 505 0530 E7559DD5 		.word	-711109145
+ 506 0534 027BCE3F 		.word	1070496514
+ 507 0538 37894160 		.word	1614907703
+ 508 053c E5D0CE3F 		.word	1070518501
+ 509 0540 15E0BBCD 		.word	-843325419
+ 510 0544 1B27CF3F 		.word	1070540571
+ 511 0548 268A90BA 		.word	-1164932570
+ 512 054c 9D7DCF3F 		.word	1070562717
+ 513 0550 C5573B8A 		.word	-1975822395
+ 514 0554 73D4CF3F 		.word	1070584947
+ 515 0558 79245E9E 		.word	-1637997447
+ 516 055c CE15D03F 		.word	1070601678
+ 517 0560 A8C64B37 		.word	927712936
+ 518 0564 8941D03F 		.word	1070612873
+ 519 0568 7192E68F 		.word	-1880714639
+ 520 056c 696DD03F 		.word	1070624105
+ 521 0570 D3872EA8 		.word	-1473345581
+ 522 0574 6F99D03F 		.word	1070635375
+ 523 0578 FC8EE1B1 		.word	-1310617860
+ 524 057c 9FC5D03F 		.word	1070646687
+ 525 0580 90D78349 		.word	1233377168
+ 526 0584 F1F1D03F 		.word	1070658033
+ 527 0588 EC3191D2 		.word	-762236436
+ 528 058c 6C1ED13F 		.word	1070669420
+ 529 0590 B3CD8DE9 		.word	-376582733
+ 530 0594 094BD13F 		.word	1070680841
+ 531 0598 E7AA798E 		.word	-1904629017
+ 532 059c C877D13F 		.word	1070692296
+ 533 05a0 E199D024 		.word	617650657
+ 534 05a4 B1A4D13F 		.word	1070703793
+ 535 05a8 19E25817 		.word	391701017
+ 536 05ac B7D1D13F 		.word	1070715319
+ 537 05b0 193C4CFB 		.word	-78889959
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 12
+
+
+ 538 05b4 E6FED13F 		.word	1070726886
+ 539 05b8 56EF703B 		.word	997257046
+ 540 05bc 342CD23F 		.word	1070738484
+ 541 05c0 00E48409 		.word	159704064
+ 542 05c4 A359D23F 		.word	1070750115
+ 543 05c8 43024697 		.word	-1757019581
+ 544 05cc 3787D23F 		.word	1070761783
+ 545 05d0 C4793881 		.word	-2127005244
+ 546 05d4 E9B4D23F 		.word	1070773481
+ 547 05d8 DF1AD82A 		.word	718805727
+ 548 05dc C1E2D23F 		.word	1070785217
+ 549 05e0 3815A930 		.word	816387384
+ 550 05e4 B610D33F 		.word	1070796982
+ 551 05e8 FC5069C4 		.word	-999730948
+ 552 05ec CC3ED33F 		.word	1070808780
+ 553 05f0 00E65AB4 		.word	-1269111296
+ 554 05f4 006DD33F 		.word	1070820608
+ 555 05f8 41D47D00 		.word	8246337
+ 556 05fc 529BD33F 		.word	1070832466
+ 557 0600 EF0390DA 		.word	-628096017
+ 558 0604 C4C9D33F 		.word	1070844356
+ 559 0608 08759142 		.word	1116828936
+ 560 060c 59F8D33F 		.word	1070856281
+ 561 0610 325706D5 		.word	-721004750
+ 562 0614 0627D43F 		.word	1070868230
+ 563 0618 9B92ACC3 		.word	-1012100453
+ 564 061c D155D43F 		.word	1070880209
+ 565 0620 4227840E 		.word	243541826
+ 566 0624 BA84D43F 		.word	1070892218
+ 567 0628 27158DB5 		.word	-1249045209
+ 568 062c BFB3D43F 		.word	1070904255
+ 569 0630 1D740987 		.word	-2029423587
+ 570 0634 DEE2D43F 		.word	1070916318
+ 571 0638 522CB7B4 		.word	-1263063982
+ 572 063c 1A12D53F 		.word	1070928410
+ 573 0640 C53D963E 		.word	1050033605
+ 574 0644 7441D53F 		.word	1070940532
+ 575 0648 48C0E8F2 		.word	-219627448
+ 576 064c E670D53F 		.word	1070952678
+ 577 0650 DDB3AED1 		.word	-777079843
+ 578 0654 72A0D53F 		.word	1070964850
+ 579 0658 8318E8DA 		.word	-622323581
+ 580 065c 17D0D53F 		.word	1070977047
+ 581 0660 39EE940E 		.word	244641337
+ 582 0664 D6FFD53F 		.word	1070989270
+ 583 0668 0135B56C 		.word	1823814913
+ 584 066c AD2FD63F 		.word	1071001517
+ 585 0670 D9EC48F5 		.word	-179770151
+ 586 0674 9D5FD63F 		.word	1071013789
+ 587 0678 C21550A8 		.word	-1471146558
+ 588 067c A78FD63F 		.word	1071026087
+ 589 0680 8FC70C54 		.word	1410123663
+ 590 0684 C6BFD63F 		.word	1071038406
+ 591 0688 3F027FF8 		.word	-125894081
+ 592 068c F9EFD63F 		.word	1071050745
+ 593 0690 00AE64C7 		.word	-949703168
+ 594 0694 4620D73F 		.word	1071063110
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 13
+
+
+ 595 0698 A4E2FF8E 		.word	-1895832924
+ 596 069c A850D73F 		.word	1071075496
+ 597 06a0 2CA0504F 		.word	1330683948
+ 598 06a4 1F81D73F 		.word	1071087903
+ 599 06a8 C4CE143A 		.word	974442180
+ 600 06ac AFB1D73F 		.word	1071100335
+ 601 06b0 139ED0EB 		.word	-338649581
+ 602 06b4 4FE2D73F 		.word	1071112783
+ 603 06b8 45F64196 		.word	-1774062011
+ 604 06bc 0513D83F 		.word	1071125253
+ 605 06c0 2CEFAA07 		.word	128642860
+ 606 06c4 CC43D83F 		.word	1071137740
+ 607 06c8 255987A3 		.word	-1551410907
+ 608 06cc AB74D83F 		.word	1071150251
+ 609 06d0 A67B9DD4 		.word	-727876698
+ 610 06d4 97A5D83F 		.word	1071162775
+ 611 06d8 0B2769FE 		.word	-26663157
+ 612 06dc 98D6D83F 		.word	1071175320
+ 613 06e0 26732CEF 		.word	-282299610
+ 614 06e4 AA07D93F 		.word	1071187882
+ 615 06e8 F65FE7A6 		.word	-1494786058
+ 616 06ec CD38D93F 		.word	1071200461
+ 617 06f0 AAD55757 		.word	1465374122
+ 618 06f4 056AD93F 		.word	1071213061
+ 619 06f8 E603029D 		.word	-1660812314
+ 620 06fc 499BD93F 		.word	1071225673
+ 621 0700 D8D2A3A9 		.word	-1448881448
+ 622 0704 9ECCD93F 		.word	1071238302
+ 623 0708 535A7F4B 		.word	1266637395
+ 624 070c 00FED93F 		.word	1071250944
+ 625 0710 848252B4 		.word	-1269661052
+ 626 0714 722FDA3F 		.word	1071263602
+ 627 0718 6A4B1DE4 		.word	-467842198
+ 628 071c F560DA3F 		.word	1071276277
+ 629 0720 D9CC21A9 		.word	-1457402663
+ 630 0724 8592DA3F 		.word	1071288965
+ 631 0728 D1066003 		.word	56624849
+ 632 072c 22C4DA3F 		.word	1071301666
+ 633 0730 51F9D7F2 		.word	-220726959
+ 634 0734 CAF5DA3F 		.word	1071314378
+ 635 0738 59A48977 		.word	2005509209
+ 636 073c 8027DB3F 		.word	1071327104
+ 637 0740 EA077591 		.word	-1854601238
+ 638 0744 4259DB3F 		.word	1071339842
+ 639 0748 03249A40 		.word	1083843587
+ 640 074c 118BDB3F 		.word	1071352593
+ 641 0750 77103B53 		.word	1396379767
+ 642 0754 E8BCDB3F 		.word	1071365352
+ 643 0758 74B515FB 		.word	-82463372
+ 644 075c CBEEDB3F 		.word	1071378123
+ 645 0760 CC2A6C06 		.word	107752140
+ 646 0764 B820DC3F 		.word	1071390904
+ 647 0768 AC58FCA6 		.word	-1493411668
+ 648 076c B052DC3F 		.word	1071403696
+ 649 0770 B96E4A79 		.word	2034921145
+ 650 0774 AD84DC3F 		.word	1071416493
+ 651 0778 4F3DD2E0 		.word	-523092657
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 14
+
+
+ 652 077c B6B6DC3F 		.word	1071429302
+ 653 0780 40DCD5AB 		.word	-1412047808
+ 654 0784 C8E8DC3F 		.word	1071442120
+ 655 0788 5E6397A8 		.word	-1466473634
+ 656 078c DE1ADD3F 		.word	1071454942
+ 657 0790 D8BAD408 		.word	148159192
+ 658 0794 FD4CDD3F 		.word	1071467773
+ 659 0798 ACE28DCC 		.word	-863116628
+ 660 079c 237FDD3F 		.word	1071480611
+ 661 07a0 DCDAC2F3 		.word	-205333796
+ 662 07a4 52B1DD3F 		.word	1071493458
+ 663 07a8 0BD3F71A 		.word	452449035
+ 664 07ac 82E3DD3F 		.word	1071506306
+ 665 07b0 959BA8A5 		.word	-1515676779
+ 666 07b4 B915DE3F 		.word	1071519161
+ 667 07b8 4D4C1762 		.word	1645694029
+ 668 07bc F547DE3F 		.word	1071532021
+ 669 07c0 32E54350 		.word	1346626866
+ 670 07c4 357ADE3F 		.word	1071544885
+ 671 07c8 45662E70 		.word	1882089029
+ 672 07cc 79ACDE3F 		.word	1071557753
+ 673 07d0 85CFD6C1 		.word	-1042886779
+ 674 07d4 C1DEDE3F 		.word	1071570625
+ 675 07d8 C5387F13 		.word	327104709
+ 676 07dc 0A11DF3F 		.word	1071583498
+ 677 07e0 338AE596 		.word	-1763341773
+ 678 07e4 5643DF3F 		.word	1071596374
+ 679 07e8 A1DB4B1A 		.word	441179041
+ 680 07ec A375DF3F 		.word	1071609251
+ 681 07f0 3C1570CF 		.word	-814738116
+ 682 07f4 F3A7DF3F 		.word	1071622131
+ 683 07f8 D74E9484 		.word	-2070655273
+ 684 07fc 44DADF3F 		.word	1071635012
+ 685 0800 3944DC9C 		.word	-1663286215
+ 686 0804 4A06E03F 		.word	1071646282
+ 687 0808 07616EF7 		.word	-143761145
+ 688 080c 721FE03F 		.word	1071652722
+ 689 0810 BE892139 		.word	958499262
+ 690 0814 9938E03F 		.word	1071659161
+ 691 0818 8BA6B393 		.word	-1816942965
+ 692 081c C151E03F 		.word	1071665601
+ 693 0820 42CF66D5 		.word	-714682558
+ 694 0824 E76AE03F 		.word	1071672039
+ 695 0828 F9F71917 		.word	387577849
+ 696 082c 0E84E03F 		.word	1071678478
+ 697 0830 992CEE3F 		.word	1072573593
+ 698 0834 329DE03F 		.word	1071684914
+ 699 0838 226DE34F 		.word	1340304674
+ 700 083c 54B6E03F 		.word	1071691348
+ 701 0840 ACADD85F 		.word	1608035756
+ 702 0844 76CFE03F 		.word	1071697782
+ 703 0848 0806103E 		.word	1041237512
+ 704 084c 94E8E03F 		.word	1071704212
+ 705 0850 635E471C 		.word	474439267
+ 706 0854 B201E13F 		.word	1071710642
+ 707 0858 92CEC0C8 		.word	-926888302
+ 708 085c CB1AE13F 		.word	1071717067
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 15
+
+
+ 709 0860 A94A5B5C 		.word	1549486761
+ 710 0864 E333E13F 		.word	1071723491
+ 711 0868 94DE37BE 		.word	-1103634796
+ 712 086c F64CE13F 		.word	1071729910
+ 713 0870 677E3507 		.word	120946279
+ 714 0874 0866E13F 		.word	1071736328
+ 715 0878 242A5437 		.word	928262692
+ 716 087c 177FE13F 		.word	1071742743
+ 717 0880 9CF9D51C 		.word	483785116
+ 718 0884 2098E13F 		.word	1071749152
+ 719 0888 FED478E9 		.word	-377957122
+ 720 088c 26B1E13F 		.word	1071755558
+ 721 0890 32C85D84 		.word	-2074228686
+ 722 0894 29CAE13F 		.word	1071761961
+ 723 0898 22DFA5D4 		.word	-727326942
+ 724 089c 25E3E13F 		.word	1071768357
+ 725 08a0 FC010F0C 		.word	202310140
+ 726 08a4 20FCE13F 		.word	1071774752
+ 727 08a8 9148DBF8 		.word	-119846767
+ 728 08ac 1315E23F 		.word	1071781139
+ 729 08b0 E1B20A9B 		.word	-1693797663
+ 730 08b4 012EE23F 		.word	1071787521
+ 731 08b8 05357C0B 		.word	192689413
+ 732 08bc EB46E23F 		.word	1071793899
+ 733 08c0 FBCE2F4A 		.word	1244647163
+ 734 08c4 D05FE23F 		.word	1071800272
+ 735 08c8 96986725 		.word	627546262
+ 736 08cc AD78E23F 		.word	1071806637
+ 737 08d0 037AE1CE 		.word	-824083965
+ 738 08d4 8591E23F 		.word	1071812997
+ 739 08d8 2C7FBE2D 		.word	767459116
+ 740 08dc 58AAE23F 		.word	1071819352
+ 741 08e0 FAB31F29 		.word	689943546
+ 742 08e4 22C3E23F 		.word	1071825698
+ 743 08e8 840CE4D9 		.word	-639366012
+ 744 08ec E5DBE23F 		.word	1071832037
+ 745 08f0 CA880B40 		.word	1074497738
+ 746 08f4 A3F4E23F 		.word	1071838371
+ 747 08f8 B534B742 		.word	1119302837
+ 748 08fc 580DE33F 		.word	1071844696
+ 749 0900 5C04C6FA 		.word	-87686052
+ 750 0904 0626E33F 		.word	1071851014
+ 751 0908 A703594F 		.word	1331233703
+ 752 090c AD3EE33F 		.word	1071857325
+ 753 0910 98327040 		.word	1081094808
+ 754 0914 4B57E33F 		.word	1071863627
+ 755 0918 4485EAE6 		.word	-420838076
+ 756 091c E26FE33F 		.word	1071869922
+ 757 0920 7F130A11 		.word	285873023
+ 758 0924 7088E33F 		.word	1071876208
+ 759 0928 5FD1ADD7 		.word	-676474529
+ 760 092c F4A0E33F 		.word	1071882484
+ 761 0930 E4BED53A 		.word	987086564
+ 762 0934 71B9E33F 		.word	1071888753
+ 763 0938 F7E7A221 		.word	564324343
+ 764 093c E3D1E33F 		.word	1071895011
+ 765 0940 AF40F4A4 		.word	-1527496529
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 16
+
+
+ 766 0944 4CEAE33F 		.word	1071901260
+ 767 0948 F6D4EAAB 		.word	-1410673418
+ 768 094c AB02E43F 		.word	1071907499
+ 769 0950 E198654F 		.word	1332058337
+ 770 0954 021BE43F 		.word	1071913730
+ 771 0958 5B988576 		.word	1988466779
+ 772 095c 4E33E43F 		.word	1071919950
+ 773 0960 4CDF6B08 		.word	141287244
+ 774 0964 8E4BE43F 		.word	1071926158
+ 775 0968 E355D636 		.word	920016355
+ 776 096c C563E43F 		.word	1071932357
+ 777 0970 F01307D0 		.word	-804842512
+ 778 0974 EF7BE43F 		.word	1071938543
+ 779 0978 A301BC05 		.word	96207267
+ 780 097c 1294E43F 		.word	1071944722
+ 781 0980 CE3637A6 		.word	-1506330930
+ 782 0984 27ACE43F 		.word	1071950887
+ 783 0988 70B378B1 		.word	-1317489808
+ 784 098c 30C4E43F 		.word	1071957040
+ 785 0990 A06B5F40 		.word	1079995296
+ 786 0994 2FDCE43F 		.word	1071963183
+ 787 0998 486B0C3A 		.word	973892424
+ 788 099c 21F4E43F 		.word	1071969313
+ 789 09a0 68B27F9E 		.word	-1635798424
+ 790 09a4 060CE53F 		.word	1071975430
+ 791 09a8 FF40B96D 		.word	1840857343
+ 792 09ac DF23E53F 		.word	1071981535
+ 793 09b0 0D17B9A7 		.word	-1481042163
+ 794 09b4 AB3BE53F 		.word	1071987627
+ 795 09b8 94347F4C 		.word	1283404948
+ 796 09bc 6B53E53F 		.word	1071993707
+ 797 09c0 91990B5C 		.word	1544264081
+ 798 09c4 1E6BE53F 		.word	1071999774
+ 799 09c8 F0517FBD 		.word	-1115729424
+ 800 09cc C282E53F 		.word	1072005826
+ 801 09d0 C651B989 		.word	-1984343610
+ 802 09d4 5A9AE53F 		.word	1072011866
+ 803 09d8 FDA4DAA7 		.word	-1478843139
+ 804 09dc E3B1E53F 		.word	1072017891
+ 805 09e0 944BE317 		.word	400771988
+ 806 09e4 5EC9E53F 		.word	1072023902
+ 807 09e8 A439B2F2 		.word	-223200860
+ 808 09ec CBE0E53F 		.word	1072029899
+ 809 09f0 147B681F 		.word	526940948
+ 810 09f4 2BF8E53F 		.word	1072035883
+ 811 09f8 CE1B2785 		.word	-2061034546
+ 812 09fc 790FE63F 		.word	1072041849
+ 813 0a00 FF03AC55 		.word	1437336575
+ 814 0a04 BB26E63F 		.word	1072047803
+ 815 0a08 7B4B395F 		.word	1597590395
+ 816 0a0c EC3DE63F 		.word	1072053740
+ 817 0a10 58E6ADBA 		.word	-1163008424
+ 818 0a14 0E55E63F 		.word	1072059662
+ 819 0a18 95D40968 		.word	1745474709
+ 820 0a1c 226CE63F 		.word	1072065570
+ 821 0a20 1D226E4E 		.word	1315840541
+ 822 0a24 2583E63F 		.word	1072071461
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 17
+
+
+ 823 0a28 EECEDA6D 		.word	1843056366
+ 824 0a2c 179AE63F 		.word	1072077335
+ 825 0a30 0ADB4FC6 		.word	-967845110
+ 826 0a34 F8B0E63F 		.word	1072083192
+ 827 0a38 863AAC70 		.word	1890335366
+ 828 0a3c CBC7E63F 		.word	1072089035
+ 829 0a40 3605323B 		.word	993133878
+ 830 0a44 8BDEE63F 		.word	1072094859
+ 831 0a48 46239F57 		.word	1470047046
+ 832 0a4c 3CF5E63F 		.word	1072100668
+ 833 0a50 8AAC3594 		.word	-1808421750
+ 834 0a54 DA0BE73F 		.word	1072106458
+ 835 0a58 1895D409 		.word	164926744
+ 836 0a5c 6822E73F 		.word	1072112232
+ 837 0a60 F0DC7BB8 		.word	-1199842064
+ 838 0a64 E438E73F 		.word	1072117988
+ 839 0a68 FC8F4C87 		.word	-2025025540
+ 840 0a6c 4E4FE73F 		.word	1072123726
+ 841 0a70 3AAE4676 		.word	1984343610
+ 842 0a74 A565E73F 		.word	1072129445
+ 843 0a78 C32B499E 		.word	-1639371837
+ 844 0a7c EB7BE73F 		.word	1072135147
+ 845 0a80 7F1475E6 		.word	-428534657
+ 846 0a84 1E92E73F 		.word	1072140830
+ 847 0a88 6E68CA4E 		.word	1321887854
+ 848 0a8c 3FA8E73F 		.word	1072146495
+ 849 0a90 7B336ABE 		.word	-1100336261
+ 850 0a94 4ABEE73F 		.word	1072152138
+ 851 0a98 D15D1267 		.word	1729256913
+ 852 0a9c 45D4E73F 		.word	1072157765
+ 853 0aa0 5AF3E32F 		.word	803468122
+ 854 0aa4 2DEAE73F 		.word	1072163373
+ 855 0aa8 00000000 		.word	0
+ 856 0aac 0000E83F 		.word	1072168960
+ 857 0ab0 D97745F0 		.word	-263882791
+ 858 0ab4 BF15E83F 		.word	1072174527
+ 859 0ab8 CF66D5E7 		.word	-405444913
+ 860 0abc 6A2BE83F 		.word	1072180074
+ 861 0ac0 F9C08EFF 		.word	-7421703
+ 862 0ac4 0241E83F 		.word	1072185602
+ 863 0ac8 3E92921E 		.word	512922174
+ 864 0acc 8656E83F 		.word	1072191110
+ 865 0ad0 A1DAE044 		.word	1155586721
+ 866 0ad4 F46BE83F 		.word	1072196596
+ 867 0ad8 209A7972 		.word	1920571936
+ 868 0adc 4D81E83F 		.word	1072202061
+ 869 0ae0 BBD05CA7 		.word	-1487089477
+ 870 0ae4 9196E83F 		.word	1072207505
+ 871 0ae8 747E8AE3 		.word	-477462924
+ 872 0aec C0ABE83F 		.word	1072212928
+ 873 0af0 48A30227 		.word	654484296
+ 874 0af4 DBC0E83F 		.word	1072218331
+ 875 0af8 234BE658 		.word	1491487523
+ 876 0afc DED5E83F 		.word	1072223710
+ 877 0b00 1A6A1492 		.word	-1844155878
+ 878 0b04 CCEAE83F 		.word	1072229068
+ 879 0b08 2E008DD2 		.word	-762511314
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 18
+
+
+ 880 0b0c A5FFE83F 		.word	1072234405
+ 881 0b10 48197101 		.word	24189256
+ 882 0b14 6814E93F 		.word	1072239720
+ 883 0b18 67B5C01E 		.word	515945831
+ 884 0b1c 1329E93F 		.word	1072245011
+ 885 0b20 8DD47B2A 		.word	712758413
+ 886 0b24 A73DE93F 		.word	1072250279
+ 887 0b28 CF6A813D 		.word	1031891663
+ 888 0b2c 2652E93F 		.word	1072255526
+ 889 0b30 00901326 		.word	638816256
+ 890 0b34 8C66E93F 		.word	1072260748
+ 891 0b38 4D2CF015 		.word	368061517
+ 892 0b3c DD7AE93F 		.word	1072265949
+ 893 0b40 8A5759DB 		.word	-614901878
+ 894 0b44 148FE93F 		.word	1072271124
+ 895 0b48 CD052E8F 		.word	-1892809267
+ 896 0b4c 35A3E93F 		.word	1072276277
+ 897 0b50 15376E31 		.word	829306645
+ 898 0b54 3FB7E93F 		.word	1072281407
+ 899 0b58 4DF73AA9 		.word	-1455753395
+ 900 0b5c 2FCBE93F 		.word	1072286511
+ 901 0b60 8A3A730F 		.word	259209866
+ 902 0b64 09DFE93F 		.word	1072291593
+ 903 0b68 B70C384B 		.word	1261964471
+ 904 0b6c C9F2E93F 		.word	1072296649
+ 905 0b70 D26D895C 		.word	1552510418
+ 906 0b74 7006EA3F 		.word	1072301680
+ 907 0b78 DD5D6743 		.word	1130847709
+ 908 0b7c FE19EA3F 		.word	1072306686
+ 909 0b80 EED0B018 		.word	414241006
+ 910 0b84 752DEA3F 		.word	1072311669
+ 911 0b88 EDD286C3 		.word	-1014574355
+ 912 0b8c D240EA3F 		.word	1072316626
+ 913 0b90 C66F0A2B 		.word	722104262
+ 914 0b94 1554EA3F 		.word	1072321557
+ 915 0b98 8D9B1A68 		.word	1746574221
+ 916 0b9c 3E67EA3F 		.word	1072326462
+ 917 0ba0 4356B77A 		.word	2058835523
+ 918 0ba4 4E7AEA3F 		.word	1072331342
+ 919 0ba8 E89FE062 		.word	1658888168
+ 920 0bac 458DEA3F 		.word	1072336197
+ 921 0bb0 6684B707 		.word	129467494
+ 922 0bb4 21A0EA3F 		.word	1072341025
+ 923 0bb8 D3F71A82 		.word	-2112161837
+ 924 0bbc E3B2EA3F 		.word	1072345827
+ 925 0bc0 18062CB9 		.word	-1188297192
+ 926 0bc4 8AC5EA3F 		.word	1072350602
+ 927 0bc8 4DA3C9C5 		.word	-976641203
+ 928 0bcc 18D8EA3F 		.word	1072355352
+ 929 0bd0 43E73576 		.word	1983244099
+ 930 0bd4 89EAEA3F 		.word	1072360073
+ 931 0bd8 28BA2EFC 		.word	-64046552
+ 932 0bdc E0FCEA3F 		.word	1072364768
+ 933 0be0 E527D53E 		.word	1054156773
+ 934 0be4 1D0FEB3F 		.word	1072369437
+ 935 0be8 7B30293E 		.word	1042886779
+ 936 0bec 3E21EB3F 		.word	1072374078
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 19
+
+
+ 937 0bf0 D2DF4BE1 		.word	-515121198
+ 938 0bf4 4133EB3F 		.word	1072378689
+ 939 0bf8 191EFB59 		.word	1509629465
+ 940 0bfc 2C45EB3F 		.word	1072383276
+ 941 0c00 21037976 		.word	1987642145
+ 942 0c04 F956EB3F 		.word	1072387833
+ 943 0c08 0283A44F 		.word	1336181506
+ 944 0c0c AB68EB3F 		.word	1072392363
+ 945 0c10 A4A99ECC 		.word	-862017116
+ 946 0c14 3F7AEB3F 		.word	1072396863
+ 947 0c18 1E6B4606 		.word	105278238
+ 948 0c1c B98BEB3F 		.word	1072401337
+ 949 0c20 5BD3BCE3 		.word	-474164389
+ 950 0c24 149DEB3F 		.word	1072405780
+ 951 0c28 58E20165 		.word	1694622296
+ 952 0c2c 53AEEB3F 		.word	1072410195
+ 953 0c30 2E8CF4A2 		.word	-1561031634
+ 954 0c34 76BFEB3F 		.word	1072414582
+ 955 0c38 C6DCB584 		.word	-2068456250
+ 956 0c3c 7CD0EB3F 		.word	1072418940
+ 957 0c40 20D4450A 		.word	172348448
+ 958 0c44 65E1EB3F 		.word	1072423269
+ 959 0c48 3B72A433 		.word	866415163
+ 960 0c4c 30F2EB3F 		.word	1072427568
+ 961 0c50 17B7D100 		.word	13743895
+ 962 0c54 DE02EC3F 		.word	1072431838
+ 963 0c58 B6A2CD71 		.word	1909301942
+ 964 0c5c 6E13EC3F 		.word	1072436078
+ 965 0c60 FF40B96D 		.word	1840857343
+ 966 0c64 DF23EC3F 		.word	1072440287
+ 967 0c68 0A86730D 		.word	225674762
+ 968 0c6c 3334EC3F 		.word	1072444467
+ 969 0c70 D671FC50 		.word	1358721494
+ 970 0c74 6944EC3F 		.word	1072448617
+ 971 0c78 4D10751F 		.word	527765581
+ 972 0c7c 8054EC3F 		.word	1072452736
+ 973 0c80 8655BC91 		.word	-1849928314
+ 974 0c84 7964EC3F 		.word	1072456825
+ 975 0c88 6A4DF38E 		.word	-1896657558
+ 976 0c8c 5374EC3F 		.word	1072460883
+ 977 0c90 10ECF82F 		.word	804842512
+ 978 0c94 1084EC3F 		.word	1072464912
+ 979 0c98 603DEE5B 		.word	1542339936
+ 980 0c9c AD93EC3F 		.word	1072468909
+ 981 0ca0 444DF4F9 		.word	-101429948
+ 982 0ca4 28A3EC3F 		.word	1072472872
+ 983 0ca8 EA03C93B 		.word	1003029482
+ 984 0cac 87B2EC3F 		.word	1072476807
+ 985 0cb0 52616C21 		.word	560750930
+ 986 0cb4 C8C1EC3F 		.word	1072480712
+ 987 0cb8 4E7D2079 		.word	2032172366
+ 988 0cbc E7D0EC3F 		.word	1072484583
+ 989 0cc0 DE57E542 		.word	1122326494
+ 990 0cc4 E5DFEC3F 		.word	1072488421
+ 991 0cc8 30D978B0 		.word	-1334257360
+ 992 0ccc C5EEEC3F 		.word	1072492229
+ 993 0cd0 2C0DFCA8 		.word	-1459876564
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 20
+
+
+ 994 0cd4 86FDEC3F 		.word	1072496006
+ 995 0cd8 BDFF8F13 		.word	328204221
+ 996 0cdc 260CED3F 		.word	1072499750
+ 997 0ce0 F8A41309 		.word	152282360
+ 998 0ce4 A61AED3F 		.word	1072503462
+ 999 0ce8 C808A870 		.word	1890060488
+ 1000 0cec 0429ED3F 		.word	1072507140
+ 1001 0cf0 431F2C63 		.word	1663835971
+ 1002 0cf4 4337ED3F 		.word	1072510787
+ 1003 0cf8 51F4C0C7 		.word	-943655855
+ 1004 0cfc 6045ED3F 		.word	1072514400
+ 1005 0d00 0B7C45B7 		.word	-1220183029
+ 1006 0d04 5E53ED3F 		.word	1072517982
+ 1007 0d08 59C2DA18 		.word	416989785
+ 1008 0d0c 3B61ED3F 		.word	1072521531
+ 1009 0d10 3BC780EC 		.word	-327104709
+ 1010 0d14 F56EED3F 		.word	1072525045
+ 1011 0d18 B18A3732 		.word	842500785
+ 1012 0d1c 8F7CED3F 		.word	1072528527
+ 1013 0d20 BB0CFFE9 		.word	-369161029
+ 1014 0d24 068AED3F 		.word	1072531974
+ 1015 0d28 7041B62C 		.word	750141808
+ 1016 0d2c 5F97ED3F 		.word	1072535391
+ 1017 0d30 A3409FC8 		.word	-929087325
+ 1018 0d34 93A4ED3F 		.word	1072538771
+ 1019 0d38 69FE98D6 		.word	-694616471
+ 1020 0d3c A6B1ED3F 		.word	1072542118
+ 1021 0d40 DB6E826F 		.word	1870819035
+ 1022 0d44 9ABEED3F 		.word	1072545434
+ 1023 0d48 CAA99D61 		.word	1637722570
+ 1024 0d4c 6ACBED3F 		.word	1072548714
+ 1025 0d50 36AFEAAC 		.word	-1393905866
+ 1026 0d54 16D8ED3F 		.word	1072551958
+ 1027 0d58 4D672783 		.word	-2094569651
+ 1028 0d5c A3E4ED3F 		.word	1072555171
+ 1029 0d60 E2E995B2 		.word	-1298798110
+ 1030 0d64 0CF1ED3F 		.word	1072558348
+ 1031 0d68 F436363B 		.word	993408756
+ 1032 0d6c 52FDED3F 		.word	1072561490
+ 1033 0d70 9A42E735 		.word	904348314
+ 1034 0d74 7609EE3F 		.word	1072564598
+ 1035 0d78 D40CA9A2 		.word	-1565979436
+ 1036 0d7c 7815EE3F 		.word	1072567672
+ 1037 0d80 8CA19C68 		.word	1755095436
+ 1038 0d84 5721EE3F 		.word	1072570711
+ 1039 0d88 C100C287 		.word	-2017328959
+ 1040 0d8c 122DEE3F 		.word	1072573714
+ 1041 0d90 8A1EF818 		.word	418913930
+ 1042 0d94 AC38EE3F 		.word	1072576684
+ 1043 0d98 D1066003 		.word	56624849
+ 1044 0d9c 2244EE3F 		.word	1072579618
+ 1045 0da0 95B9F946 		.word	1190771093
+ 1046 0da4 744FEE3F 		.word	1072582516
+ 1047 0da8 D636C5E3 		.word	-473614634
+ 1048 0dac A25AEE3F 		.word	1072585378
+ 1049 0db0 957EC2D9 		.word	-641565035
+ 1050 0db4 AD65EE3F 		.word	1072588205
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 21
+
+
+ 1051 0db8 D190F128 		.word	686919889
+ 1052 0dbc 9570EE3F 		.word	1072590997
+ 1053 0dc0 8B6D52D1 		.word	-783127157
+ 1054 0dc4 587BEE3F 		.word	1072593752
+ 1055 0dc8 C214E5D2 		.word	-756738878
+ 1056 0dcc F885EE3F 		.word	1072596472
+ 1057 0dd0 7786A92D 		.word	766084727
+ 1058 0dd4 7590EE3F 		.word	1072599157
+ 1059 0dd8 A9C29FE1 		.word	-509623639
+ 1060 0ddc CD9AEE3F 		.word	1072601805
+ 1061 0de0 58C9C7EE 		.word	-288896680
+ 1062 0de4 02A5EE3F 		.word	1072604418
+ 1063 0de8 6EA6423C 		.word	1011000942
+ 1064 0dec 12AFEE3F 		.word	1072606994
+ 1065 0df0 014EEFE2 		.word	-487633407
+ 1066 0df4 FDB8EE3F 		.word	1072609533
+ 1067 0df8 12C0CDE2 		.word	-489832430
+ 1068 0dfc C5C2EE3F 		.word	1072612037
+ 1069 0e00 8908FF22 		.word	587139209
+ 1070 0e04 68CCEE3F 		.word	1072614504
+ 1071 0e08 7E1B62BC 		.word	-1134421122
+ 1072 0e0c E6D5EE3F 		.word	1072616934
+ 1073 0e10 DA041896 		.word	-1776810790
+ 1074 0e14 3FDFEE3F 		.word	1072619327
+ 1075 0e18 B2B8FFC8 		.word	-922765134
+ 1076 0e1c 74E8EE3F 		.word	1072621684
+ 1077 0e20 09371955 		.word	1427715849
+ 1078 0e24 86F1EE3F 		.word	1072624006
+ 1079 0e28 AF97A608 		.word	145135535
+ 1080 0e2c 70FAEE3F 		.word	1072626288
+ 1081 0e30 D2C26515 		.word	358990546
+ 1082 0e34 3603EF3F 		.word	1072628534
+ 1083 0e38 5DC47762 		.word	1652016221
+ 1084 0e3c D60BEF3F 		.word	1072630742
+ 1085 0e40 6490BB08 		.word	146509924
+ 1086 0e44 5314EF3F 		.word	1072632915
+ 1087 0e48 D33252EF 		.word	-279825709
+ 1088 0e4c A91CEF3F 		.word	1072635049
+ 1089 0e50 A8AB3B16 		.word	373009320
+ 1090 0e54 DB24EF3F 		.word	1072637147
+ 1091 0e58 E3FA777D 		.word	2105015011
+ 1092 0e5c E62CEF3F 		.word	1072639206
+ 1093 0e60 86200725 		.word	621224070
+ 1094 0e64 CC34EF3F 		.word	1072641228
+ 1095 0e68 8F1CE90C 		.word	216603791
+ 1096 0e6c 8C3CEF3F 		.word	1072643212
+ 1097 0e70 15E3FC4D 		.word	1308418837
+ 1098 0e74 2844EF3F 		.word	1072645160
+ 1099 0e78 EB8B84B6 		.word	-1232827413
+ 1100 0e7c 9C4BEF3F 		.word	1072647068
+ 1101 0e80 280B5F5F 		.word	1600064296
+ 1102 0e84 EB52EF3F 		.word	1072648939
+ 1103 0e88 CC608C48 		.word	1217159372
+ 1104 0e8c 145AEF3F 		.word	1072650772
+ 1105 0e90 ED80EB8A 		.word	-1964277523
+ 1106 0e94 1961EF3F 		.word	1072652569
+ 1107 0e98 5E83BEF4 		.word	-188841122
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 22
+
+
+ 1108 0e9c F667EF3F 		.word	1072654326
+ 1109 0ea0 1F680586 		.word	-2046466017
+ 1110 0ea4 AC6EEF3F 		.word	1072656044
+ 1111 0ea8 5D177E70 		.word	1887311709
+ 1112 0eac 3E75EF3F 		.word	1072657726
+ 1113 0eb0 029D499B 		.word	-1689674494
+ 1114 0eb4 AA7BEF3F 		.word	1072659370
+ 1115 0eb8 F70489ED 		.word	-309787401
+ 1116 0ebc EE81EF3F 		.word	1072660974
+ 1117 0ec0 52431B80 		.word	-2145696942
+ 1118 0ec4 0D88EF3F 		.word	1072662541
+ 1119 0ec8 FE63213A 		.word	975266814
+ 1120 0ecc 048EEF3F 		.word	1072664068
+ 1121 0ed0 105B7A34 		.word	880433936
+ 1122 0ed4 D593EF3F 		.word	1072665557
+ 1123 0ed8 8928266F 		.word	1864771721
+ 1124 0edc 8099EF3F 		.word	1072667008
+ 1125 0ee0 68CC24EA 		.word	-366687128
+ 1126 0ee4 059FEF3F 		.word	1072668421
+ 1127 0ee8 9752978C 		.word	-1936239977
+ 1128 0eec 63A4EF3F 		.word	1072669795
+ 1129 0ef0 2DAF5C6F 		.word	1868345133
+ 1130 0ef4 9BA9EF3F 		.word	1072671131
+ 1131 0ef8 13EE9579 		.word	2039868947
+ 1132 0efc ABAEEF3F 		.word	1072672427
+ 1133 0f00 490F43AB 		.word	-1421668535
+ 1134 0f04 93B3EF3F 		.word	1072673683
+ 1135 0f08 FDFA2136 		.word	908196605
+ 1136 0f0c 58B8EF3F 		.word	1072674904
+ 1137 0f10 E9D495CF 		.word	-812264215
+ 1138 0f14 F2BCEF3F 		.word	1072676082
+ 1139 0f18 3C855CA9 		.word	-1453554372
+ 1140 0f1c 67C1EF3F 		.word	1072677223
+ 1141 0f20 F60B76C3 		.word	-1015673866
+ 1142 0f24 B6C5EF3F 		.word	1072678326
+ 1143 0f28 00750305 		.word	84112640
+ 1144 0f2c DEC9EF3F 		.word	1072679390
+ 1145 0f30 59C0046E 		.word	1845805145
+ 1146 0f34 DDCDEF3F 		.word	1072680413
+ 1147 0f38 19E25817 		.word	391701017
+ 1148 0f3c B7D1EF3F 		.word	1072681399
+ 1149 0f40 2AE620E8 		.word	-400497110
+ 1150 0f44 68D5EF3F 		.word	1072682344
+ 1151 0f48 8ACC5CE0 		.word	-530789238
+ 1152 0f4c F2D8EF3F 		.word	1072683250
+ 1153 0f50 5089EB18 		.word	418089296
+ 1154 0f54 57DCEF3F 		.word	1072684119
+ 1155 0f58 6728EE78 		.word	2028873831
+ 1156 0f5c 93DFEF3F 		.word	1072684947
+ 1157 0f60 CEA96400 		.word	6597070
+ 1158 0f64 A8E2EF3F 		.word	1072685736
+ 1159 0f68 9B012EC8 		.word	-936509029
+ 1160 0f6c 96E5EF3F 		.word	1072686486
+ 1161 0f70 B83B6BB7 		.word	-1217709128
+ 1162 0f74 5DE8EF3F 		.word	1072687197
+ 1163 0f78 25581CCE 		.word	-837003227
+ 1164 0f7c FCEAEF3F 		.word	1072687868
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 23
+
+
+ 1165 0f80 E256410C 		.word	205608674
+ 1166 0f84 74EDEF3F 		.word	1072688500
+ 1167 0f88 EF37DA71 		.word	1910126575
+ 1168 0f8c C3EFEF3F 		.word	1072689091
+ 1169 0f90 63EFC517 		.word	398847843
+ 1170 0f94 EDF1EF3F 		.word	1072689645
+ 1171 0f98 278925E5 		.word	-450524889
+ 1172 0f9c EEF3EF3F 		.word	1072690158
+ 1173 0fa0 3A05F9D9 		.word	-637991622
+ 1174 0fa4 C8F5EF3F 		.word	1072690632
+ 1175 0fa8 B4571F0F 		.word	253712308
+ 1176 0fac 7DF7EF3F 		.word	1072691069
+ 1177 0fb0 6798DA52 		.word	1390057575
+ 1178 0fb4 07F9EF3F 		.word	1072691463
+ 1179 0fb8 81AFE8D6 		.word	-689393791
+ 1180 0fbc 6BFAEF3F 		.word	1072691819
+ 1181 0fc0 EBA86A82 		.word	-2106939157
+ 1182 0fc4 A8FBEF3F 		.word	1072692136
+ 1183 0fc8 A5846055 		.word	1432388773
+ 1184 0fcc BDFCEF3F 		.word	1072692413
+ 1185 0fd0 AF42CA4F 		.word	1338655407
+ 1186 0fd4 AAFDEF3F 		.word	1072692650
+ 1187 0fd8 08E3A771 		.word	1906828040
+ 1188 0fdc 6FFEEF3F 		.word	1072692847
+ 1189 0fe0 B265F9BA 		.word	-1158060622
+ 1190 0fe4 0CFFEF3F 		.word	1072693004
+ 1191 0fe8 C2BE9D44 		.word	1151188674
+ 1192 0fec 84FFEF3F 		.word	1072693124
+ 1193 0ff0 22FAB5F5 		.word	-172623326
+ 1194 0ff4 D3FFEF3F 		.word	1072693203
+ 1195 0ff8 D31742CE 		.word	-834529325
+ 1196 0ffc FBFFEF3F 		.word	1072693243
+ 1197 1000 D31742CE 		.word	-834529325
+ 1198 1004 FBFFEF3F 		.word	1072693243
+ 1199 1008 22FAB5F5 		.word	-172623326
+ 1200 100c D3FFEF3F 		.word	1072693203
+ 1201 1010 C2BE9D44 		.word	1151188674
+ 1202 1014 84FFEF3F 		.word	1072693124
+ 1203 1018 B265F9BA 		.word	-1158060622
+ 1204 101c 0CFFEF3F 		.word	1072693004
+ 1205 1020 08E3A771 		.word	1906828040
+ 1206 1024 6FFEEF3F 		.word	1072692847
+ 1207 1028 AF42CA4F 		.word	1338655407
+ 1208 102c AAFDEF3F 		.word	1072692650
+ 1209 1030 A5846055 		.word	1432388773
+ 1210 1034 BDFCEF3F 		.word	1072692413
+ 1211 1038 EBA86A82 		.word	-2106939157
+ 1212 103c A8FBEF3F 		.word	1072692136
+ 1213 1040 81AFE8D6 		.word	-689393791
+ 1214 1044 6BFAEF3F 		.word	1072691819
+ 1215 1048 6798DA52 		.word	1390057575
+ 1216 104c 07F9EF3F 		.word	1072691463
+ 1217 1050 B4571F0F 		.word	253712308
+ 1218 1054 7DF7EF3F 		.word	1072691069
+ 1219 1058 3A05F9D9 		.word	-637991622
+ 1220 105c C8F5EF3F 		.word	1072690632
+ 1221 1060 278925E5 		.word	-450524889
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 24
+
+
+ 1222 1064 EEF3EF3F 		.word	1072690158
+ 1223 1068 63EFC517 		.word	398847843
+ 1224 106c EDF1EF3F 		.word	1072689645
+ 1225 1070 EF37DA71 		.word	1910126575
+ 1226 1074 C3EFEF3F 		.word	1072689091
+ 1227 1078 E256410C 		.word	205608674
+ 1228 107c 74EDEF3F 		.word	1072688500
+ 1229 1080 25581CCE 		.word	-837003227
+ 1230 1084 FCEAEF3F 		.word	1072687868
+ 1231 1088 B83B6BB7 		.word	-1217709128
+ 1232 108c 5DE8EF3F 		.word	1072687197
+ 1233 1090 9B012EC8 		.word	-936509029
+ 1234 1094 96E5EF3F 		.word	1072686486
+ 1235 1098 CEA96400 		.word	6597070
+ 1236 109c A8E2EF3F 		.word	1072685736
+ 1237 10a0 6728EE78 		.word	2028873831
+ 1238 10a4 93DFEF3F 		.word	1072684947
+ 1239 10a8 5089EB18 		.word	418089296
+ 1240 10ac 57DCEF3F 		.word	1072684119
+ 1241 10b0 8ACC5CE0 		.word	-530789238
+ 1242 10b4 F2D8EF3F 		.word	1072683250
+ 1243 10b8 2AE620E8 		.word	-400497110
+ 1244 10bc 68D5EF3F 		.word	1072682344
+ 1245 10c0 19E25817 		.word	391701017
+ 1246 10c4 B7D1EF3F 		.word	1072681399
+ 1247 10c8 59C0046E 		.word	1845805145
+ 1248 10cc DDCDEF3F 		.word	1072680413
+ 1249 10d0 00750305 		.word	84112640
+ 1250 10d4 DEC9EF3F 		.word	1072679390
+ 1251 10d8 F60B76C3 		.word	-1015673866
+ 1252 10dc B6C5EF3F 		.word	1072678326
+ 1253 10e0 3C855CA9 		.word	-1453554372
+ 1254 10e4 67C1EF3F 		.word	1072677223
+ 1255 10e8 E9D495CF 		.word	-812264215
+ 1256 10ec F2BCEF3F 		.word	1072676082
+ 1257 10f0 FDFA2136 		.word	908196605
+ 1258 10f4 58B8EF3F 		.word	1072674904
+ 1259 10f8 490F43AB 		.word	-1421668535
+ 1260 10fc 93B3EF3F 		.word	1072673683
+ 1261 1100 13EE9579 		.word	2039868947
+ 1262 1104 ABAEEF3F 		.word	1072672427
+ 1263 1108 2DAF5C6F 		.word	1868345133
+ 1264 110c 9BA9EF3F 		.word	1072671131
+ 1265 1110 9752978C 		.word	-1936239977
+ 1266 1114 63A4EF3F 		.word	1072669795
+ 1267 1118 68CC24EA 		.word	-366687128
+ 1268 111c 059FEF3F 		.word	1072668421
+ 1269 1120 8928266F 		.word	1864771721
+ 1270 1124 8099EF3F 		.word	1072667008
+ 1271 1128 105B7A34 		.word	880433936
+ 1272 112c D593EF3F 		.word	1072665557
+ 1273 1130 FE63213A 		.word	975266814
+ 1274 1134 048EEF3F 		.word	1072664068
+ 1275 1138 52431B80 		.word	-2145696942
+ 1276 113c 0D88EF3F 		.word	1072662541
+ 1277 1140 F70489ED 		.word	-309787401
+ 1278 1144 EE81EF3F 		.word	1072660974
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 25
+
+
+ 1279 1148 029D499B 		.word	-1689674494
+ 1280 114c AA7BEF3F 		.word	1072659370
+ 1281 1150 5D177E70 		.word	1887311709
+ 1282 1154 3E75EF3F 		.word	1072657726
+ 1283 1158 1F680586 		.word	-2046466017
+ 1284 115c AC6EEF3F 		.word	1072656044
+ 1285 1160 5E83BEF4 		.word	-188841122
+ 1286 1164 F667EF3F 		.word	1072654326
+ 1287 1168 ED80EB8A 		.word	-1964277523
+ 1288 116c 1961EF3F 		.word	1072652569
+ 1289 1170 CC608C48 		.word	1217159372
+ 1290 1174 145AEF3F 		.word	1072650772
+ 1291 1178 280B5F5F 		.word	1600064296
+ 1292 117c EB52EF3F 		.word	1072648939
+ 1293 1180 EB8B84B6 		.word	-1232827413
+ 1294 1184 9C4BEF3F 		.word	1072647068
+ 1295 1188 15E3FC4D 		.word	1308418837
+ 1296 118c 2844EF3F 		.word	1072645160
+ 1297 1190 8F1CE90C 		.word	216603791
+ 1298 1194 8C3CEF3F 		.word	1072643212
+ 1299 1198 86200725 		.word	621224070
+ 1300 119c CC34EF3F 		.word	1072641228
+ 1301 11a0 E3FA777D 		.word	2105015011
+ 1302 11a4 E62CEF3F 		.word	1072639206
+ 1303 11a8 A8AB3B16 		.word	373009320
+ 1304 11ac DB24EF3F 		.word	1072637147
+ 1305 11b0 D33252EF 		.word	-279825709
+ 1306 11b4 A91CEF3F 		.word	1072635049
+ 1307 11b8 6490BB08 		.word	146509924
+ 1308 11bc 5314EF3F 		.word	1072632915
+ 1309 11c0 5DC47762 		.word	1652016221
+ 1310 11c4 D60BEF3F 		.word	1072630742
+ 1311 11c8 D2C26515 		.word	358990546
+ 1312 11cc 3603EF3F 		.word	1072628534
+ 1313 11d0 AF97A608 		.word	145135535
+ 1314 11d4 70FAEE3F 		.word	1072626288
+ 1315 11d8 09371955 		.word	1427715849
+ 1316 11dc 86F1EE3F 		.word	1072624006
+ 1317 11e0 B2B8FFC8 		.word	-922765134
+ 1318 11e4 74E8EE3F 		.word	1072621684
+ 1319 11e8 DA041896 		.word	-1776810790
+ 1320 11ec 3FDFEE3F 		.word	1072619327
+ 1321 11f0 7E1B62BC 		.word	-1134421122
+ 1322 11f4 E6D5EE3F 		.word	1072616934
+ 1323 11f8 8908FF22 		.word	587139209
+ 1324 11fc 68CCEE3F 		.word	1072614504
+ 1325 1200 12C0CDE2 		.word	-489832430
+ 1326 1204 C5C2EE3F 		.word	1072612037
+ 1327 1208 014EEFE2 		.word	-487633407
+ 1328 120c FDB8EE3F 		.word	1072609533
+ 1329 1210 6EA6423C 		.word	1011000942
+ 1330 1214 12AFEE3F 		.word	1072606994
+ 1331 1218 58C9C7EE 		.word	-288896680
+ 1332 121c 02A5EE3F 		.word	1072604418
+ 1333 1220 A9C29FE1 		.word	-509623639
+ 1334 1224 CD9AEE3F 		.word	1072601805
+ 1335 1228 7786A92D 		.word	766084727
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 26
+
+
+ 1336 122c 7590EE3F 		.word	1072599157
+ 1337 1230 C214E5D2 		.word	-756738878
+ 1338 1234 F885EE3F 		.word	1072596472
+ 1339 1238 8B6D52D1 		.word	-783127157
+ 1340 123c 587BEE3F 		.word	1072593752
+ 1341 1240 D190F128 		.word	686919889
+ 1342 1244 9570EE3F 		.word	1072590997
+ 1343 1248 957EC2D9 		.word	-641565035
+ 1344 124c AD65EE3F 		.word	1072588205
+ 1345 1250 D636C5E3 		.word	-473614634
+ 1346 1254 A25AEE3F 		.word	1072585378
+ 1347 1258 95B9F946 		.word	1190771093
+ 1348 125c 744FEE3F 		.word	1072582516
+ 1349 1260 D1066003 		.word	56624849
+ 1350 1264 2244EE3F 		.word	1072579618
+ 1351 1268 8A1EF818 		.word	418913930
+ 1352 126c AC38EE3F 		.word	1072576684
+ 1353 1270 C100C287 		.word	-2017328959
+ 1354 1274 122DEE3F 		.word	1072573714
+ 1355 1278 8CA19C68 		.word	1755095436
+ 1356 127c 5721EE3F 		.word	1072570711
+ 1357 1280 D40CA9A2 		.word	-1565979436
+ 1358 1284 7815EE3F 		.word	1072567672
+ 1359 1288 9A42E735 		.word	904348314
+ 1360 128c 7609EE3F 		.word	1072564598
+ 1361 1290 F436363B 		.word	993408756
+ 1362 1294 52FDED3F 		.word	1072561490
+ 1363 1298 E2E995B2 		.word	-1298798110
+ 1364 129c 0CF1ED3F 		.word	1072558348
+ 1365 12a0 4D672783 		.word	-2094569651
+ 1366 12a4 A3E4ED3F 		.word	1072555171
+ 1367 12a8 36AFEAAC 		.word	-1393905866
+ 1368 12ac 16D8ED3F 		.word	1072551958
+ 1369 12b0 CAA99D61 		.word	1637722570
+ 1370 12b4 6ACBED3F 		.word	1072548714
+ 1371 12b8 DB6E826F 		.word	1870819035
+ 1372 12bc 9ABEED3F 		.word	1072545434
+ 1373 12c0 69FE98D6 		.word	-694616471
+ 1374 12c4 A6B1ED3F 		.word	1072542118
+ 1375 12c8 A3409FC8 		.word	-929087325
+ 1376 12cc 93A4ED3F 		.word	1072538771
+ 1377 12d0 7041B62C 		.word	750141808
+ 1378 12d4 5F97ED3F 		.word	1072535391
+ 1379 12d8 BB0CFFE9 		.word	-369161029
+ 1380 12dc 068AED3F 		.word	1072531974
+ 1381 12e0 B18A3732 		.word	842500785
+ 1382 12e4 8F7CED3F 		.word	1072528527
+ 1383 12e8 3BC780EC 		.word	-327104709
+ 1384 12ec F56EED3F 		.word	1072525045
+ 1385 12f0 59C2DA18 		.word	416989785
+ 1386 12f4 3B61ED3F 		.word	1072521531
+ 1387 12f8 0B7C45B7 		.word	-1220183029
+ 1388 12fc 5E53ED3F 		.word	1072517982
+ 1389 1300 51F4C0C7 		.word	-943655855
+ 1390 1304 6045ED3F 		.word	1072514400
+ 1391 1308 431F2C63 		.word	1663835971
+ 1392 130c 4337ED3F 		.word	1072510787
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 27
+
+
+ 1393 1310 C808A870 		.word	1890060488
+ 1394 1314 0429ED3F 		.word	1072507140
+ 1395 1318 F8A41309 		.word	152282360
+ 1396 131c A61AED3F 		.word	1072503462
+ 1397 1320 BDFF8F13 		.word	328204221
+ 1398 1324 260CED3F 		.word	1072499750
+ 1399 1328 2C0DFCA8 		.word	-1459876564
+ 1400 132c 86FDEC3F 		.word	1072496006
+ 1401 1330 30D978B0 		.word	-1334257360
+ 1402 1334 C5EEEC3F 		.word	1072492229
+ 1403 1338 DE57E542 		.word	1122326494
+ 1404 133c E5DFEC3F 		.word	1072488421
+ 1405 1340 4E7D2079 		.word	2032172366
+ 1406 1344 E7D0EC3F 		.word	1072484583
+ 1407 1348 52616C21 		.word	560750930
+ 1408 134c C8C1EC3F 		.word	1072480712
+ 1409 1350 EA03C93B 		.word	1003029482
+ 1410 1354 87B2EC3F 		.word	1072476807
+ 1411 1358 444DF4F9 		.word	-101429948
+ 1412 135c 28A3EC3F 		.word	1072472872
+ 1413 1360 603DEE5B 		.word	1542339936
+ 1414 1364 AD93EC3F 		.word	1072468909
+ 1415 1368 10ECF82F 		.word	804842512
+ 1416 136c 1084EC3F 		.word	1072464912
+ 1417 1370 6A4DF38E 		.word	-1896657558
+ 1418 1374 5374EC3F 		.word	1072460883
+ 1419 1378 8655BC91 		.word	-1849928314
+ 1420 137c 7964EC3F 		.word	1072456825
+ 1421 1380 4D10751F 		.word	527765581
+ 1422 1384 8054EC3F 		.word	1072452736
+ 1423 1388 D671FC50 		.word	1358721494
+ 1424 138c 6944EC3F 		.word	1072448617
+ 1425 1390 0A86730D 		.word	225674762
+ 1426 1394 3334EC3F 		.word	1072444467
+ 1427 1398 FF40B96D 		.word	1840857343
+ 1428 139c DF23EC3F 		.word	1072440287
+ 1429 13a0 B6A2CD71 		.word	1909301942
+ 1430 13a4 6E13EC3F 		.word	1072436078
+ 1431 13a8 17B7D100 		.word	13743895
+ 1432 13ac DE02EC3F 		.word	1072431838
+ 1433 13b0 3B72A433 		.word	866415163
+ 1434 13b4 30F2EB3F 		.word	1072427568
+ 1435 13b8 20D4450A 		.word	172348448
+ 1436 13bc 65E1EB3F 		.word	1072423269
+ 1437 13c0 C6DCB584 		.word	-2068456250
+ 1438 13c4 7CD0EB3F 		.word	1072418940
+ 1439 13c8 2E8CF4A2 		.word	-1561031634
+ 1440 13cc 76BFEB3F 		.word	1072414582
+ 1441 13d0 58E20165 		.word	1694622296
+ 1442 13d4 53AEEB3F 		.word	1072410195
+ 1443 13d8 5BD3BCE3 		.word	-474164389
+ 1444 13dc 149DEB3F 		.word	1072405780
+ 1445 13e0 1E6B4606 		.word	105278238
+ 1446 13e4 B98BEB3F 		.word	1072401337
+ 1447 13e8 A4A99ECC 		.word	-862017116
+ 1448 13ec 3F7AEB3F 		.word	1072396863
+ 1449 13f0 0283A44F 		.word	1336181506
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 28
+
+
+ 1450 13f4 AB68EB3F 		.word	1072392363
+ 1451 13f8 21037976 		.word	1987642145
+ 1452 13fc F956EB3F 		.word	1072387833
+ 1453 1400 191EFB59 		.word	1509629465
+ 1454 1404 2C45EB3F 		.word	1072383276
+ 1455 1408 D2DF4BE1 		.word	-515121198
+ 1456 140c 4133EB3F 		.word	1072378689
+ 1457 1410 7B30293E 		.word	1042886779
+ 1458 1414 3E21EB3F 		.word	1072374078
+ 1459 1418 E527D53E 		.word	1054156773
+ 1460 141c 1D0FEB3F 		.word	1072369437
+ 1461 1420 28BA2EFC 		.word	-64046552
+ 1462 1424 E0FCEA3F 		.word	1072364768
+ 1463 1428 43E73576 		.word	1983244099
+ 1464 142c 89EAEA3F 		.word	1072360073
+ 1465 1430 4DA3C9C5 		.word	-976641203
+ 1466 1434 18D8EA3F 		.word	1072355352
+ 1467 1438 18062CB9 		.word	-1188297192
+ 1468 143c 8AC5EA3F 		.word	1072350602
+ 1469 1440 D3F71A82 		.word	-2112161837
+ 1470 1444 E3B2EA3F 		.word	1072345827
+ 1471 1448 6684B707 		.word	129467494
+ 1472 144c 21A0EA3F 		.word	1072341025
+ 1473 1450 E89FE062 		.word	1658888168
+ 1474 1454 458DEA3F 		.word	1072336197
+ 1475 1458 4356B77A 		.word	2058835523
+ 1476 145c 4E7AEA3F 		.word	1072331342
+ 1477 1460 8D9B1A68 		.word	1746574221
+ 1478 1464 3E67EA3F 		.word	1072326462
+ 1479 1468 C66F0A2B 		.word	722104262
+ 1480 146c 1554EA3F 		.word	1072321557
+ 1481 1470 EDD286C3 		.word	-1014574355
+ 1482 1474 D240EA3F 		.word	1072316626
+ 1483 1478 EED0B018 		.word	414241006
+ 1484 147c 752DEA3F 		.word	1072311669
+ 1485 1480 DD5D6743 		.word	1130847709
+ 1486 1484 FE19EA3F 		.word	1072306686
+ 1487 1488 D26D895C 		.word	1552510418
+ 1488 148c 7006EA3F 		.word	1072301680
+ 1489 1490 B70C384B 		.word	1261964471
+ 1490 1494 C9F2E93F 		.word	1072296649
+ 1491 1498 8A3A730F 		.word	259209866
+ 1492 149c 09DFE93F 		.word	1072291593
+ 1493 14a0 4DF73AA9 		.word	-1455753395
+ 1494 14a4 2FCBE93F 		.word	1072286511
+ 1495 14a8 15376E31 		.word	829306645
+ 1496 14ac 3FB7E93F 		.word	1072281407
+ 1497 14b0 CD052E8F 		.word	-1892809267
+ 1498 14b4 35A3E93F 		.word	1072276277
+ 1499 14b8 8A5759DB 		.word	-614901878
+ 1500 14bc 148FE93F 		.word	1072271124
+ 1501 14c0 4D2CF015 		.word	368061517
+ 1502 14c4 DD7AE93F 		.word	1072265949
+ 1503 14c8 00901326 		.word	638816256
+ 1504 14cc 8C66E93F 		.word	1072260748
+ 1505 14d0 CF6A813D 		.word	1031891663
+ 1506 14d4 2652E93F 		.word	1072255526
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 29
+
+
+ 1507 14d8 8DD47B2A 		.word	712758413
+ 1508 14dc A73DE93F 		.word	1072250279
+ 1509 14e0 67B5C01E 		.word	515945831
+ 1510 14e4 1329E93F 		.word	1072245011
+ 1511 14e8 48197101 		.word	24189256
+ 1512 14ec 6814E93F 		.word	1072239720
+ 1513 14f0 2E008DD2 		.word	-762511314
+ 1514 14f4 A5FFE83F 		.word	1072234405
+ 1515 14f8 1A6A1492 		.word	-1844155878
+ 1516 14fc CCEAE83F 		.word	1072229068
+ 1517 1500 234BE658 		.word	1491487523
+ 1518 1504 DED5E83F 		.word	1072223710
+ 1519 1508 48A30227 		.word	654484296
+ 1520 150c DBC0E83F 		.word	1072218331
+ 1521 1510 747E8AE3 		.word	-477462924
+ 1522 1514 C0ABE83F 		.word	1072212928
+ 1523 1518 BBD05CA7 		.word	-1487089477
+ 1524 151c 9196E83F 		.word	1072207505
+ 1525 1520 209A7972 		.word	1920571936
+ 1526 1524 4D81E83F 		.word	1072202061
+ 1527 1528 A1DAE044 		.word	1155586721
+ 1528 152c F46BE83F 		.word	1072196596
+ 1529 1530 3E92921E 		.word	512922174
+ 1530 1534 8656E83F 		.word	1072191110
+ 1531 1538 F9C08EFF 		.word	-7421703
+ 1532 153c 0241E83F 		.word	1072185602
+ 1533 1540 CF66D5E7 		.word	-405444913
+ 1534 1544 6A2BE83F 		.word	1072180074
+ 1535 1548 D97745F0 		.word	-263882791
+ 1536 154c BF15E83F 		.word	1072174527
+ 1537 1550 00000000 		.word	0
+ 1538 1554 0000E83F 		.word	1072168960
+ 1539 1558 5AF3E32F 		.word	803468122
+ 1540 155c 2DEAE73F 		.word	1072163373
+ 1541 1560 D15D1267 		.word	1729256913
+ 1542 1564 45D4E73F 		.word	1072157765
+ 1543 1568 7B336ABE 		.word	-1100336261
+ 1544 156c 4ABEE73F 		.word	1072152138
+ 1545 1570 6E68CA4E 		.word	1321887854
+ 1546 1574 3FA8E73F 		.word	1072146495
+ 1547 1578 7F1475E6 		.word	-428534657
+ 1548 157c 1E92E73F 		.word	1072140830
+ 1549 1580 C32B499E 		.word	-1639371837
+ 1550 1584 EB7BE73F 		.word	1072135147
+ 1551 1588 3AAE4676 		.word	1984343610
+ 1552 158c A565E73F 		.word	1072129445
+ 1553 1590 FC8F4C87 		.word	-2025025540
+ 1554 1594 4E4FE73F 		.word	1072123726
+ 1555 1598 F0DC7BB8 		.word	-1199842064
+ 1556 159c E438E73F 		.word	1072117988
+ 1557 15a0 1895D409 		.word	164926744
+ 1558 15a4 6822E73F 		.word	1072112232
+ 1559 15a8 8AAC3594 		.word	-1808421750
+ 1560 15ac DA0BE73F 		.word	1072106458
+ 1561 15b0 46239F57 		.word	1470047046
+ 1562 15b4 3CF5E63F 		.word	1072100668
+ 1563 15b8 3605323B 		.word	993133878
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 30
+
+
+ 1564 15bc 8BDEE63F 		.word	1072094859
+ 1565 15c0 863AAC70 		.word	1890335366
+ 1566 15c4 CBC7E63F 		.word	1072089035
+ 1567 15c8 0ADB4FC6 		.word	-967845110
+ 1568 15cc F8B0E63F 		.word	1072083192
+ 1569 15d0 EECEDA6D 		.word	1843056366
+ 1570 15d4 179AE63F 		.word	1072077335
+ 1571 15d8 1D226E4E 		.word	1315840541
+ 1572 15dc 2583E63F 		.word	1072071461
+ 1573 15e0 95D40968 		.word	1745474709
+ 1574 15e4 226CE63F 		.word	1072065570
+ 1575 15e8 58E6ADBA 		.word	-1163008424
+ 1576 15ec 0E55E63F 		.word	1072059662
+ 1577 15f0 7B4B395F 		.word	1597590395
+ 1578 15f4 EC3DE63F 		.word	1072053740
+ 1579 15f8 FF03AC55 		.word	1437336575
+ 1580 15fc BB26E63F 		.word	1072047803
+ 1581 1600 CE1B2785 		.word	-2061034546
+ 1582 1604 790FE63F 		.word	1072041849
+ 1583 1608 147B681F 		.word	526940948
+ 1584 160c 2BF8E53F 		.word	1072035883
+ 1585 1610 A439B2F2 		.word	-223200860
+ 1586 1614 CBE0E53F 		.word	1072029899
+ 1587 1618 944BE317 		.word	400771988
+ 1588 161c 5EC9E53F 		.word	1072023902
+ 1589 1620 FDA4DAA7 		.word	-1478843139
+ 1590 1624 E3B1E53F 		.word	1072017891
+ 1591 1628 C651B989 		.word	-1984343610
+ 1592 162c 5A9AE53F 		.word	1072011866
+ 1593 1630 F0517FBD 		.word	-1115729424
+ 1594 1634 C282E53F 		.word	1072005826
+ 1595 1638 91990B5C 		.word	1544264081
+ 1596 163c 1E6BE53F 		.word	1071999774
+ 1597 1640 94347F4C 		.word	1283404948
+ 1598 1644 6B53E53F 		.word	1071993707
+ 1599 1648 0D17B9A7 		.word	-1481042163
+ 1600 164c AB3BE53F 		.word	1071987627
+ 1601 1650 FF40B96D 		.word	1840857343
+ 1602 1654 DF23E53F 		.word	1071981535
+ 1603 1658 68B27F9E 		.word	-1635798424
+ 1604 165c 060CE53F 		.word	1071975430
+ 1605 1660 486B0C3A 		.word	973892424
+ 1606 1664 21F4E43F 		.word	1071969313
+ 1607 1668 A06B5F40 		.word	1079995296
+ 1608 166c 2FDCE43F 		.word	1071963183
+ 1609 1670 70B378B1 		.word	-1317489808
+ 1610 1674 30C4E43F 		.word	1071957040
+ 1611 1678 CE3637A6 		.word	-1506330930
+ 1612 167c 27ACE43F 		.word	1071950887
+ 1613 1680 A301BC05 		.word	96207267
+ 1614 1684 1294E43F 		.word	1071944722
+ 1615 1688 F01307D0 		.word	-804842512
+ 1616 168c EF7BE43F 		.word	1071938543
+ 1617 1690 E355D636 		.word	920016355
+ 1618 1694 C563E43F 		.word	1071932357
+ 1619 1698 4CDF6B08 		.word	141287244
+ 1620 169c 8E4BE43F 		.word	1071926158
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 31
+
+
+ 1621 16a0 5B988576 		.word	1988466779
+ 1622 16a4 4E33E43F 		.word	1071919950
+ 1623 16a8 E198654F 		.word	1332058337
+ 1624 16ac 021BE43F 		.word	1071913730
+ 1625 16b0 F6D4EAAB 		.word	-1410673418
+ 1626 16b4 AB02E43F 		.word	1071907499
+ 1627 16b8 AF40F4A4 		.word	-1527496529
+ 1628 16bc 4CEAE33F 		.word	1071901260
+ 1629 16c0 F7E7A221 		.word	564324343
+ 1630 16c4 E3D1E33F 		.word	1071895011
+ 1631 16c8 E4BED53A 		.word	987086564
+ 1632 16cc 71B9E33F 		.word	1071888753
+ 1633 16d0 5FD1ADD7 		.word	-676474529
+ 1634 16d4 F4A0E33F 		.word	1071882484
+ 1635 16d8 7F130A11 		.word	285873023
+ 1636 16dc 7088E33F 		.word	1071876208
+ 1637 16e0 4485EAE6 		.word	-420838076
+ 1638 16e4 E26FE33F 		.word	1071869922
+ 1639 16e8 98327040 		.word	1081094808
+ 1640 16ec 4B57E33F 		.word	1071863627
+ 1641 16f0 A703594F 		.word	1331233703
+ 1642 16f4 AD3EE33F 		.word	1071857325
+ 1643 16f8 5C04C6FA 		.word	-87686052
+ 1644 16fc 0626E33F 		.word	1071851014
+ 1645 1700 B534B742 		.word	1119302837
+ 1646 1704 580DE33F 		.word	1071844696
+ 1647 1708 CA880B40 		.word	1074497738
+ 1648 170c A3F4E23F 		.word	1071838371
+ 1649 1710 840CE4D9 		.word	-639366012
+ 1650 1714 E5DBE23F 		.word	1071832037
+ 1651 1718 FAB31F29 		.word	689943546
+ 1652 171c 22C3E23F 		.word	1071825698
+ 1653 1720 2C7FBE2D 		.word	767459116
+ 1654 1724 58AAE23F 		.word	1071819352
+ 1655 1728 037AE1CE 		.word	-824083965
+ 1656 172c 8591E23F 		.word	1071812997
+ 1657 1730 96986725 		.word	627546262
+ 1658 1734 AD78E23F 		.word	1071806637
+ 1659 1738 FBCE2F4A 		.word	1244647163
+ 1660 173c D05FE23F 		.word	1071800272
+ 1661 1740 05357C0B 		.word	192689413
+ 1662 1744 EB46E23F 		.word	1071793899
+ 1663 1748 E1B20A9B 		.word	-1693797663
+ 1664 174c 012EE23F 		.word	1071787521
+ 1665 1750 9148DBF8 		.word	-119846767
+ 1666 1754 1315E23F 		.word	1071781139
+ 1667 1758 FC010F0C 		.word	202310140
+ 1668 175c 20FCE13F 		.word	1071774752
+ 1669 1760 22DFA5D4 		.word	-727326942
+ 1670 1764 25E3E13F 		.word	1071768357
+ 1671 1768 32C85D84 		.word	-2074228686
+ 1672 176c 29CAE13F 		.word	1071761961
+ 1673 1770 FED478E9 		.word	-377957122
+ 1674 1774 26B1E13F 		.word	1071755558
+ 1675 1778 9CF9D51C 		.word	483785116
+ 1676 177c 2098E13F 		.word	1071749152
+ 1677 1780 242A5437 		.word	928262692
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 32
+
+
+ 1678 1784 177FE13F 		.word	1071742743
+ 1679 1788 677E3507 		.word	120946279
+ 1680 178c 0866E13F 		.word	1071736328
+ 1681 1790 94DE37BE 		.word	-1103634796
+ 1682 1794 F64CE13F 		.word	1071729910
+ 1683 1798 A94A5B5C 		.word	1549486761
+ 1684 179c E333E13F 		.word	1071723491
+ 1685 17a0 92CEC0C8 		.word	-926888302
+ 1686 17a4 CB1AE13F 		.word	1071717067
+ 1687 17a8 635E471C 		.word	474439267
+ 1688 17ac B201E13F 		.word	1071710642
+ 1689 17b0 0806103E 		.word	1041237512
+ 1690 17b4 94E8E03F 		.word	1071704212
+ 1691 17b8 ACADD85F 		.word	1608035756
+ 1692 17bc 76CFE03F 		.word	1071697782
+ 1693 17c0 226DE34F 		.word	1340304674
+ 1694 17c4 54B6E03F 		.word	1071691348
+ 1695 17c8 992CEE3F 		.word	1072573593
+ 1696 17cc 329DE03F 		.word	1071684914
+ 1697 17d0 F9F71917 		.word	387577849
+ 1698 17d4 0E84E03F 		.word	1071678478
+ 1699 17d8 42CF66D5 		.word	-714682558
+ 1700 17dc E76AE03F 		.word	1071672039
+ 1701 17e0 8BA6B393 		.word	-1816942965
+ 1702 17e4 C151E03F 		.word	1071665601
+ 1703 17e8 BE892139 		.word	958499262
+ 1704 17ec 9938E03F 		.word	1071659161
+ 1705 17f0 07616EF7 		.word	-143761145
+ 1706 17f4 721FE03F 		.word	1071652722
+ 1707 17f8 3944DC9C 		.word	-1663286215
+ 1708 17fc 4A06E03F 		.word	1071646282
+ 1709 1800 D74E9484 		.word	-2070655273
+ 1710 1804 44DADF3F 		.word	1071635012
+ 1711 1808 3C1570CF 		.word	-814738116
+ 1712 180c F3A7DF3F 		.word	1071622131
+ 1713 1810 A1DB4B1A 		.word	441179041
+ 1714 1814 A375DF3F 		.word	1071609251
+ 1715 1818 338AE596 		.word	-1763341773
+ 1716 181c 5643DF3F 		.word	1071596374
+ 1717 1820 C5387F13 		.word	327104709
+ 1718 1824 0A11DF3F 		.word	1071583498
+ 1719 1828 85CFD6C1 		.word	-1042886779
+ 1720 182c C1DEDE3F 		.word	1071570625
+ 1721 1830 45662E70 		.word	1882089029
+ 1722 1834 79ACDE3F 		.word	1071557753
+ 1723 1838 32E54350 		.word	1346626866
+ 1724 183c 357ADE3F 		.word	1071544885
+ 1725 1840 4D4C1762 		.word	1645694029
+ 1726 1844 F547DE3F 		.word	1071532021
+ 1727 1848 959BA8A5 		.word	-1515676779
+ 1728 184c B915DE3F 		.word	1071519161
+ 1729 1850 0BD3F71A 		.word	452449035
+ 1730 1854 82E3DD3F 		.word	1071506306
+ 1731 1858 DCDAC2F3 		.word	-205333796
+ 1732 185c 52B1DD3F 		.word	1071493458
+ 1733 1860 ACE28DCC 		.word	-863116628
+ 1734 1864 237FDD3F 		.word	1071480611
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 33
+
+
+ 1735 1868 D8BAD408 		.word	148159192
+ 1736 186c FD4CDD3F 		.word	1071467773
+ 1737 1870 5E6397A8 		.word	-1466473634
+ 1738 1874 DE1ADD3F 		.word	1071454942
+ 1739 1878 40DCD5AB 		.word	-1412047808
+ 1740 187c C8E8DC3F 		.word	1071442120
+ 1741 1880 4F3DD2E0 		.word	-523092657
+ 1742 1884 B6B6DC3F 		.word	1071429302
+ 1743 1888 B96E4A79 		.word	2034921145
+ 1744 188c AD84DC3F 		.word	1071416493
+ 1745 1890 AC58FCA6 		.word	-1493411668
+ 1746 1894 B052DC3F 		.word	1071403696
+ 1747 1898 CC2A6C06 		.word	107752140
+ 1748 189c B820DC3F 		.word	1071390904
+ 1749 18a0 74B515FB 		.word	-82463372
+ 1750 18a4 CBEEDB3F 		.word	1071378123
+ 1751 18a8 77103B53 		.word	1396379767
+ 1752 18ac E8BCDB3F 		.word	1071365352
+ 1753 18b0 03249A40 		.word	1083843587
+ 1754 18b4 118BDB3F 		.word	1071352593
+ 1755 18b8 EA077591 		.word	-1854601238
+ 1756 18bc 4259DB3F 		.word	1071339842
+ 1757 18c0 59A48977 		.word	2005509209
+ 1758 18c4 8027DB3F 		.word	1071327104
+ 1759 18c8 51F9D7F2 		.word	-220726959
+ 1760 18cc CAF5DA3F 		.word	1071314378
+ 1761 18d0 D1066003 		.word	56624849
+ 1762 18d4 22C4DA3F 		.word	1071301666
+ 1763 18d8 D9CC21A9 		.word	-1457402663
+ 1764 18dc 8592DA3F 		.word	1071288965
+ 1765 18e0 6A4B1DE4 		.word	-467842198
+ 1766 18e4 F560DA3F 		.word	1071276277
+ 1767 18e8 848252B4 		.word	-1269661052
+ 1768 18ec 722FDA3F 		.word	1071263602
+ 1769 18f0 535A7F4B 		.word	1266637395
+ 1770 18f4 00FED93F 		.word	1071250944
+ 1771 18f8 D8D2A3A9 		.word	-1448881448
+ 1772 18fc 9ECCD93F 		.word	1071238302
+ 1773 1900 E603029D 		.word	-1660812314
+ 1774 1904 499BD93F 		.word	1071225673
+ 1775 1908 AAD55757 		.word	1465374122
+ 1776 190c 056AD93F 		.word	1071213061
+ 1777 1910 F65FE7A6 		.word	-1494786058
+ 1778 1914 CD38D93F 		.word	1071200461
+ 1779 1918 26732CEF 		.word	-282299610
+ 1780 191c AA07D93F 		.word	1071187882
+ 1781 1920 0B2769FE 		.word	-26663157
+ 1782 1924 98D6D83F 		.word	1071175320
+ 1783 1928 A67B9DD4 		.word	-727876698
+ 1784 192c 97A5D83F 		.word	1071162775
+ 1785 1930 255987A3 		.word	-1551410907
+ 1786 1934 AB74D83F 		.word	1071150251
+ 1787 1938 2CEFAA07 		.word	128642860
+ 1788 193c CC43D83F 		.word	1071137740
+ 1789 1940 45F64196 		.word	-1774062011
+ 1790 1944 0513D83F 		.word	1071125253
+ 1791 1948 139ED0EB 		.word	-338649581
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 34
+
+
+ 1792 194c 4FE2D73F 		.word	1071112783
+ 1793 1950 C4CE143A 		.word	974442180
+ 1794 1954 AFB1D73F 		.word	1071100335
+ 1795 1958 2CA0504F 		.word	1330683948
+ 1796 195c 1F81D73F 		.word	1071087903
+ 1797 1960 A4E2FF8E 		.word	-1895832924
+ 1798 1964 A850D73F 		.word	1071075496
+ 1799 1968 00AE64C7 		.word	-949703168
+ 1800 196c 4620D73F 		.word	1071063110
+ 1801 1970 3F027FF8 		.word	-125894081
+ 1802 1974 F9EFD63F 		.word	1071050745
+ 1803 1978 8FC70C54 		.word	1410123663
+ 1804 197c C6BFD63F 		.word	1071038406
+ 1805 1980 C21550A8 		.word	-1471146558
+ 1806 1984 A78FD63F 		.word	1071026087
+ 1807 1988 D9EC48F5 		.word	-179770151
+ 1808 198c 9D5FD63F 		.word	1071013789
+ 1809 1990 0135B56C 		.word	1823814913
+ 1810 1994 AD2FD63F 		.word	1071001517
+ 1811 1998 39EE940E 		.word	244641337
+ 1812 199c D6FFD53F 		.word	1070989270
+ 1813 19a0 8318E8DA 		.word	-622323581
+ 1814 19a4 17D0D53F 		.word	1070977047
+ 1815 19a8 DDB3AED1 		.word	-777079843
+ 1816 19ac 72A0D53F 		.word	1070964850
+ 1817 19b0 48C0E8F2 		.word	-219627448
+ 1818 19b4 E670D53F 		.word	1070952678
+ 1819 19b8 C53D963E 		.word	1050033605
+ 1820 19bc 7441D53F 		.word	1070940532
+ 1821 19c0 522CB7B4 		.word	-1263063982
+ 1822 19c4 1A12D53F 		.word	1070928410
+ 1823 19c8 1D740987 		.word	-2029423587
+ 1824 19cc DEE2D43F 		.word	1070916318
+ 1825 19d0 27158DB5 		.word	-1249045209
+ 1826 19d4 BFB3D43F 		.word	1070904255
+ 1827 19d8 4227840E 		.word	243541826
+ 1828 19dc BA84D43F 		.word	1070892218
+ 1829 19e0 9B92ACC3 		.word	-1012100453
+ 1830 19e4 D155D43F 		.word	1070880209
+ 1831 19e8 325706D5 		.word	-721004750
+ 1832 19ec 0627D43F 		.word	1070868230
+ 1833 19f0 08759142 		.word	1116828936
+ 1834 19f4 59F8D33F 		.word	1070856281
+ 1835 19f8 EF0390DA 		.word	-628096017
+ 1836 19fc C4C9D33F 		.word	1070844356
+ 1837 1a00 41D47D00 		.word	8246337
+ 1838 1a04 529BD33F 		.word	1070832466
+ 1839 1a08 00E65AB4 		.word	-1269111296
+ 1840 1a0c 006DD33F 		.word	1070820608
+ 1841 1a10 FC5069C4 		.word	-999730948
+ 1842 1a14 CC3ED33F 		.word	1070808780
+ 1843 1a18 3815A930 		.word	816387384
+ 1844 1a1c B610D33F 		.word	1070796982
+ 1845 1a20 DF1AD82A 		.word	718805727
+ 1846 1a24 C1E2D23F 		.word	1070785217
+ 1847 1a28 C4793881 		.word	-2127005244
+ 1848 1a2c E9B4D23F 		.word	1070773481
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 35
+
+
+ 1849 1a30 43024697 		.word	-1757019581
+ 1850 1a34 3787D23F 		.word	1070761783
+ 1851 1a38 00E48409 		.word	159704064
+ 1852 1a3c A359D23F 		.word	1070750115
+ 1853 1a40 56EF703B 		.word	997257046
+ 1854 1a44 342CD23F 		.word	1070738484
+ 1855 1a48 193C4CFB 		.word	-78889959
+ 1856 1a4c E6FED13F 		.word	1070726886
+ 1857 1a50 19E25817 		.word	391701017
+ 1858 1a54 B7D1D13F 		.word	1070715319
+ 1859 1a58 E199D024 		.word	617650657
+ 1860 1a5c B1A4D13F 		.word	1070703793
+ 1861 1a60 E7AA798E 		.word	-1904629017
+ 1862 1a64 C877D13F 		.word	1070692296
+ 1863 1a68 B3CD8DE9 		.word	-376582733
+ 1864 1a6c 094BD13F 		.word	1070680841
+ 1865 1a70 EC3191D2 		.word	-762236436
+ 1866 1a74 6C1ED13F 		.word	1070669420
+ 1867 1a78 90D78349 		.word	1233377168
+ 1868 1a7c F1F1D03F 		.word	1070658033
+ 1869 1a80 FC8EE1B1 		.word	-1310617860
+ 1870 1a84 9FC5D03F 		.word	1070646687
+ 1871 1a88 D3872EA8 		.word	-1473345581
+ 1872 1a8c 6F99D03F 		.word	1070635375
+ 1873 1a90 7192E68F 		.word	-1880714639
+ 1874 1a94 696DD03F 		.word	1070624105
+ 1875 1a98 A8C64B37 		.word	927712936
+ 1876 1a9c 8941D03F 		.word	1070612873
+ 1877 1aa0 79245E9E 		.word	-1637997447
+ 1878 1aa4 CE15D03F 		.word	1070601678
+ 1879 1aa8 C5573B8A 		.word	-1975822395
+ 1880 1aac 73D4CF3F 		.word	1070584947
+ 1881 1ab0 268A90BA 		.word	-1164932570
+ 1882 1ab4 9D7DCF3F 		.word	1070562717
+ 1883 1ab8 15E0BBCD 		.word	-843325419
+ 1884 1abc 1B27CF3F 		.word	1070540571
+ 1885 1ac0 37894160 		.word	1614907703
+ 1886 1ac4 E5D0CE3F 		.word	1070518501
+ 1887 1ac8 E7559DD5 		.word	-711109145
+ 1888 1acc 027BCE3F 		.word	1070496514
+ 1889 1ad0 2446CF2D 		.word	768558628
+ 1890 1ad4 7425CE3F 		.word	1070474612
+ 1891 1ad8 EF59D768 		.word	1758943727
+ 1892 1adc 39D0CD3F 		.word	1070452793
+ 1893 1ae0 4791B586 		.word	-2034921145
+ 1894 1ae4 527BCD3F 		.word	1070431058
+ 1895 1ae8 2DEC6987 		.word	-2023101395
+ 1896 1aec BF26CD3F 		.word	1070409407
+ 1897 1af0 A16AF46A 		.word	1794402977
+ 1898 1af4 80D2CC3F 		.word	1070387840
+ 1899 1af8 FDDCD094 		.word	-1798251267
+ 1900 1afc 9D7ECC3F 		.word	1070366365
+ 1901 1b00 E77283A1 		.word	-1585220889
+ 1902 1b04 0E2BCC3F 		.word	1070344974
+ 1903 1b08 B9FC87F4 		.word	-192414535
+ 1904 1b0c DBD7CB3F 		.word	1070323675
+ 1905 1b10 19AA622A 		.word	711109145
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 36
+
+
+ 1906 1b14 FD84CB3F 		.word	1070302461
+ 1907 1b18 BD1B0B0A 		.word	168500157
+ 1908 1b1c 8332CB3F 		.word	1070281347
+ 1909 1b20 EEB089CC 		.word	-863391506
+ 1910 1b24 5CE0CA3F 		.word	1070260316
+ 1911 1b28 083A5AD5 		.word	-715507192
+ 1912 1b2c 928ECA3F 		.word	1070239378
+ 1913 1b30 B0E600C1 		.word	-1056905552
+ 1914 1b34 1C3DCA3F 		.word	1070218524
+ 1915 1b38 F627F1B9 		.word	-1175377930
+ 1916 1b3c 13ECC93F 		.word	1070197779
+ 1917 1b40 CA8CB795 		.word	-1783132982
+ 1918 1b44 5E9BC93F 		.word	1070177118
+ 1919 1b48 E1B54B1B 		.word	457946593
+ 1920 1b4c 0E4BC93F 		.word	1070156558
+ 1921 1b50 E1D231E7 		.word	-416165151
+ 1922 1b54 19FBC83F 		.word	1070136089
+ 1923 1b58 C9E369F9 		.word	-110500919
+ 1924 1b5c 81ABC83F 		.word	1070115713
+ 1925 1b60 F5B86FB5 		.word	-1250969355
+ 1926 1b64 4E5CC83F 		.word	1070095438
+ 1927 1b68 6552431B 		.word	457396837
+ 1928 1b6c 800DC83F 		.word	1070075264
+ 1929 1b70 18B0E42A 		.word	719630360
+ 1930 1b74 16BFC73F 		.word	1070055190
+ 1931 1b78 B401D880 		.word	-2133327436
+ 1932 1b7c 0871C73F 		.word	1070035208
+ 1933 1b80 EFE714E4 		.word	-468391953
+ 1934 1b84 6723C73F 		.word	1070015335
+ 1935 1b88 12C2A38D 		.word	-1918647790
+ 1936 1b8c 23D6C63F 		.word	1069995555
+ 1937 1b90 D3307C44 		.word	1148989651
+ 1938 1b94 4C89C63F 		.word	1069975884
+ 1939 1b98 D86322A5 		.word	-1524472872
+ 1940 1b9c D93CC63F 		.word	1069956313
+ 1941 1ba0 215B96AF 		.word	-1349100767
+ 1942 1ba4 CBF0C53F 		.word	1069936843
+ 1943 1ba8 AD16D863 		.word	1675105965
+ 1944 1bac 22A5C53F 		.word	1069917474
+ 1945 1bb0 D8666325 		.word	627271384
+ 1946 1bb4 E659C53F 		.word	1069898214
+ 1947 1bb8 A14B38F4 		.word	-197637215
+ 1948 1bbc 160FC53F 		.word	1069879062
+ 1949 1bc0 AEF4DA6C 		.word	1826288814
+ 1950 1bc4 ACC4C43F 		.word	1069860012
+ 1951 1bc8 5932C7F2 		.word	-221826471
+ 1952 1bcc AE7AC43F 		.word	1069841070
+ 1953 1bd0 A304FD85 		.word	-2047015773
+ 1954 1bd4 1E31C43F 		.word	1069822238
+ 1955 1bd8 8B6B7C26 		.word	645688203
+ 1956 1bdc FBE7C33F 		.word	1069803515
+ 1957 1be0 B796C970 		.word	1892259511
+ 1958 1be4 3C9FC33F 		.word	1069784892
+ 1959 1be8 DD26DC2B 		.word	735848157
+ 1960 1bec F356C33F 		.word	1069766387
+ 1961 1bf0 A14B38F4 		.word	-197637215
+ 1962 1bf4 160FC33F 		.word	1069747990
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 37
+
+
+ 1963 1bf8 0305DEC9 		.word	-908196605
+ 1964 1bfc A7C7C23F 		.word	1069729703
+ 1965 1c00 60234910 		.word	273228640
+ 1966 1c04 AE80C23F 		.word	1069711534
+ 1967 1c08 5AD6FD63 		.word	1677579866
+ 1968 1c0c 213AC23F 		.word	1069693473
+ 1969 1c10 F31DFCC4 		.word	-990110221
+ 1970 1c14 01F4C13F 		.word	1069675521
+ 1971 1c18 86CABF96 		.word	-1765815674
+ 1972 1c1c 57AEC13F 		.word	1069657687
+ 1973 1c20 12DC48D9 		.word	-649536494
+ 1974 1c24 2269C13F 		.word	1069639970
+ 1975 1c28 3D821B29 		.word	689668669
+ 1976 1c2c 5B24C13F 		.word	1069622363
+ 1977 1c30 618DB3E9 		.word	-374108831
+ 1978 1c34 08E0C03F 		.word	1069604872
+ 1979 1c38 7EFD101B 		.word	454098302
+ 1980 1c3c 2C9CC03F 		.word	1069587500
+ 1981 1c40 95D233BD 		.word	-1120677227
+ 1982 1c44 C458C03F 		.word	1069570244
+ 1983 1c48 A60C1CD0 		.word	-803468122
+ 1984 1c4c D215C03F 		.word	1069553106
+ 1985 1c50 16F88A6E 		.word	1854601238
+ 1986 1c54 BDA6BF3F 		.word	1069524669
+ 1987 1c58 1D007157 		.word	1467023389
+ 1988 1c5c AF22BF3F 		.word	1069490863
+ 1989 1c60 CD72D9E8 		.word	-388402483
+ 1990 1c64 9C9FBE3F 		.word	1069457308
+ 1991 1c68 71AFCC5B 		.word	1540140913
+ 1992 1c6c 751DBE3F 		.word	1069423989
+ 1993 1c70 07B64AB0 		.word	-1337281017
+ 1994 1c74 389CBD3F 		.word	1069390904
+ 1995 1c78 46274BAD 		.word	-1387583674
+ 1996 1c7c F71BBD3F 		.word	1069358071
+ 1997 1c80 7862D68B 		.word	-1948884360
+ 1998 1c84 A19CBC3F 		.word	1069325473
+ 1999 1c88 09A9DBD9 		.word	-639915767
+ 2000 1c8c 571EBC3F 		.word	1069293143
+ 2001 1c90 D7187442 		.word	1114904791
+ 2002 1c94 E8A0BB3F 		.word	1069261032
+ 2003 1c98 0394861A 		.word	445027331
+ 2004 1c9c 8524BB3F 		.word	1069229189
+ 2005 1ca0 D9791B9B 		.word	-1692698151
+ 2006 1ca4 1DA9BA3F 		.word	1069197597
+ 2007 1ca8 A2293BFD 		.word	-46454366
+ 2008 1cac A02EBA3F 		.word	1069166240
+ 2009 1cb0 C9E4D4CE 		.word	-824908599
+ 2010 1cb4 30B5B93F 		.word	1069135152
+ 2011 1cb8 E469F981 		.word	-2114360860
+ 2012 1cbc AB3CB93F 		.word	1069104299
+ 2013 1cc0 5DFA97A4 		.word	-1533543843
+ 2014 1cc4 32C5B83F 		.word	1069073714
+ 2015 1cc8 7FF5B86F 		.word	1874392447
+ 2016 1ccc B54EB83F 		.word	1069043381
+ 2017 1cd0 4B5B5CE3 		.word	-480486581
+ 2018 1cd4 33D9B73F 		.word	1069013299
+ 2019 1cd8 BF2B82FF 		.word	-8246337
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 38
+
+
+ 2020 1cdc AD64B73F 		.word	1068983469
+ 2021 1ce0 9207228B 		.word	-1960704110
+ 2022 1ce4 34F1B63F 		.word	1068953908
+ 2023 1ce8 C4EE3B86 		.word	-2042892604
+ 2024 1cec C77EB63F 		.word	1068924615
+ 2025 1cf0 9E40D829 		.word	702038174
+ 2026 1cf4 560DB63F 		.word	1068895574
+ 2027 1cf8 22FDF675 		.word	1979120930
+ 2028 1cfc E09CB53F 		.word	1068866784
+ 2029 1d00 05C58F31 		.word	831505669
+ 2030 1d04 772DB53F 		.word	1068838263
+ 2031 1d08 4698A25C 		.word	1554159686
+ 2032 1d0c 1ABFB43F 		.word	1068810010
+ 2033 1d10 E6762FF7 		.word	-147884314
+ 2034 1d14 C951B43F 		.word	1068782025
+ 2035 1d18 E5603601 		.word	20340965
+ 2036 1d1c 86E5B33F 		.word	1068754310
+ 2037 1d20 8DB5BFB3 		.word	-1279281779
+ 2038 1d24 3D7AB33F 		.word	1068726845
+ 2039 1d28 4AB6BA9C 		.word	-1665485238
+ 2040 1d2c 1210B33F 		.word	1068699666
+ 2041 1d30 65C22FF5 		.word	-181419419
+ 2042 1d34 F3A6B23F 		.word	1068672755
+ 2043 1d38 2A3927F6 		.word	-165201622
+ 2044 1d3c D03EB23F 		.word	1068646096
+ 2045 1d40 035C902D 		.word	764435459
+ 2046 1d44 CBD7B13F 		.word	1068619723
+ 2047 1d48 3B8A73D4 		.word	-730625477
+ 2048 1d4c D171B13F 		.word	1068593617
+ 2049 1d50 8864C8B1 		.word	-1312267128
+ 2050 1d54 F50CB13F 		.word	1068567797
+ 2051 1d58 344A97FE 		.word	-23639500
+ 2052 1d5c 25A9B03F 		.word	1068542245
+ 2053 1d60 3F3BE0BA 		.word	-1159709889
+ 2054 1d64 6246B03F 		.word	1068516962
+ 2055 1d68 BCB0355B 		.word	1530245308
+ 2056 1d6c 79C9AF3F 		.word	1068484985
+ 2057 1d70 B8019F1F 		.word	530514360
+ 2058 1d74 4608AF3F 		.word	1068435526
+ 2059 1d78 DEAAEB50 		.word	1357621982
+ 2060 1d7c 4D49AE3F 		.word	1068386637
+ 2061 1d80 C26A2C61 		.word	1630300866
+ 2062 1d84 6D8CAD3F 		.word	1068338285
+ 2063 1d88 CF8250DE 		.word	-565148977
+ 2064 1d8c C7D1AC3F 		.word	1068290503
+ 2065 1d90 06F357C8 		.word	-933760250
+ 2066 1d94 5C19AC3F 		.word	1068243292
+ 2067 1d98 FB795391 		.word	-1856800261
+ 2068 1d9c 0A63AB3F 		.word	1068196618
+ 2069 1da0 849A2155 		.word	1428265604
+ 2070 1da4 14AFAA3F 		.word	1068150548
+ 2071 1da8 CCD1E3F7 		.word	-136064564
+ 2072 1dac 36FDA93F 		.word	1068105014
+ 2073 1db0 3D618907 		.word	126443837
+ 2074 1db4 944DA93F 		.word	1068060052
+ 2075 1db8 448A0112 		.word	302090820
+ 2076 1dbc 4DA0A83F 		.word	1068015693
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 39
+
+
+ 2077 1dc0 08CA6DFB 		.word	-76690936
+ 2078 1dc4 1EF5A73F 		.word	1067971870
+ 2079 1dc8 F661BD51 		.word	1371365878
+ 2080 1dcc 2B4CA73F 		.word	1067928619
+ 2081 1dd0 7993DFA2 		.word	-1562406023
+ 2082 1dd4 93A5A63F 		.word	1067885971
+ 2083 1dd8 261DE560 		.word	1625627942
+ 2084 1ddc 3601A63F 		.word	1067843894
+ 2085 1de0 FCFECD8B 		.word	-1949434116
+ 2086 1de4 135FA53F 		.word	1067802387
+ 2087 1de8 FC389A23 		.word	597309692
+ 2088 1dec 2BBFA43F 		.word	1067761451
+ 2089 1df0 910C39B6 		.word	-1237775215
+ 2090 1df4 9E21A43F 		.word	1067721118
+ 2091 1df8 5038BBB5 		.word	-1246021552
+ 2092 1dfc 4C86A33F 		.word	1067681356
+ 2093 1e00 38BC2022 		.word	572570680
+ 2094 1e04 35EDA23F 		.word	1067642165
+ 2095 1e08 B6D95889 		.word	-1990665802
+ 2096 1e0c 7956A23F 		.word	1067603577
+ 2097 1e10 5D4F745D 		.word	1567903581
+ 2098 1e14 F8C1A13F 		.word	1067565560
+ 2099 1e18 9A5E622C 		.word	744644250
+ 2100 1e1c D32FA13F 		.word	1067528147
+ 2101 1e20 6C0723F6 		.word	-165476500
+ 2102 1e24 09A0A03F 		.word	1067491337
+ 2103 1e28 6808C72C 		.word	751241320
+ 2104 1e2c 7B12A03F 		.word	1067455099
+ 2105 1e30 F1457BBC 		.word	-1132771855
+ 2106 1e34 900E9F3F 		.word	1067388560
+ 2107 1e38 3EAE0D15 		.word	353218110
+ 2108 1e3c E3FC9D3F 		.word	1067318499
+ 2109 1e40 DEC66647 		.word	1197917918
+ 2110 1e44 AAEF9C3F 		.word	1067249578
+ 2111 1e48 A912656F 		.word	1868894889
+ 2112 1e4c 29E79B3F 		.word	1067181865
+ 2113 1e50 9F91088D 		.word	-1928818273
+ 2114 1e54 60E39A3F 		.word	1067115360
+ 2115 1e58 BF4351A0 		.word	-1605286977
+ 2116 1e5c 4FE4993F 		.word	1067050063
+ 2117 1e60 0B293FA9 		.word	-1455478517
+ 2118 1e64 F6E9983F 		.word	1066985974
+ 2119 1e68 A9BEF38B 		.word	-1946960215
+ 2120 1e6c 12F4973F 		.word	1066923026
+ 2121 1e70 4A0A2C80 		.word	-2144597430
+ 2122 1e74 2903973F 		.word	1066861353
+ 2123 1e78 1689096A 		.word	1779009814
+ 2124 1e7c F816963F 		.word	1066800888
+ 2125 1e80 35B8AD2D 		.word	766359605
+ 2126 1e84 3C2F953F 		.word	1066741564
+ 2127 1e88 569DD502 		.word	47553878
+ 2128 1e8c 7B4C943F 		.word	1066683515
+ 2129 1e90 A2B5A2CD 		.word	-844974686
+ 2130 1e94 716E933F 		.word	1066626673
+ 2131 1e98 1901158E 		.word	-1911226087
+ 2132 1e9c 2095923F 		.word	1066571040
+ 2133 1ea0 BB7F2C44 		.word	1143766971
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 40
+
+
+ 2134 1ea4 87C0913F 		.word	1066516615
+ 2135 1ea8 5FB4C70B 		.word	197637215
+ 2136 1eac E9F0903F 		.word	1066463465
+ 2137 1eb0 2E1C08C9 		.word	-922215378
+ 2138 1eb4 0226903F 		.word	1066411522
+ 2139 1eb8 506EDBF7 		.word	-136614320
+ 2140 1ebc A8BF8E3F 		.word	1066319784
+ 2141 1ec0 9A0AF148 		.word	1223756442
+ 2142 1ec4 BC3C8D3F 		.word	1066220732
+ 2143 1ec8 390D5185 		.word	-2058285767
+ 2144 1ecc 3FC38B3F 		.word	1066124095
+ 2145 1ed0 DD7BB8E4 		.word	-457671715
+ 2146 1ed4 B8538A3F 		.word	1066030008
+ 2147 1ed8 86562767 		.word	1730631302
+ 2148 1edc 28EE883F 		.word	1065938472
+ 2149 1ee0 D591239D 		.word	-1658613291
+ 2150 1ee4 8191873F 		.word	1065849217
+ 2151 1ee8 2A3927F6 		.word	-165201622
+ 2152 1eec D03E863F 		.word	1065762512
+ 2153 1ef0 834C3272 		.word	1915899011
+ 2154 1ef4 16F6843F 		.word	1065678358
+ 2155 1ef8 32C687D9 		.word	-645413326
+ 2156 1efc CBB6833F 		.word	1065596619
+ 2157 1f00 E7ABE463 		.word	1675930599
+ 2158 1f04 7781823F 		.word	1065517431
+ 2159 1f08 F0F78BD9 		.word	-645138448
+ 2160 1f0c 9255813F 		.word	1065440658
+ 2161 1f10 50AA7D3A 		.word	981314128
+ 2162 1f14 1E33803F 		.word	1065366302
+ 2163 1f18 C79C67EC 		.word	-328753977
+ 2164 1f1c 4B367E3F 		.word	1065236043
+ 2165 1f20 3BA6EECA 		.word	-890329541
+ 2166 1f24 2E187C3F 		.word	1065097262
+ 2167 1f28 1893FE5E 		.word	1593742104
+ 2168 1f2c 0A0F7A3F 		.word	1064963850
+ 2169 1f30 A14CA3C9 		.word	-912044895
+ 2170 1f34 C518783F 		.word	1064835269
+ 2171 1f38 D4D2DC0A 		.word	182244052
+ 2172 1f3c 6135763F 		.word	1064711521
+ 2173 1f40 713C9F01 		.word	27212913
+ 2174 1f44 F566743F 		.word	1064593141
+ 2175 1f48 B972F6CE 		.word	-822709575
+ 2176 1f4c 68AB723F 		.word	1064479592
+ 2177 1f50 AB75E272 		.word	1927443883
+ 2178 1f54 BC02713F 		.word	1064370876
+ 2179 1f58 0FB8AE98 		.word	-1733380081
+ 2180 1f5c 11DE6E3F 		.word	1064230417
+ 2181 1f60 1D1EC2F8 		.word	-121496035
+ 2182 1f64 69DC6B3F 		.word	1064033385
+ 2183 1f68 821DFF05 		.word	100605314
+ 2184 1f6c 8200693F 		.word	1063846018
+ 2185 1f70 B9E34D7E 		.word	2119033785
+ 2186 1f74 8B4E663F 		.word	1063669387
+ 2187 1f78 4643C6A3 		.word	-1547287738
+ 2188 1f7c 54C2633F 		.word	1063502420
+ 2189 1f80 E7525C55 		.word	1432113895
+ 2190 1f84 F65D613F 		.word	1063345654
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 41
+
+
+ 2191 1f88 39252026 		.word	639640889
+ 2192 1f8c E1425E3F 		.word	1063142113
+ 2193 1f90 CD04C3B9 		.word	-1178401587
+ 2194 1f94 86195A3F 		.word	1062869382
+ 2195 1f98 0D17B9A7 		.word	-1481042163
+ 2196 1f9c AB3B563F 		.word	1062615979
+ 2197 1fa0 F2B6D26B 		.word	1808971506
+ 2198 1fa4 B3B1523F 		.word	1062384051
+ 2199 1fa8 06137F14 		.word	343872262
+ 2200 1fac 75E64E3F 		.word	1062135413
+ 2201 1fb0 7978CF81 		.word	-2117109639
+ 2202 1fb4 E508493F 		.word	1061751013
+ 2203 1fb8 4643C6A3 		.word	-1547287738
+ 2204 1fbc 54C2433F 		.word	1061405268
+ 2205 1fc0 B55208E4 		.word	-469216587
+ 2206 1fc4 12473E3F 		.word	1061046034
+ 2207 1fc8 92E9D0E9 		.word	-372184686
+ 2208 1fcc 7937363F 		.word	1060517753
+ 2209 1fd0 FC6D4F90 		.word	-1873842692
+ 2210 1fd4 D8EE2E3F 		.word	1060040408
+ 2211 1fd8 3D9E961F 		.word	529964605
+ 2212 1fdc B8CA233F 		.word	1059310264
+ 2213 1fe0 809F71E1 		.word	-512647296
+ 2214 1fe4 4048163F 		.word	1058424896
+ 2215 1fe8 180AD80E 		.word	249039384
+ 2216 1fec 46EC033F 		.word	1057221702
+ 2217 1ff0 3FABCC94 		.word	-1798526145
+ 2218 1ff4 D6DFE23E 		.word	1055055830
+ 2219 1ff8 00000000 		.word	0
+ 2220 1ffc 00000000 		.word	0
+ 2221              		.text
+ 2222              	.Letext0:
+ 2223              		.file 2 ".\\bsw/global.h"
+ 2224              		.file 3 "dsp.h"
+ 2225              		.section	.debug_info,"",%progbits
+ 2226              	.Ldebug_info0:
+ 2227 0000 ED010000 		.4byte	0x1ed
+ 2228 0004 0400     		.2byte	0x4
+ 2229 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 2230 000a 04       		.byte	0x4
+ 2231 000b 01       		.uleb128 0x1
+ 2232 000c E7000000 		.4byte	.LASF47
+ 2233 0010 0C       		.byte	0xc
+ 2234 0011 9A020000 		.4byte	.LASF48
+ 2235 0015 2A000000 		.4byte	.LASF49
+ 2236 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 2237 001d 00000000 		.4byte	0
+ 2238 0021 00000000 		.4byte	.Ldebug_line0
+ 2239 0025 02       		.uleb128 0x2
+ 2240 0026 01       		.byte	0x1
+ 2241 0027 06       		.byte	0x6
+ 2242 0028 64030000 		.4byte	.LASF0
+ 2243 002c 02       		.uleb128 0x2
+ 2244 002d 01       		.byte	0x1
+ 2245 002e 08       		.byte	0x8
+ 2246 002f D9000000 		.4byte	.LASF1
+ 2247 0033 02       		.uleb128 0x2
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 42
+
+
+ 2248 0034 02       		.byte	0x2
+ 2249 0035 05       		.byte	0x5
+ 2250 0036 07030000 		.4byte	.LASF2
+ 2251 003a 03       		.uleb128 0x3
+ 2252 003b 33030000 		.4byte	.LASF6
+ 2253 003f 02       		.byte	0x2
+ 2254 0040 93       		.byte	0x93
+ 2255 0041 45000000 		.4byte	0x45
+ 2256 0045 02       		.uleb128 0x2
+ 2257 0046 02       		.byte	0x2
+ 2258 0047 07       		.byte	0x7
+ 2259 0048 A0010000 		.4byte	.LASF3
+ 2260 004c 02       		.uleb128 0x2
+ 2261 004d 04       		.byte	0x4
+ 2262 004e 05       		.byte	0x5
+ 2263 004f 3C030000 		.4byte	.LASF4
+ 2264 0053 02       		.uleb128 0x2
+ 2265 0054 04       		.byte	0x4
+ 2266 0055 07       		.byte	0x7
+ 2267 0056 8E010000 		.4byte	.LASF5
+ 2268 005a 03       		.uleb128 0x3
+ 2269 005b 19020000 		.4byte	.LASF7
+ 2270 005f 02       		.byte	0x2
+ 2271 0060 98       		.byte	0x98
+ 2272 0061 65000000 		.4byte	0x65
+ 2273 0065 02       		.uleb128 0x2
+ 2274 0066 04       		.byte	0x4
+ 2275 0067 04       		.byte	0x4
+ 2276 0068 D3000000 		.4byte	.LASF8
+ 2277 006c 02       		.uleb128 0x2
+ 2278 006d 08       		.byte	0x8
+ 2279 006e 04       		.byte	0x4
+ 2280 006f 12020000 		.4byte	.LASF9
+ 2281 0073 02       		.uleb128 0x2
+ 2282 0074 08       		.byte	0x8
+ 2283 0075 05       		.byte	0x5
+ 2284 0076 BE020000 		.4byte	.LASF10
+ 2285 007a 02       		.uleb128 0x2
+ 2286 007b 08       		.byte	0x8
+ 2287 007c 07       		.byte	0x7
+ 2288 007d 71020000 		.4byte	.LASF11
+ 2289 0081 02       		.uleb128 0x2
+ 2290 0082 01       		.byte	0x1
+ 2291 0083 08       		.byte	0x8
+ 2292 0084 D5020000 		.4byte	.LASF12
+ 2293 0088 04       		.uleb128 0x4
+ 2294 0089 01       		.byte	0x1
+ 2295 008a 25000000 		.4byte	0x25
+ 2296 008e 02       		.byte	0x2
+ 2297 008f CF       		.byte	0xcf
+ 2298 0090 31010000 		.4byte	0x131
+ 2299 0094 05       		.uleb128 0x5
+ 2300 0095 75010000 		.4byte	.LASF13
+ 2301 0099 00       		.byte	0
+ 2302 009a 06       		.uleb128 0x6
+ 2303 009b CC020000 		.4byte	.LASF14
+ 2304 009f 7F       		.sleb128 -1
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 43
+
+
+ 2305 00a0 06       		.uleb128 0x6
+ 2306 00a1 AC000000 		.4byte	.LASF15
+ 2307 00a5 7E       		.sleb128 -2
+ 2308 00a6 06       		.uleb128 0x6
+ 2309 00a7 80010000 		.4byte	.LASF16
+ 2310 00ab 7D       		.sleb128 -3
+ 2311 00ac 06       		.uleb128 0x6
+ 2312 00ad 34020000 		.4byte	.LASF17
+ 2313 00b1 7C       		.sleb128 -4
+ 2314 00b2 06       		.uleb128 0x6
+ 2315 00b3 96030000 		.4byte	.LASF18
+ 2316 00b7 7B       		.sleb128 -5
+ 2317 00b8 06       		.uleb128 0x6
+ 2318 00b9 23020000 		.4byte	.LASF19
+ 2319 00bd 7A       		.sleb128 -6
+ 2320 00be 06       		.uleb128 0x6
+ 2321 00bf 71000000 		.4byte	.LASF20
+ 2322 00c3 79       		.sleb128 -7
+ 2323 00c4 06       		.uleb128 0x6
+ 2324 00c5 A0020000 		.4byte	.LASF21
+ 2325 00c9 78       		.sleb128 -8
+ 2326 00ca 06       		.uleb128 0x6
+ 2327 00cb 00000000 		.4byte	.LASF22
+ 2328 00cf 77       		.sleb128 -9
+ 2329 00d0 06       		.uleb128 0x6
+ 2330 00d1 DA020000 		.4byte	.LASF23
+ 2331 00d5 76       		.sleb128 -10
+ 2332 00d6 06       		.uleb128 0x6
+ 2333 00d7 B3010000 		.4byte	.LASF24
+ 2334 00db 75       		.sleb128 -11
+ 2335 00dc 06       		.uleb128 0x6
+ 2336 00dd 81030000 		.4byte	.LASF25
+ 2337 00e1 74       		.sleb128 -12
+ 2338 00e2 06       		.uleb128 0x6
+ 2339 00e3 88020000 		.4byte	.LASF26
+ 2340 00e7 73       		.sleb128 -13
+ 2341 00e8 06       		.uleb128 0x6
+ 2342 00e9 51030000 		.4byte	.LASF27
+ 2343 00ed 72       		.sleb128 -14
+ 2344 00ee 06       		.uleb128 0x6
+ 2345 00ef 1F030000 		.4byte	.LASF28
+ 2346 00f3 71       		.sleb128 -15
+ 2347 00f4 06       		.uleb128 0x6
+ 2348 00f5 70030000 		.4byte	.LASF29
+ 2349 00f9 70       		.sleb128 -16
+ 2350 00fa 06       		.uleb128 0x6
+ 2351 00fb 16000000 		.4byte	.LASF30
+ 2352 00ff 6F       		.sleb128 -17
+ 2353 0100 06       		.uleb128 0x6
+ 2354 0101 D7010000 		.4byte	.LASF31
+ 2355 0105 6E       		.sleb128 -18
+ 2356 0106 06       		.uleb128 0x6
+ 2357 0107 EC010000 		.4byte	.LASF32
+ 2358 010b 6D       		.sleb128 -19
+ 2359 010c 06       		.uleb128 0x6
+ 2360 010d 94000000 		.4byte	.LASF33
+ 2361 0111 6C       		.sleb128 -20
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 44
+
+
+ 2362 0112 06       		.uleb128 0x6
+ 2363 0113 C5010000 		.4byte	.LASF34
+ 2364 0117 6B       		.sleb128 -21
+ 2365 0118 06       		.uleb128 0x6
+ 2366 0119 44020000 		.4byte	.LASF35
+ 2367 011d 6A       		.sleb128 -22
+ 2368 011e 06       		.uleb128 0x6
+ 2369 011f E8020000 		.4byte	.LASF36
+ 2370 0123 69       		.sleb128 -23
+ 2371 0124 06       		.uleb128 0x6
+ 2372 0125 83000000 		.4byte	.LASF37
+ 2373 0129 68       		.sleb128 -24
+ 2374 012a 06       		.uleb128 0x6
+ 2375 012b BA000000 		.4byte	.LASF38
+ 2376 012f 67       		.sleb128 -25
+ 2377 0130 00       		.byte	0
+ 2378 0131 03       		.uleb128 0x3
+ 2379 0132 A7000000 		.4byte	.LASF39
+ 2380 0136 02       		.byte	0x2
+ 2381 0137 EA       		.byte	0xea
+ 2382 0138 88000000 		.4byte	0x88
+ 2383 013c 07       		.uleb128 0x7
+ 2384 013d 04       		.byte	0x4
+ 2385 013e 05       		.byte	0x5
+ 2386 013f 696E7400 		.ascii	"int\000"
+ 2387 0143 02       		.uleb128 0x2
+ 2388 0144 04       		.byte	0x4
+ 2389 0145 07       		.byte	0x7
+ 2390 0146 56020000 		.4byte	.LASF40
+ 2391 014a 02       		.uleb128 0x2
+ 2392 014b 08       		.byte	0x8
+ 2393 014c 04       		.byte	0x4
+ 2394 014d 45030000 		.4byte	.LASF41
+ 2395 0151 02       		.uleb128 0x2
+ 2396 0152 04       		.byte	0x4
+ 2397 0153 07       		.byte	0x7
+ 2398 0154 B5020000 		.4byte	.LASF42
+ 2399 0158 08       		.uleb128 0x8
+ 2400 0159 FF010000 		.4byte	.LASF50
+ 2401 015d 01       		.byte	0x1
+ 2402 015e 41       		.byte	0x41
+ 2403 015f 31010000 		.4byte	0x131
+ 2404 0163 00000000 		.4byte	.LFB0
+ 2405 0167 90000000 		.4byte	.LFE0-.LFB0
+ 2406 016b 01       		.uleb128 0x1
+ 2407 016c 9C       		.byte	0x9c
+ 2408 016d BE010000 		.4byte	0x1be
+ 2409 0171 09       		.uleb128 0x9
+ 2410 0172 FF020000 		.4byte	.LASF43
+ 2411 0176 01       		.byte	0x1
+ 2412 0177 41       		.byte	0x41
+ 2413 0178 BE010000 		.4byte	0x1be
+ 2414 017c 00000000 		.4byte	.LLST0
+ 2415 0180 09       		.uleb128 0x9
+ 2416 0181 8F030000 		.4byte	.LASF44
+ 2417 0185 01       		.byte	0x1
+ 2418 0186 41       		.byte	0x41
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 45
+
+
+ 2419 0187 3A000000 		.4byte	0x3a
+ 2420 018b 5B000000 		.4byte	.LLST1
+ 2421 018f 0A       		.uleb128 0xa
+ 2422 0190 00000000 		.4byte	.Ldebug_ranges0+0
+ 2423 0194 0B       		.uleb128 0xb
+ 2424 0195 69647800 		.ascii	"idx\000"
+ 2425 0199 01       		.byte	0x1
+ 2426 019a 46       		.byte	0x46
+ 2427 019b 3A000000 		.4byte	0x3a
+ 2428 019f 87000000 		.4byte	.LLST2
+ 2429 01a3 0C       		.uleb128 0xc
+ 2430 01a4 14000000 		.4byte	.LBB3
+ 2431 01a8 56000000 		.4byte	.LBE3-.LBB3
+ 2432 01ac 0D       		.uleb128 0xd
+ 2433 01ad 11030000 		.4byte	.LASF45
+ 2434 01b1 01       		.byte	0x1
+ 2435 01b2 48       		.byte	0x48
+ 2436 01b3 5A000000 		.4byte	0x5a
+ 2437 01b7 A5000000 		.4byte	.LLST3
+ 2438 01bb 00       		.byte	0
+ 2439 01bc 00       		.byte	0
+ 2440 01bd 00       		.byte	0
+ 2441 01be 0E       		.uleb128 0xe
+ 2442 01bf 04       		.byte	0x4
+ 2443 01c0 3A000000 		.4byte	0x3a
+ 2444 01c4 0F       		.uleb128 0xf
+ 2445 01c5 D5010000 		.4byte	0x1d5
+ 2446 01c9 D5010000 		.4byte	0x1d5
+ 2447 01cd 10       		.uleb128 0x10
+ 2448 01ce 51010000 		.4byte	0x151
+ 2449 01d2 FF03     		.2byte	0x3ff
+ 2450 01d4 00       		.byte	0
+ 2451 01d5 11       		.uleb128 0x11
+ 2452 01d6 6C000000 		.4byte	0x6c
+ 2453 01da 12       		.uleb128 0x12
+ 2454 01db 63020000 		.4byte	.LASF46
+ 2455 01df 03       		.byte	0x3
+ 2456 01e0 13       		.byte	0x13
+ 2457 01e1 EB010000 		.4byte	0x1eb
+ 2458 01e5 05       		.uleb128 0x5
+ 2459 01e6 03       		.byte	0x3
+ 2460 01e7 00000000 		.4byte	hanning_table
+ 2461 01eb 11       		.uleb128 0x11
+ 2462 01ec C4010000 		.4byte	0x1c4
+ 2463 01f0 00       		.byte	0
+ 2464              		.section	.debug_abbrev,"",%progbits
+ 2465              	.Ldebug_abbrev0:
+ 2466 0000 01       		.uleb128 0x1
+ 2467 0001 11       		.uleb128 0x11
+ 2468 0002 01       		.byte	0x1
+ 2469 0003 25       		.uleb128 0x25
+ 2470 0004 0E       		.uleb128 0xe
+ 2471 0005 13       		.uleb128 0x13
+ 2472 0006 0B       		.uleb128 0xb
+ 2473 0007 03       		.uleb128 0x3
+ 2474 0008 0E       		.uleb128 0xe
+ 2475 0009 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 46
+
+
+ 2476 000a 0E       		.uleb128 0xe
+ 2477 000b 55       		.uleb128 0x55
+ 2478 000c 17       		.uleb128 0x17
+ 2479 000d 11       		.uleb128 0x11
+ 2480 000e 01       		.uleb128 0x1
+ 2481 000f 10       		.uleb128 0x10
+ 2482 0010 17       		.uleb128 0x17
+ 2483 0011 00       		.byte	0
+ 2484 0012 00       		.byte	0
+ 2485 0013 02       		.uleb128 0x2
+ 2486 0014 24       		.uleb128 0x24
+ 2487 0015 00       		.byte	0
+ 2488 0016 0B       		.uleb128 0xb
+ 2489 0017 0B       		.uleb128 0xb
+ 2490 0018 3E       		.uleb128 0x3e
+ 2491 0019 0B       		.uleb128 0xb
+ 2492 001a 03       		.uleb128 0x3
+ 2493 001b 0E       		.uleb128 0xe
+ 2494 001c 00       		.byte	0
+ 2495 001d 00       		.byte	0
+ 2496 001e 03       		.uleb128 0x3
+ 2497 001f 16       		.uleb128 0x16
+ 2498 0020 00       		.byte	0
+ 2499 0021 03       		.uleb128 0x3
+ 2500 0022 0E       		.uleb128 0xe
+ 2501 0023 3A       		.uleb128 0x3a
+ 2502 0024 0B       		.uleb128 0xb
+ 2503 0025 3B       		.uleb128 0x3b
+ 2504 0026 0B       		.uleb128 0xb
+ 2505 0027 49       		.uleb128 0x49
+ 2506 0028 13       		.uleb128 0x13
+ 2507 0029 00       		.byte	0
+ 2508 002a 00       		.byte	0
+ 2509 002b 04       		.uleb128 0x4
+ 2510 002c 04       		.uleb128 0x4
+ 2511 002d 01       		.byte	0x1
+ 2512 002e 0B       		.uleb128 0xb
+ 2513 002f 0B       		.uleb128 0xb
+ 2514 0030 49       		.uleb128 0x49
+ 2515 0031 13       		.uleb128 0x13
+ 2516 0032 3A       		.uleb128 0x3a
+ 2517 0033 0B       		.uleb128 0xb
+ 2518 0034 3B       		.uleb128 0x3b
+ 2519 0035 0B       		.uleb128 0xb
+ 2520 0036 01       		.uleb128 0x1
+ 2521 0037 13       		.uleb128 0x13
+ 2522 0038 00       		.byte	0
+ 2523 0039 00       		.byte	0
+ 2524 003a 05       		.uleb128 0x5
+ 2525 003b 28       		.uleb128 0x28
+ 2526 003c 00       		.byte	0
+ 2527 003d 03       		.uleb128 0x3
+ 2528 003e 0E       		.uleb128 0xe
+ 2529 003f 1C       		.uleb128 0x1c
+ 2530 0040 0B       		.uleb128 0xb
+ 2531 0041 00       		.byte	0
+ 2532 0042 00       		.byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 47
+
+
+ 2533 0043 06       		.uleb128 0x6
+ 2534 0044 28       		.uleb128 0x28
+ 2535 0045 00       		.byte	0
+ 2536 0046 03       		.uleb128 0x3
+ 2537 0047 0E       		.uleb128 0xe
+ 2538 0048 1C       		.uleb128 0x1c
+ 2539 0049 0D       		.uleb128 0xd
+ 2540 004a 00       		.byte	0
+ 2541 004b 00       		.byte	0
+ 2542 004c 07       		.uleb128 0x7
+ 2543 004d 24       		.uleb128 0x24
+ 2544 004e 00       		.byte	0
+ 2545 004f 0B       		.uleb128 0xb
+ 2546 0050 0B       		.uleb128 0xb
+ 2547 0051 3E       		.uleb128 0x3e
+ 2548 0052 0B       		.uleb128 0xb
+ 2549 0053 03       		.uleb128 0x3
+ 2550 0054 08       		.uleb128 0x8
+ 2551 0055 00       		.byte	0
+ 2552 0056 00       		.byte	0
+ 2553 0057 08       		.uleb128 0x8
+ 2554 0058 2E       		.uleb128 0x2e
+ 2555 0059 01       		.byte	0x1
+ 2556 005a 3F       		.uleb128 0x3f
+ 2557 005b 19       		.uleb128 0x19
+ 2558 005c 03       		.uleb128 0x3
+ 2559 005d 0E       		.uleb128 0xe
+ 2560 005e 3A       		.uleb128 0x3a
+ 2561 005f 0B       		.uleb128 0xb
+ 2562 0060 3B       		.uleb128 0x3b
+ 2563 0061 0B       		.uleb128 0xb
+ 2564 0062 27       		.uleb128 0x27
+ 2565 0063 19       		.uleb128 0x19
+ 2566 0064 49       		.uleb128 0x49
+ 2567 0065 13       		.uleb128 0x13
+ 2568 0066 11       		.uleb128 0x11
+ 2569 0067 01       		.uleb128 0x1
+ 2570 0068 12       		.uleb128 0x12
+ 2571 0069 06       		.uleb128 0x6
+ 2572 006a 40       		.uleb128 0x40
+ 2573 006b 18       		.uleb128 0x18
+ 2574 006c 9642     		.uleb128 0x2116
+ 2575 006e 19       		.uleb128 0x19
+ 2576 006f 01       		.uleb128 0x1
+ 2577 0070 13       		.uleb128 0x13
+ 2578 0071 00       		.byte	0
+ 2579 0072 00       		.byte	0
+ 2580 0073 09       		.uleb128 0x9
+ 2581 0074 05       		.uleb128 0x5
+ 2582 0075 00       		.byte	0
+ 2583 0076 03       		.uleb128 0x3
+ 2584 0077 0E       		.uleb128 0xe
+ 2585 0078 3A       		.uleb128 0x3a
+ 2586 0079 0B       		.uleb128 0xb
+ 2587 007a 3B       		.uleb128 0x3b
+ 2588 007b 0B       		.uleb128 0xb
+ 2589 007c 49       		.uleb128 0x49
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 48
+
+
+ 2590 007d 13       		.uleb128 0x13
+ 2591 007e 02       		.uleb128 0x2
+ 2592 007f 17       		.uleb128 0x17
+ 2593 0080 00       		.byte	0
+ 2594 0081 00       		.byte	0
+ 2595 0082 0A       		.uleb128 0xa
+ 2596 0083 0B       		.uleb128 0xb
+ 2597 0084 01       		.byte	0x1
+ 2598 0085 55       		.uleb128 0x55
+ 2599 0086 17       		.uleb128 0x17
+ 2600 0087 00       		.byte	0
+ 2601 0088 00       		.byte	0
+ 2602 0089 0B       		.uleb128 0xb
+ 2603 008a 34       		.uleb128 0x34
+ 2604 008b 00       		.byte	0
+ 2605 008c 03       		.uleb128 0x3
+ 2606 008d 08       		.uleb128 0x8
+ 2607 008e 3A       		.uleb128 0x3a
+ 2608 008f 0B       		.uleb128 0xb
+ 2609 0090 3B       		.uleb128 0x3b
+ 2610 0091 0B       		.uleb128 0xb
+ 2611 0092 49       		.uleb128 0x49
+ 2612 0093 13       		.uleb128 0x13
+ 2613 0094 02       		.uleb128 0x2
+ 2614 0095 17       		.uleb128 0x17
+ 2615 0096 00       		.byte	0
+ 2616 0097 00       		.byte	0
+ 2617 0098 0C       		.uleb128 0xc
+ 2618 0099 0B       		.uleb128 0xb
+ 2619 009a 01       		.byte	0x1
+ 2620 009b 11       		.uleb128 0x11
+ 2621 009c 01       		.uleb128 0x1
+ 2622 009d 12       		.uleb128 0x12
+ 2623 009e 06       		.uleb128 0x6
+ 2624 009f 00       		.byte	0
+ 2625 00a0 00       		.byte	0
+ 2626 00a1 0D       		.uleb128 0xd
+ 2627 00a2 34       		.uleb128 0x34
+ 2628 00a3 00       		.byte	0
+ 2629 00a4 03       		.uleb128 0x3
+ 2630 00a5 0E       		.uleb128 0xe
+ 2631 00a6 3A       		.uleb128 0x3a
+ 2632 00a7 0B       		.uleb128 0xb
+ 2633 00a8 3B       		.uleb128 0x3b
+ 2634 00a9 0B       		.uleb128 0xb
+ 2635 00aa 49       		.uleb128 0x49
+ 2636 00ab 13       		.uleb128 0x13
+ 2637 00ac 02       		.uleb128 0x2
+ 2638 00ad 17       		.uleb128 0x17
+ 2639 00ae 00       		.byte	0
+ 2640 00af 00       		.byte	0
+ 2641 00b0 0E       		.uleb128 0xe
+ 2642 00b1 0F       		.uleb128 0xf
+ 2643 00b2 00       		.byte	0
+ 2644 00b3 0B       		.uleb128 0xb
+ 2645 00b4 0B       		.uleb128 0xb
+ 2646 00b5 49       		.uleb128 0x49
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 49
+
+
+ 2647 00b6 13       		.uleb128 0x13
+ 2648 00b7 00       		.byte	0
+ 2649 00b8 00       		.byte	0
+ 2650 00b9 0F       		.uleb128 0xf
+ 2651 00ba 01       		.uleb128 0x1
+ 2652 00bb 01       		.byte	0x1
+ 2653 00bc 49       		.uleb128 0x49
+ 2654 00bd 13       		.uleb128 0x13
+ 2655 00be 01       		.uleb128 0x1
+ 2656 00bf 13       		.uleb128 0x13
+ 2657 00c0 00       		.byte	0
+ 2658 00c1 00       		.byte	0
+ 2659 00c2 10       		.uleb128 0x10
+ 2660 00c3 21       		.uleb128 0x21
+ 2661 00c4 00       		.byte	0
+ 2662 00c5 49       		.uleb128 0x49
+ 2663 00c6 13       		.uleb128 0x13
+ 2664 00c7 2F       		.uleb128 0x2f
+ 2665 00c8 05       		.uleb128 0x5
+ 2666 00c9 00       		.byte	0
+ 2667 00ca 00       		.byte	0
+ 2668 00cb 11       		.uleb128 0x11
+ 2669 00cc 26       		.uleb128 0x26
+ 2670 00cd 00       		.byte	0
+ 2671 00ce 49       		.uleb128 0x49
+ 2672 00cf 13       		.uleb128 0x13
+ 2673 00d0 00       		.byte	0
+ 2674 00d1 00       		.byte	0
+ 2675 00d2 12       		.uleb128 0x12
+ 2676 00d3 34       		.uleb128 0x34
+ 2677 00d4 00       		.byte	0
+ 2678 00d5 03       		.uleb128 0x3
+ 2679 00d6 0E       		.uleb128 0xe
+ 2680 00d7 3A       		.uleb128 0x3a
+ 2681 00d8 0B       		.uleb128 0xb
+ 2682 00d9 3B       		.uleb128 0x3b
+ 2683 00da 0B       		.uleb128 0xb
+ 2684 00db 49       		.uleb128 0x49
+ 2685 00dc 13       		.uleb128 0x13
+ 2686 00dd 02       		.uleb128 0x2
+ 2687 00de 18       		.uleb128 0x18
+ 2688 00df 00       		.byte	0
+ 2689 00e0 00       		.byte	0
+ 2690 00e1 00       		.byte	0
+ 2691              		.section	.debug_loc,"",%progbits
+ 2692              	.Ldebug_loc0:
+ 2693              	.LLST0:
+ 2694 0000 00000000 		.4byte	.LVL0
+ 2695 0004 14000000 		.4byte	.LVL1
+ 2696 0008 0100     		.2byte	0x1
+ 2697 000a 50       		.byte	0x50
+ 2698 000b 14000000 		.4byte	.LVL1
+ 2699 000f 78000000 		.4byte	.LVL12
+ 2700 0013 0100     		.2byte	0x1
+ 2701 0015 55       		.byte	0x55
+ 2702 0016 78000000 		.4byte	.LVL12
+ 2703 001a 7C000000 		.4byte	.LVL13
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 50
+
+
+ 2704 001e 0100     		.2byte	0x1
+ 2705 0020 50       		.byte	0x50
+ 2706 0021 7C000000 		.4byte	.LVL13
+ 2707 0025 7E000000 		.4byte	.LVL14
+ 2708 0029 0400     		.2byte	0x4
+ 2709 002b F3       		.byte	0xf3
+ 2710 002c 01       		.uleb128 0x1
+ 2711 002d 50       		.byte	0x50
+ 2712 002e 9F       		.byte	0x9f
+ 2713 002f 7E000000 		.4byte	.LVL14
+ 2714 0033 82000000 		.4byte	.LVL15
+ 2715 0037 0100     		.2byte	0x1
+ 2716 0039 50       		.byte	0x50
+ 2717 003a 82000000 		.4byte	.LVL15
+ 2718 003e 86000000 		.4byte	.LVL16
+ 2719 0042 0100     		.2byte	0x1
+ 2720 0044 55       		.byte	0x55
+ 2721 0045 86000000 		.4byte	.LVL16
+ 2722 0049 90000000 		.4byte	.LFE0
+ 2723 004d 0400     		.2byte	0x4
+ 2724 004f F3       		.byte	0xf3
+ 2725 0050 01       		.uleb128 0x1
+ 2726 0051 50       		.byte	0x50
+ 2727 0052 9F       		.byte	0x9f
+ 2728 0053 00000000 		.4byte	0
+ 2729 0057 00000000 		.4byte	0
+ 2730              	.LLST1:
+ 2731 005b 00000000 		.4byte	.LVL0
+ 2732 005f 14000000 		.4byte	.LVL1
+ 2733 0063 0100     		.2byte	0x1
+ 2734 0065 51       		.byte	0x51
+ 2735 0066 14000000 		.4byte	.LVL1
+ 2736 006a 78000000 		.4byte	.LVL12
+ 2737 006e 0400     		.2byte	0x4
+ 2738 0070 F3       		.byte	0xf3
+ 2739 0071 01       		.uleb128 0x1
+ 2740 0072 51       		.byte	0x51
+ 2741 0073 9F       		.byte	0x9f
+ 2742 0074 78000000 		.4byte	.LVL12
+ 2743 0078 90000000 		.4byte	.LFE0
+ 2744 007c 0100     		.2byte	0x1
+ 2745 007e 51       		.byte	0x51
+ 2746 007f 00000000 		.4byte	0
+ 2747 0083 00000000 		.4byte	0
+ 2748              	.LLST2:
+ 2749 0087 14000000 		.4byte	.LVL1
+ 2750 008b 6C000000 		.4byte	.LVL10
+ 2751 008f 0100     		.2byte	0x1
+ 2752 0091 54       		.byte	0x54
+ 2753 0092 6E000000 		.4byte	.LVL11
+ 2754 0096 78000000 		.4byte	.LVL12
+ 2755 009a 0100     		.2byte	0x1
+ 2756 009c 54       		.byte	0x54
+ 2757 009d 00000000 		.4byte	0
+ 2758 00a1 00000000 		.4byte	0
+ 2759              	.LLST3:
+ 2760 00a5 3C000000 		.4byte	.LVL6
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 51
+
+
+ 2761 00a9 41000000 		.4byte	.LVL7-1
+ 2762 00ad 0100     		.2byte	0x1
+ 2763 00af 50       		.byte	0x50
+ 2764 00b0 41000000 		.4byte	.LVL7-1
+ 2765 00b4 6E000000 		.4byte	.LVL11
+ 2766 00b8 0100     		.2byte	0x1
+ 2767 00ba 56       		.byte	0x56
+ 2768 00bb 00000000 		.4byte	0
+ 2769 00bf 00000000 		.4byte	0
+ 2770              		.section	.debug_aranges,"",%progbits
+ 2771 0000 1C000000 		.4byte	0x1c
+ 2772 0004 0200     		.2byte	0x2
+ 2773 0006 00000000 		.4byte	.Ldebug_info0
+ 2774 000a 04       		.byte	0x4
+ 2775 000b 00       		.byte	0
+ 2776 000c 0000     		.2byte	0
+ 2777 000e 0000     		.2byte	0
+ 2778 0010 00000000 		.4byte	.LFB0
+ 2779 0014 90000000 		.4byte	.LFE0-.LFB0
+ 2780 0018 00000000 		.4byte	0
+ 2781 001c 00000000 		.4byte	0
+ 2782              		.section	.debug_ranges,"",%progbits
+ 2783              	.Ldebug_ranges0:
+ 2784 0000 14000000 		.4byte	.LBB2
+ 2785 0004 72000000 		.4byte	.LBE2
+ 2786 0008 74000000 		.4byte	.LBB4
+ 2787 000c 78000000 		.4byte	.LBE4
+ 2788 0010 00000000 		.4byte	0
+ 2789 0014 00000000 		.4byte	0
+ 2790 0018 00000000 		.4byte	.LFB0
+ 2791 001c 90000000 		.4byte	.LFE0
+ 2792 0020 00000000 		.4byte	0
+ 2793 0024 00000000 		.4byte	0
+ 2794              		.section	.debug_line,"",%progbits
+ 2795              	.Ldebug_line0:
+ 2796 0000 7C000000 		.section	.debug_str,"MS",%progbits,1
+ 2796      02003700 
+ 2796      00000201 
+ 2796      FB0E0D00 
+ 2796      01010101 
+ 2797              	.LASF22:
+ 2798 0000 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 2798      52524F52 
+ 2798      5F425546 
+ 2798      4645525F 
+ 2798      454D5450 
+ 2799              	.LASF30:
+ 2800 0016 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 2800      52524F52 
+ 2800      5F524541 
+ 2800      445F4641 
+ 2800      494C5300 
+ 2801              	.LASF49:
+ 2802 002a 433A5C55 		.ascii	"C:\\Users\\vboxuser\\Documents\\GitHub\\SDHD_Design"
+ 2802      73657273 
+ 2802      5C76626F 
+ 2802      78757365 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 52
+
+
+ 2802      725C446F 
+ 2803 0058 5C534448 		.ascii	"\\SDHD_Lab\\PSOC_FFT.cydsn\000"
+ 2803      445F4C61 
+ 2803      625C5053 
+ 2803      4F435F46 
+ 2803      46542E63 
+ 2804              	.LASF20:
+ 2805 0071 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 2805      52524F52 
+ 2805      5F554E44 
+ 2805      45525255 
+ 2805      4E00
+ 2806              	.LASF37:
+ 2807 0083 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 2807      52524F52 
+ 2807      5F554E4B 
+ 2807      4E4F574E 
+ 2807      00
+ 2808              	.LASF33:
+ 2809 0094 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 2809      52524F52 
+ 2809      5F424144 
+ 2809      5F504152 
+ 2809      414D00
+ 2810              	.LASF39:
+ 2811 00a7 52435F74 		.ascii	"RC_t\000"
+ 2811      00
+ 2812              	.LASF15:
+ 2813 00ac 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 2813      52524F52 
+ 2813      5F4E554C 
+ 2813      4C00
+ 2814              	.LASF38:
+ 2815 00ba 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 2815      52524F52 
+ 2815      5F4E4F54 
+ 2815      5F494D50 
+ 2815      4C454D45 
+ 2816              	.LASF8:
+ 2817 00d3 666C6F61 		.ascii	"float\000"
+ 2817      7400
+ 2818              	.LASF1:
+ 2819 00d9 756E7369 		.ascii	"unsigned char\000"
+ 2819      676E6564 
+ 2819      20636861 
+ 2819      7200
+ 2820              	.LASF47:
+ 2821 00e7 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2821      43313120 
+ 2821      352E342E 
+ 2821      31203230 
+ 2821      31363036 
+ 2822 011a 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2822      20726576 
+ 2822      6973696F 
+ 2822      6E203233 
+ 2822      37373135 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 53
+
+
+ 2823 014d 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2823      66756E63 
+ 2823      74696F6E 
+ 2823      2D736563 
+ 2823      74696F6E 
+ 2824              	.LASF13:
+ 2825 0175 52435F53 		.ascii	"RC_SUCCESS\000"
+ 2825      55434345 
+ 2825      535300
+ 2826              	.LASF16:
+ 2827 0180 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 2827      52524F52 
+ 2827      5F5A4552 
+ 2827      4F00
+ 2828              	.LASF5:
+ 2829 018e 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2829      20756E73 
+ 2829      69676E65 
+ 2829      6420696E 
+ 2829      7400
+ 2830              	.LASF3:
+ 2831 01a0 73686F72 		.ascii	"short unsigned int\000"
+ 2831      7420756E 
+ 2831      7369676E 
+ 2831      65642069 
+ 2831      6E7400
+ 2832              	.LASF24:
+ 2833 01b3 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 2833      52524F52 
+ 2833      5F54494D 
+ 2833      455F4F55 
+ 2833      5400
+ 2834              	.LASF34:
+ 2835 01c5 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 2835      52524F52 
+ 2835      5F424144 
+ 2835      5F444154 
+ 2835      4100
+ 2836              	.LASF31:
+ 2837 01d7 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 2837      52524F52 
+ 2837      5F575249 
+ 2837      54455F46 
+ 2837      41494C53 
+ 2838              	.LASF32:
+ 2839 01ec 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 2839      52524F52 
+ 2839      5F4E4F54 
+ 2839      5F4D4154 
+ 2839      434800
+ 2840              	.LASF50:
+ 2841 01ff 6170706C 		.ascii	"applyHanningWindow\000"
+ 2841      7948616E 
+ 2841      6E696E67 
+ 2841      57696E64 
+ 2841      6F7700
+ 2842              	.LASF9:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 54
+
+
+ 2843 0212 646F7562 		.ascii	"double\000"
+ 2843      6C6500
+ 2844              	.LASF7:
+ 2845 0219 666C6F61 		.ascii	"float32_t\000"
+ 2845      7433325F 
+ 2845      7400
+ 2846              	.LASF19:
+ 2847 0223 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 2847      52524F52 
+ 2847      5F4F5645 
+ 2847      5252554E 
+ 2847      00
+ 2848              	.LASF17:
+ 2849 0234 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 2849      52524F52 
+ 2849      5F4D454D 
+ 2849      4F525900 
+ 2850              	.LASF35:
+ 2851 0244 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 2851      52524F52 
+ 2851      5F43414E 
+ 2851      43454C45 
+ 2851      4400
+ 2852              	.LASF40:
+ 2853 0256 756E7369 		.ascii	"unsigned int\000"
+ 2853      676E6564 
+ 2853      20696E74 
+ 2853      00
+ 2854              	.LASF46:
+ 2855 0263 68616E6E 		.ascii	"hanning_table\000"
+ 2855      696E675F 
+ 2855      7461626C 
+ 2855      6500
+ 2856              	.LASF11:
+ 2857 0271 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2857      206C6F6E 
+ 2857      6720756E 
+ 2857      7369676E 
+ 2857      65642069 
+ 2858              	.LASF26:
+ 2859 0288 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 2859      52524F52 
+ 2859      5F434845 
+ 2859      434B5355 
+ 2859      4D00
+ 2860              	.LASF48:
+ 2861 029a 6473702E 		.ascii	"dsp.c\000"
+ 2861      6300
+ 2862              	.LASF21:
+ 2863 02a0 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 2863      52524F52 
+ 2863      5F425546 
+ 2863      4645525F 
+ 2863      46554C4C 
+ 2864              	.LASF42:
+ 2865 02b5 73697A65 		.ascii	"sizetype\000"
+ 2865      74797065 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 55
+
+
+ 2865      00
+ 2866              	.LASF10:
+ 2867 02be 6C6F6E67 		.ascii	"long long int\000"
+ 2867      206C6F6E 
+ 2867      6720696E 
+ 2867      7400
+ 2868              	.LASF14:
+ 2869 02cc 52435F45 		.ascii	"RC_ERROR\000"
+ 2869      52524F52 
+ 2869      00
+ 2870              	.LASF12:
+ 2871 02d5 63686172 		.ascii	"char\000"
+ 2871      00
+ 2872              	.LASF23:
+ 2873 02da 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 2873      52524F52 
+ 2873      5F425553 
+ 2873      5900
+ 2874              	.LASF36:
+ 2875 02e8 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 2875      52524F52 
+ 2875      5F494E56 
+ 2875      414C4944 
+ 2875      5F535441 
+ 2876              	.LASF43:
+ 2877 02ff 73616D70 		.ascii	"samples\000"
+ 2877      6C657300 
+ 2878              	.LASF2:
+ 2879 0307 73686F72 		.ascii	"short int\000"
+ 2879      7420696E 
+ 2879      7400
+ 2880              	.LASF45:
+ 2881 0311 7363616C 		.ascii	"scaled_sample\000"
+ 2881      65645F73 
+ 2881      616D706C 
+ 2881      6500
+ 2882              	.LASF28:
+ 2883 031f 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 2883      52524F52 
+ 2883      5F575249 
+ 2883      54455F4F 
+ 2883      4E4C5900 
+ 2884              	.LASF6:
+ 2885 0333 75696E74 		.ascii	"uint16_t\000"
+ 2885      31365F74 
+ 2885      00
+ 2886              	.LASF4:
+ 2887 033c 6C6F6E67 		.ascii	"long int\000"
+ 2887      20696E74 
+ 2887      00
+ 2888              	.LASF41:
+ 2889 0345 6C6F6E67 		.ascii	"long double\000"
+ 2889      20646F75 
+ 2889      626C6500 
+ 2890              	.LASF27:
+ 2891 0351 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 2891      52524F52 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccjVhCCf.s 			page 56
+
+
+ 2891      5F524541 
+ 2891      445F4F4E 
+ 2891      4C5900
+ 2892              	.LASF0:
+ 2893 0364 7369676E 		.ascii	"signed char\000"
+ 2893      65642063 
+ 2893      68617200 
+ 2894              	.LASF29:
+ 2895 0370 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 2895      52524F52 
+ 2895      5F494E56 
+ 2895      414C4944 
+ 2895      00
+ 2896              	.LASF25:
+ 2897 0381 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 2897      52524F52 
+ 2897      5F4F5045 
+ 2897      4E00
+ 2898              	.LASF44:
+ 2899 038f 6C656E67 		.ascii	"length\000"
+ 2899      746800
+ 2900              	.LASF18:
+ 2901 0396 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 2901      52524F52 
+ 2901      5F52414E 
+ 2901      474500
+ 2902              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

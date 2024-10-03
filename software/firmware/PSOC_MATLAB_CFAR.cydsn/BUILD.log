@@ -1,0 +1,75 @@
+--------------- Build Started: 07/05/2024 17:01:06 Project: PSOC_MATLAB_CFAR, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+The code generation step is up to date.
+arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I.\bsw\Services -I.\bsw -I.\asw -I.\bsw\fft_application -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/cfar.lst -g -D DEBUG -D CY_CORE_ID=0 -D ARM_MATH_CM3 -Wall -ffunction-sections -ffat-lto-objects -Og -lm -c asw\cfar.c -o .\CortexM3\ARM_GCC_541\Debug\cfar.o
+In file included from Generated_Source\PSoC5/cyfitter_cfg.h:20:0,
+                 from Generated_Source\PSoC5/project.h:17,
+                 from .\bsw\Services/ringbuffer.h:29,
+                 from .\bsw\Services/logging.h:35,
+                 from asw\cfar.c:27:
+Generated_Source\PSoC5/cytypes.h:1377:0: warning: "LO8" redefined
+ #define LO8(x)                  ((uint8) ((x) & 0xFFu))
+ ^
+In file included from asw\cfar.h:78:0,
+                 from asw\cfar.c:26:
+.\bsw/global.h:306:0: note: this is the location of the previous definition
+  # define LO8(x)   ((uint8_t) ((x) & 0xFFu))
+ ^
+In file included from Generated_Source\PSoC5/cyfitter_cfg.h:20:0,
+                 from Generated_Source\PSoC5/project.h:17,
+                 from .\bsw\Services/ringbuffer.h:29,
+                 from .\bsw\Services/logging.h:35,
+                 from asw\cfar.c:27:
+Generated_Source\PSoC5/cytypes.h:1378:0: warning: "HI8" redefined
+ #define HI8(x)                  ((uint8) ((uint16)(x) >> 8))
+ ^
+In file included from asw\cfar.h:78:0,
+                 from asw\cfar.c:26:
+.\bsw/global.h:311:0: note: this is the location of the previous definition
+  # define HI8(x)   ((uint8_t) ((uint16_t)(x) >> 8))
+ ^
+In file included from Generated_Source\PSoC5/cyfitter_cfg.h:20:0,
+                 from Generated_Source\PSoC5/project.h:17,
+                 from .\bsw\Services/ringbuffer.h:29,
+                 from .\bsw\Services/logging.h:35,
+                 from asw\cfar.c:27:
+Generated_Source\PSoC5/cytypes.h:1381:0: warning: "LO16" redefined
+ #define LO16(x)                 ((uint16) ((x) & 0xFFFFu))
+ ^
+In file included from asw\cfar.h:78:0,
+                 from asw\cfar.c:26:
+.\bsw/global.h:316:0: note: this is the location of the previous definition
+  # define LO16(x)   ((uint16_t) ((x) & 0xFFFFu))
+ ^
+In file included from Generated_Source\PSoC5/cyfitter_cfg.h:20:0,
+                 from Generated_Source\PSoC5/project.h:17,
+                 from .\bsw\Services/ringbuffer.h:29,
+                 from .\bsw\Services/logging.h:35,
+                 from asw\cfar.c:27:
+Generated_Source\PSoC5/cytypes.h:1382:0: warning: "HI16" redefined
+ #define HI16(x)                 ((uint16) ((uint32)(x) >> 16))
+ ^
+In file included from asw\cfar.h:78:0,
+                 from asw\cfar.c:26:
+.\bsw/global.h:321:0: note: this is the location of the previous definition
+  # define HI16(x)   ((uint16_t) ((uint32_t)(x) >> 16))
+ ^
+In file included from .\bsw\Services/logging.h:35:0,
+                 from asw\cfar.c:27:
+.\bsw\Services/ringbuffer.h: In function 'Ringbuffer_Write':
+.\bsw\Services/ringbuffer.h:78:9: warning: implicit declaration of function 'GetResource' [-Wimplicit-function-declaration]
+         GetResource(rb->erika_ressource);
+         ^
+.\bsw\Services/ringbuffer.h:99:9: warning: implicit declaration of function 'ReleaseResource' [-Wimplicit-function-declaration]
+         ReleaseResource(rb->erika_ressource);
+         ^
+arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.a .\CortexM3\ARM_GCC_541\Debug\WaveDAC8.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_PM.o .\CortexM3\ARM_GCC_541\Debug\LED_yellow.o .\CortexM3\ARM_GCC_541\Debug\LED_red.o .\CortexM3\ARM_GCC_541\Debug\LED_green.o .\CortexM3\ARM_GCC_541\Debug\isr_button.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_INT.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_BOOT.o .\CortexM3\ARM_GCC_541\Debug\isr_rx.o .\CortexM3\ARM_GCC_541\Debug\Button.o .\CortexM3\ARM_GCC_541\Debug\ADC.o .\CortexM3\ARM_GCC_541\Debug\ADC_PM.o .\CortexM3\ARM_GCC_541\Debug\ADC_INT.o .\CortexM3\ARM_GCC_541\Debug\ADC_IN.o .\CortexM3\ARM_GCC_541\Debug\DMA_ADC_dma.o .\CortexM3\ARM_GCC_541\Debug\DAC_Out.o .\CortexM3\ARM_GCC_541\Debug\Status_Reg_1.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_DacClk.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_Wave1_DMA_dma.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_Wave2_DMA_dma.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_VDAC8.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_VDAC8_PM.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_BuffAmp.o .\CortexM3\ARM_GCC_541\Debug\WaveDAC8_BuffAmp_PM.o .\CortexM3\ARM_GCC_541\Debug\UART_LOG_IntClock.o .\CortexM3\ARM_GCC_541\Debug\ADC_AMux.o .\CortexM3\ARM_GCC_541\Debug\ADC_Ext_CP_Clk.o .\CortexM3\ARM_GCC_541\Debug\ADC_IRQ.o .\CortexM3\ARM_GCC_541\Debug\ADC_theACLK.o .\CortexM3\ARM_GCC_541\Debug\CyDmac.o .\CortexM3\ARM_GCC_541\Debug\CyFlash.o .\CortexM3\ARM_GCC_541\Debug\CyLib.o .\CortexM3\ARM_GCC_541\Debug\cyPm.o .\CortexM3\ARM_GCC_541\Debug\CySpc.o .\CortexM3\ARM_GCC_541\Debug\cyutils.o .\CortexM3\ARM_GCC_541\Debug\cy_em_eeprom.o .\CortexM3\ARM_GCC_541\Debug\CyBootAsmGnu.o
+arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.a
+arm-none-eabi-gcc.exe -Wl,--start-group -o C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\PSOC_MATLAB_CFAR.cydsn\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.elf .\CortexM3\ARM_GCC_541\Debug\cfar.o .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\dsp.o .\CortexM3\ARM_GCC_541\Debug\logging.o .\CortexM3\ARM_GCC_541\Debug\led.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -l fft_application -L Generated_Source\PSoC5 -L .\bsw\fft_application\lib -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/PSOC_MATLAB_CFAR.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -lm -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
+cyelftool.exe -C C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\PSOC_MATLAB_CFAR.cydsn\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.elf --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
+No ELF section .cychecksum found, creating one
+Application checksum calculated and stored in ELF section .cychecksum
+Checksum calculated and stored in ELF section .cymeta
+cyelftool.exe -S C:\Users\vboxuser\Documents\GitHub\SDHD_Design\SDHD_Lab\PSOC_MATLAB_CFAR.cydsn\CortexM3\ARM_GCC_541\Debug\PSOC_MATLAB_CFAR.elf
+Flash used: 161512 of 262144 bytes (61.6%).
+SRAM used: 39337 of 65536 bytes (60.0%). Stack: 8192 bytes. Heap: 8192 bytes.
+--------------- Build Succeeded: 07/05/2024 17:01:07 ---------------

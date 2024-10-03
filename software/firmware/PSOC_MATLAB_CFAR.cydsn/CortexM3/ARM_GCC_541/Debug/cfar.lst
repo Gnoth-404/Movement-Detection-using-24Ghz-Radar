@@ -1,0 +1,2250 @@
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cfar.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	__aeabi_i2f
+  20              		.global	__aeabi_fmul
+  21              		.global	__aeabi_fadd
+  22              		.global	__aeabi_f2d
+  23              		.global	__aeabi_f2iz
+  24              		.global	__aeabi_dcmpeq
+  25              		.global	__aeabi_dmul
+  26              		.global	__aeabi_d2f
+  27              		.section	.text.calcPowerSpectrum,"ax",%progbits
+  28              		.align	2
+  29              		.global	calcPowerSpectrum
+  30              		.thumb
+  31              		.thumb_func
+  32              		.type	calcPowerSpectrum, %function
+  33              	calcPowerSpectrum:
+  34              	.LFB123:
+  35              		.file 1 "asw\\cfar.c"
+   1:asw/cfar.c    **** /**
+   2:asw/cfar.c    **** * \file <filename>
+   3:asw/cfar.c    **** * \author <author-name>
+   4:asw/cfar.c    **** * \date <date>
+   5:asw/cfar.c    **** *
+   6:asw/cfar.c    **** * \brief <Symbolic File name>
+   7:asw/cfar.c    **** *
+   8:asw/cfar.c    **** * \copyright Copyright ©2016
+   9:asw/cfar.c    **** * Department of electrical engineering and information technology, Hochschule Darmstadt - Universit
+  10:asw/cfar.c    **** * Permission to use, copy, modify, and distribute this software and its documentation for education
+  11:asw/cfar.c    **** * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students of
+  12:asw/cfar.c    **** * this paragraph and the following paragraph appear in all copies, modifications, and distributions
+  13:asw/cfar.c    **** * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY for
+  14:asw/cfar.c    **** *
+  15:asw/cfar.c    **** * \warning This software is a PROTOTYPE version and is not designed or intended for use in producti
+  16:asw/cfar.c    **** * The user represents and warrants that it will NOT use or redistribute the Software for such purpo
+  17:asw/cfar.c    **** * This prototype is for research purposes only. This software is provided "AS IS," without a warran
+  18:asw/cfar.c    **** */
+  19:asw/cfar.c    **** 
+  20:asw/cfar.c    **** /*****************************************************************************/
+  21:asw/cfar.c    **** /* Include files                                                             */
+  22:asw/cfar.c    **** /*****************************************************************************/
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 2
+
+
+  23:asw/cfar.c    **** #include <math.h>
+  24:asw/cfar.c    **** #include <stdint.h>
+  25:asw/cfar.c    **** #include <string.h>
+  26:asw/cfar.c    **** #include "cfar.h"
+  27:asw/cfar.c    **** #include "logging.h"
+  28:asw/cfar.c    **** #include "arm_math.h"
+  29:asw/cfar.c    **** /*****************************************************************************/
+  30:asw/cfar.c    **** /* Local pre-processor symbols/macros ('#define')                            */
+  31:asw/cfar.c    **** /*****************************************************************************/
+  32:asw/cfar.c    **** 
+  33:asw/cfar.c    **** /*****************************************************************************/
+  34:asw/cfar.c    **** /* Global variable definitions (declared in header file with 'extern')       */
+  35:asw/cfar.c    **** /*****************************************************************************/
+  36:asw/cfar.c    **** 
+  37:asw/cfar.c    **** /*****************************************************************************/
+  38:asw/cfar.c    **** /* Local type definitions ('typedef')                                        */
+  39:asw/cfar.c    **** /*****************************************************************************/
+  40:asw/cfar.c    **** 
+  41:asw/cfar.c    **** /*****************************************************************************/
+  42:asw/cfar.c    **** /* Local variable definitions ('static')                                     */
+  43:asw/cfar.c    **** /*****************************************************************************/
+  44:asw/cfar.c    **** 
+  45:asw/cfar.c    **** 
+  46:asw/cfar.c    **** 
+  47:asw/cfar.c    **** /*****************************************************************************/
+  48:asw/cfar.c    **** /* Local function prototypes ('static')                                      */
+  49:asw/cfar.c    **** /*****************************************************************************/
+  50:asw/cfar.c    **** 
+  51:asw/cfar.c    **** 
+  52:asw/cfar.c    **** 
+  53:asw/cfar.c    **** /*****************************************************************************/
+  54:asw/cfar.c    **** /* Function implementation - global ('extern') and local ('static')          */
+  55:asw/cfar.c    **** /*****************************************************************************/
+  56:asw/cfar.c    **** 
+  57:asw/cfar.c    **** /**
+  58:asw/cfar.c    ****  * <Description>
+  59:asw/cfar.c    ****  * \param <first para>
+  60:asw/cfar.c    ****  * \return <return value>
+  61:asw/cfar.c    ****  */
+  62:asw/cfar.c    **** RC_t calcPowerSpectrum(sint32_t *fft_buffer, uint16_t fft_length, sint32_t *mag_square, sint32_t *p
+  36              		.loc 1 62 0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              	.LVL0:
+  63:asw/cfar.c    ****     if (fft_length % 2 != 0) {
+  41              		.loc 1 63 0
+  42 0000 11F0010F 		tst	r1, #1
+  43 0004 4CD1     		bne	.L8
+  62:asw/cfar.c    ****     if (fft_length % 2 != 0) {
+  44              		.loc 1 62 0
+  45 0006 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  46              		.cfi_def_cfa_offset 40
+  47              		.cfi_offset 3, -40
+  48              		.cfi_offset 4, -36
+  49              		.cfi_offset 5, -32
+  50              		.cfi_offset 6, -28
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 3
+
+
+  51              		.cfi_offset 7, -24
+  52              		.cfi_offset 8, -20
+  53              		.cfi_offset 9, -16
+  54              		.cfi_offset 10, -12
+  55              		.cfi_offset 11, -8
+  56              		.cfi_offset 14, -4
+  57 000a 9B46     		mov	fp, r3
+  58 000c 9246     		mov	r10, r2
+  59 000e 0646     		mov	r6, r0
+  64:asw/cfar.c    ****         return RC_ERROR_BAD_PARAM;
+  65:asw/cfar.c    ****     }
+  66:asw/cfar.c    ****     
+  67:asw/cfar.c    ****     uint16_t half_length = fft_length / 2;
+  60              		.loc 1 67 0
+  61 0010 4F08     		lsrs	r7, r1, #1
+  62              	.LVL1:
+  63              	.LBB2:
+  68:asw/cfar.c    **** 
+  69:asw/cfar.c    ****     for (uint16_t idx = 0; idx < half_length; idx++) {
+  64              		.loc 1 69 0
+  65 0012 0024     		movs	r4, #0
+  66 0014 3FE0     		b	.L3
+  67              	.LVL2:
+  68              	.L7:
+  69              	.LBB3:
+  70:asw/cfar.c    ****         float32_t real = (float32_t)fft_buffer[2 * idx];
+  70              		.loc 1 70 0
+  71 0016 E500     		lsls	r5, r4, #3
+  72 0018 56F83400 		ldr	r0, [r6, r4, lsl #3]
+  73 001c FFF7FEFF 		bl	__aeabi_i2f
+  74              	.LVL3:
+  75 0020 8046     		mov	r8, r0
+  76              	.LVL4:
+  71:asw/cfar.c    ****         float32_t imag = (float32_t)fft_buffer[2 * idx + 1];
+  77              		.loc 1 71 0
+  78 0022 3544     		add	r5, r5, r6
+  79 0024 6868     		ldr	r0, [r5, #4]
+  80              	.LVL5:
+  81 0026 FFF7FEFF 		bl	__aeabi_i2f
+  82              	.LVL6:
+  83 002a 0546     		mov	r5, r0
+  84              	.LVL7:
+  72:asw/cfar.c    ****         float64_t magnitude = 2*(real * real + imag * imag);
+  85              		.loc 1 72 0
+  86 002c 4146     		mov	r1, r8
+  87 002e 4046     		mov	r0, r8
+  88              	.LVL8:
+  89 0030 FFF7FEFF 		bl	__aeabi_fmul
+  90              	.LVL9:
+  91 0034 8046     		mov	r8, r0
+  92              	.LVL10:
+  93 0036 2946     		mov	r1, r5
+  94 0038 2846     		mov	r0, r5
+  95 003a FFF7FEFF 		bl	__aeabi_fmul
+  96              	.LVL11:
+  97 003e 0146     		mov	r1, r0
+  98 0040 4046     		mov	r0, r8
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 4
+
+
+  99 0042 FFF7FEFF 		bl	__aeabi_fadd
+ 100              	.LVL12:
+ 101 0046 0146     		mov	r1, r0
+ 102 0048 FFF7FEFF 		bl	__aeabi_fadd
+ 103              	.LVL13:
+ 104 004c 0546     		mov	r5, r0
+ 105              	.LVL14:
+ 106 004e FFF7FEFF 		bl	__aeabi_f2d
+ 107              	.LVL15:
+ 108 0052 8046     		mov	r8, r0
+ 109 0054 8946     		mov	r9, r1
+ 110              	.LVL16:
+  73:asw/cfar.c    ****         
+  74:asw/cfar.c    ****         mag_square[idx] = (sint32_t)((magnitude));
+ 111              		.loc 1 74 0
+ 112 0056 2846     		mov	r0, r5
+ 113 0058 FFF7FEFF 		bl	__aeabi_f2iz
+ 114              	.LVL17:
+ 115 005c 4AF82400 		str	r0, [r10, r4, lsl #2]
+  75:asw/cfar.c    **** 
+  76:asw/cfar.c    ****         if (magnitude == 0) {
+ 116              		.loc 1 76 0
+ 117 0060 0022     		movs	r2, #0
+ 118 0062 0023     		movs	r3, #0
+ 119 0064 4046     		mov	r0, r8
+ 120 0066 4946     		mov	r1, r9
+ 121 0068 FFF7FEFF 		bl	__aeabi_dcmpeq
+ 122              	.LVL18:
+ 123 006c 18B1     		cbz	r0, .L10
+  77:asw/cfar.c    ****             
+  78:asw/cfar.c    ****             power[idx] = 0;  // or any minimum value you consider appropriate
+ 124              		.loc 1 78 0
+ 125 006e 0023     		movs	r3, #0
+ 126 0070 4BF82430 		str	r3, [fp, r4, lsl #2]
+ 127 0074 0DE0     		b	.L6
+ 128              	.L10:
+ 129              	.LBB4:
+  79:asw/cfar.c    ****         } else {
+  80:asw/cfar.c    ****             float power_dB = 10*log10(magnitude);
+ 130              		.loc 1 80 0
+ 131 0076 4046     		mov	r0, r8
+ 132 0078 4946     		mov	r1, r9
+ 133 007a FFF7FEFF 		bl	log10
+ 134              	.LVL19:
+ 135 007e 0022     		movs	r2, #0
+ 136 0080 094B     		ldr	r3, .L13
+ 137 0082 FFF7FEFF 		bl	__aeabi_dmul
+ 138              	.LVL20:
+ 139 0086 FFF7FEFF 		bl	__aeabi_d2f
+ 140              	.LVL21:
+  81:asw/cfar.c    ****             
+  82:asw/cfar.c    ****             power[idx] = (sint32_t)power_dB;
+ 141              		.loc 1 82 0
+ 142 008a FFF7FEFF 		bl	__aeabi_f2iz
+ 143              	.LVL22:
+ 144 008e 4BF82400 		str	r0, [fp, r4, lsl #2]
+ 145              	.L6:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 5
+
+
+ 146              	.LBE4:
+ 147              	.LBE3:
+  69:asw/cfar.c    ****         float32_t real = (float32_t)fft_buffer[2 * idx];
+ 148              		.loc 1 69 0 discriminator 2
+ 149 0092 0134     		adds	r4, r4, #1
+ 150              	.LVL23:
+ 151 0094 A4B2     		uxth	r4, r4
+ 152              	.LVL24:
+ 153              	.L3:
+  69:asw/cfar.c    ****         float32_t real = (float32_t)fft_buffer[2 * idx];
+ 154              		.loc 1 69 0 is_stmt 0 discriminator 1
+ 155 0096 BC42     		cmp	r4, r7
+ 156 0098 BDD3     		bcc	.L7
+ 157              	.LBE2:
+  83:asw/cfar.c    ****         }
+  84:asw/cfar.c    ****     }
+  85:asw/cfar.c    **** 
+  86:asw/cfar.c    ****     return RC_SUCCESS;
+ 158              		.loc 1 86 0 is_stmt 1
+ 159 009a 0020     		movs	r0, #0
+ 160              	.LBB5:
+ 161 009c BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 162              	.LVL25:
+ 163              	.L8:
+ 164              		.cfi_def_cfa_offset 0
+ 165              		.cfi_restore 3
+ 166              		.cfi_restore 4
+ 167              		.cfi_restore 5
+ 168              		.cfi_restore 6
+ 169              		.cfi_restore 7
+ 170              		.cfi_restore 8
+ 171              		.cfi_restore 9
+ 172              		.cfi_restore 10
+ 173              		.cfi_restore 11
+ 174              		.cfi_restore 14
+ 175              	.LBE5:
+  64:asw/cfar.c    ****     }
+ 176              		.loc 1 64 0
+ 177 00a0 6FF01300 		mvn	r0, #19
+ 178              	.LVL26:
+ 179 00a4 7047     		bx	lr
+ 180              	.L14:
+ 181 00a6 00BF     		.align	2
+ 182              	.L13:
+ 183 00a8 00002440 		.word	1076101120
+ 184              		.cfi_endproc
+ 185              	.LFE123:
+ 186              		.size	calcPowerSpectrum, .-calcPowerSpectrum
+ 187              		.global	__aeabi_i2d
+ 188              		.global	__aeabi_ddiv
+ 189              		.global	__aeabi_dsub
+ 190              		.global	__aeabi_dadd
+ 191              		.global	__aeabi_d2iz
+ 192              		.section	.text.CA_CFAR,"ax",%progbits
+ 193              		.align	2
+ 194              		.global	CA_CFAR
+ 195              		.thumb
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 6
+
+
+ 196              		.thumb_func
+ 197              		.type	CA_CFAR, %function
+ 198              	CA_CFAR:
+ 199              	.LFB124:
+  87:asw/cfar.c    **** }
+  88:asw/cfar.c    **** /**
+  89:asw/cfar.c    ****  * Cell Averaging CFAR algorithm
+  90:asw/cfar.c    ****  * \param NR : Number of reference cell
+  91:asw/cfar.c    ****  * \param NG : Number of guard cell
+  92:asw/cfar.c    ****  * \param PFA : Probability of False Alarm
+  93:asw/cfar.c    ****  * \return <return value>
+  94:asw/cfar.c    ****  */
+  95:asw/cfar.c    **** 
+  96:asw/cfar.c    **** RC_t CA_CFAR(sint32_t *fftInput, uint16_t N, uint8_t NG, uint8_t NR, float64_t PFA, sint32_t* CAFRT
+ 200              		.loc 1 96 0
+ 201              		.cfi_startproc
+ 202              		@ args = 20, pretend = 0, frame = 32
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              	.LVL27:
+ 205 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 206              		.cfi_def_cfa_offset 36
+ 207              		.cfi_offset 4, -36
+ 208              		.cfi_offset 5, -32
+ 209              		.cfi_offset 6, -28
+ 210              		.cfi_offset 7, -24
+ 211              		.cfi_offset 8, -20
+ 212              		.cfi_offset 9, -16
+ 213              		.cfi_offset 10, -12
+ 214              		.cfi_offset 11, -8
+ 215              		.cfi_offset 14, -4
+ 216 0004 89B0     		sub	sp, sp, #36
+ 217              		.cfi_def_cfa_offset 72
+ 218 0006 DDF85490 		ldr	r9, [sp, #84]
+  97:asw/cfar.c    ****     
+  98:asw/cfar.c    ****     
+  99:asw/cfar.c    ****     if ( N <= (2* NG+ NR)){
+ 219              		.loc 1 99 0
+ 220 000a 03EB4204 		add	r4, r3, r2, lsl #1
+ 221 000e A142     		cmp	r1, r4
+ 222 0010 40F38B80 		ble	.L23
+ 223 0014 9346     		mov	fp, r2
+ 224 0016 1F46     		mov	r7, r3
+ 225 0018 1E46     		mov	r6, r3
+ 226 001a 8846     		mov	r8, r1
+ 227 001c 8246     		mov	r10, r0
+ 100:asw/cfar.c    ****         return RC_ERROR_BAD_PARAM;
+ 101:asw/cfar.c    ****     }
+ 102:asw/cfar.c    ****     
+ 103:asw/cfar.c    ****     float64_t alpha = NR*2*(pow(PFA, -1.0/(NR*2)) -1);
+ 228              		.loc 1 103 0
+ 229 001e 5800     		lsls	r0, r3, #1
+ 230              	.LVL28:
+ 231 0020 FFF7FEFF 		bl	__aeabi_i2d
+ 232              	.LVL29:
+ 233 0024 CDE90401 		strd	r0, [sp, #16]
+ 234 0028 0246     		mov	r2, r0
+ 235 002a 0B46     		mov	r3, r1
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 7
+
+
+ 236 002c 0020     		movs	r0, #0
+ 237 002e 4149     		ldr	r1, .L26
+ 238 0030 FFF7FEFF 		bl	__aeabi_ddiv
+ 239              	.LVL30:
+ 240 0034 0246     		mov	r2, r0
+ 241 0036 0B46     		mov	r3, r1
+ 242 0038 DDE91201 		ldrd	r0, [sp, #72]
+ 243 003c FFF7FEFF 		bl	pow
+ 244              	.LVL31:
+ 245 0040 0022     		movs	r2, #0
+ 246 0042 3D4B     		ldr	r3, .L26+4
+ 247 0044 FFF7FEFF 		bl	__aeabi_dsub
+ 248              	.LVL32:
+ 249 0048 0246     		mov	r2, r0
+ 250 004a 0B46     		mov	r3, r1
+ 251 004c DDE90401 		ldrd	r0, [sp, #16]
+ 252 0050 FFF7FEFF 		bl	__aeabi_dmul
+ 253              	.LVL33:
+ 254 0054 CDE90601 		strd	r0, [sp, #24]
+ 255              	.LVL34:
+ 104:asw/cfar.c    ****     *first_CUT_Index = NG + NR;
+ 256              		.loc 1 104 0
+ 257 0058 1FFA8BF4 		uxth	r4, fp
+ 258 005c BBB2     		uxth	r3, r7
+ 259 005e E218     		adds	r2, r4, r3
+ 260 0060 A9F80020 		strh	r2, [r9]	@ movhi
+ 105:asw/cfar.c    ****     *last_CUT_index = N - NG - NR -1;
+ 261              		.loc 1 105 0
+ 262 0064 C4EB0804 		rsb	r4, r4, r8
+ 263 0068 E31A     		subs	r3, r4, r3
+ 264 006a 013B     		subs	r3, r3, #1
+ 265 006c 169A     		ldr	r2, [sp, #88]
+ 266 006e 1380     		strh	r3, [r2]	@ movhi
+ 267              	.LVL35:
+ 268              	.LBB6:
+ 106:asw/cfar.c    **** 
+ 107:asw/cfar.c    ****     for(uint16_t CUT = 0; CUT < N; ++CUT){
+ 269              		.loc 1 107 0
+ 270 0070 0025     		movs	r5, #0
+ 271 0072 56E0     		b	.L17
+ 272              	.LVL36:
+ 273              	.L22:
+ 108:asw/cfar.c    ****         
+ 109:asw/cfar.c    ****         if(CUT >= *first_CUT_Index && CUT <= *last_CUT_index){
+ 274              		.loc 1 109 0
+ 275 0074 B9F80030 		ldrh	r3, [r9]
+ 276 0078 9D42     		cmp	r5, r3
+ 277 007a 4CD3     		bcc	.L18
+ 278              		.loc 1 109 0 is_stmt 0 discriminator 1
+ 279 007c 169B     		ldr	r3, [sp, #88]
+ 280 007e 1B88     		ldrh	r3, [r3]
+ 281 0080 9D42     		cmp	r5, r3
+ 282 0082 23D9     		bls	.L24
+ 283 0084 47E0     		b	.L18
+ 284              	.LVL37:
+ 285              	.L20:
+ 286              	.LBB7:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 8
+
+
+ 287              	.LBB8:
+ 110:asw/cfar.c    ****         
+ 111:asw/cfar.c    ****             float64_t sumLeading = 0.0;
+ 112:asw/cfar.c    ****             float64_t sumTrailing = 0.0;
+ 113:asw/cfar.c    ****             // Calculate sum of leading and trailing window
+ 114:asw/cfar.c    ****             for (uint8_t i =0; i < NR; ++i){
+ 115:asw/cfar.c    ****                 sumLeading += fftInput[CUT - NG - NR + i];
+ 288              		.loc 1 115 0 is_stmt 1 discriminator 3
+ 289 0086 CBEB0503 		rsb	r3, fp, r5
+ 290 008a DB1B     		subs	r3, r3, r7
+ 291 008c 2344     		add	r3, r3, r4
+ 292 008e 5AF82300 		ldr	r0, [r10, r3, lsl #2]
+ 293 0092 FFF7FEFF 		bl	__aeabi_i2d
+ 294              	.LVL38:
+ 295 0096 0246     		mov	r2, r0
+ 296 0098 0B46     		mov	r3, r1
+ 297 009a DDE90001 		ldrd	r0, [sp]
+ 298 009e FFF7FEFF 		bl	__aeabi_dadd
+ 299              	.LVL39:
+ 300 00a2 CDE90001 		strd	r0, [sp]
+ 301              	.LVL40:
+ 116:asw/cfar.c    ****                 sumTrailing += fftInput[CUT + NG + i +1];  
+ 302              		.loc 1 116 0 discriminator 3
+ 303 00a6 0BEB0503 		add	r3, fp, r5
+ 304 00aa 2344     		add	r3, r3, r4
+ 305 00ac 0133     		adds	r3, r3, #1
+ 306 00ae 5AF82300 		ldr	r0, [r10, r3, lsl #2]
+ 307              	.LVL41:
+ 308 00b2 FFF7FEFF 		bl	__aeabi_i2d
+ 309              	.LVL42:
+ 310 00b6 0246     		mov	r2, r0
+ 311 00b8 0B46     		mov	r3, r1
+ 312 00ba DDE90201 		ldrd	r0, [sp, #8]
+ 313 00be FFF7FEFF 		bl	__aeabi_dadd
+ 314              	.LVL43:
+ 315 00c2 CDE90201 		strd	r0, [sp, #8]
+ 316              	.LVL44:
+ 114:asw/cfar.c    ****                 sumLeading += fftInput[CUT - NG - NR + i];
+ 317              		.loc 1 114 0 discriminator 3
+ 318 00c6 0134     		adds	r4, r4, #1
+ 319              	.LVL45:
+ 320 00c8 E4B2     		uxtb	r4, r4
+ 321              	.LVL46:
+ 322 00ca 06E0     		b	.L19
+ 323              	.LVL47:
+ 324              	.L24:
+ 325              	.LBE8:
+ 326              	.LBE7:
+ 327 00cc 0024     		movs	r4, #0
+ 328 00ce 0022     		movs	r2, #0
+ 329 00d0 0023     		movs	r3, #0
+ 330 00d2 CDE90223 		strd	r2, [sp, #8]
+ 331 00d6 CDE90023 		strd	r2, [sp]
+ 332              	.L19:
+ 333              	.LVL48:
+ 334              	.LBB10:
+ 335              	.LBB9:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 9
+
+
+ 114:asw/cfar.c    ****                 sumLeading += fftInput[CUT - NG - NR + i];
+ 336              		.loc 1 114 0 is_stmt 0 discriminator 1
+ 337 00da B442     		cmp	r4, r6
+ 338 00dc D3D3     		bcc	.L20
+ 339              	.LBE9:
+ 117:asw/cfar.c    ****             }
+ 118:asw/cfar.c    ****     
+ 119:asw/cfar.c    ****             float64_t noiseLevel = (sumLeading + sumTrailing) / (2* NR);
+ 340              		.loc 1 119 0 is_stmt 1
+ 341 00de DDE90223 		ldrd	r2, [sp, #8]
+ 342 00e2 DDE90001 		ldrd	r0, [sp]
+ 343 00e6 FFF7FEFF 		bl	__aeabi_dadd
+ 344              	.LVL49:
+ 345 00ea DDE90423 		ldrd	r2, [sp, #16]
+ 346 00ee FFF7FEFF 		bl	__aeabi_ddiv
+ 347              	.LVL50:
+ 120:asw/cfar.c    ****             
+ 121:asw/cfar.c    ****             
+ 122:asw/cfar.c    ****             float64_t threshold = alpha * noiseLevel;
+ 348              		.loc 1 122 0
+ 349 00f2 0246     		mov	r2, r0
+ 350 00f4 0B46     		mov	r3, r1
+ 351 00f6 DDE90601 		ldrd	r0, [sp, #24]
+ 352              	.LVL51:
+ 353 00fa FFF7FEFF 		bl	__aeabi_dmul
+ 354              	.LVL52:
+ 123:asw/cfar.c    ****             
+ 124:asw/cfar.c    ****             CAFRThreshold[CUT] = (sint32_t)(10*log10(threshold));
+ 355              		.loc 1 124 0
+ 356 00fe FFF7FEFF 		bl	log10
+ 357              	.LVL53:
+ 358 0102 0022     		movs	r2, #0
+ 359 0104 0D4B     		ldr	r3, .L26+8
+ 360 0106 FFF7FEFF 		bl	__aeabi_dmul
+ 361              	.LVL54:
+ 362 010a FFF7FEFF 		bl	__aeabi_d2iz
+ 363              	.LVL55:
+ 364 010e 149B     		ldr	r3, [sp, #80]
+ 365 0110 43F82500 		str	r0, [r3, r5, lsl #2]
+ 366              	.LBE10:
+ 109:asw/cfar.c    ****         
+ 367              		.loc 1 109 0
+ 368 0114 03E0     		b	.L21
+ 369              	.LVL56:
+ 370              	.L18:
+ 125:asw/cfar.c    ****             
+ 126:asw/cfar.c    **** 
+ 127:asw/cfar.c    ****         }
+ 128:asw/cfar.c    ****         else {
+ 129:asw/cfar.c    ****             CAFRThreshold[CUT] = 0;
+ 371              		.loc 1 129 0
+ 372 0116 0023     		movs	r3, #0
+ 373 0118 149A     		ldr	r2, [sp, #80]
+ 374 011a 42F82530 		str	r3, [r2, r5, lsl #2]
+ 375              	.L21:
+ 107:asw/cfar.c    ****         
+ 376              		.loc 1 107 0 discriminator 2
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 10
+
+
+ 377 011e 0135     		adds	r5, r5, #1
+ 378              	.LVL57:
+ 379 0120 ADB2     		uxth	r5, r5
+ 380              	.LVL58:
+ 381              	.L17:
+ 107:asw/cfar.c    ****         
+ 382              		.loc 1 107 0 is_stmt 0 discriminator 1
+ 383 0122 4545     		cmp	r5, r8
+ 384 0124 A6D3     		bcc	.L22
+ 385              	.LBE6:
+ 130:asw/cfar.c    ****         }
+ 131:asw/cfar.c    ****  
+ 132:asw/cfar.c    ****     }
+ 133:asw/cfar.c    ****     
+ 134:asw/cfar.c    **** 
+ 135:asw/cfar.c    ****     
+ 136:asw/cfar.c    ****     return RC_SUCCESS;
+ 386              		.loc 1 136 0 is_stmt 1
+ 387 0126 0020     		movs	r0, #0
+ 388              	.LBB11:
+ 389 0128 01E0     		b	.L16
+ 390              	.LVL59:
+ 391              	.L23:
+ 392              	.LBE11:
+ 100:asw/cfar.c    ****     }
+ 393              		.loc 1 100 0
+ 394 012a 6FF01300 		mvn	r0, #19
+ 395              	.LVL60:
+ 396              	.L16:
+ 137:asw/cfar.c    **** }
+ 397              		.loc 1 137 0
+ 398 012e 09B0     		add	sp, sp, #36
+ 399              		.cfi_def_cfa_offset 36
+ 400              		@ sp needed
+ 401 0130 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 402              	.LVL61:
+ 403              	.L27:
+ 404              		.align	2
+ 405              	.L26:
+ 406 0134 0000F0BF 		.word	-1074790400
+ 407 0138 0000F03F 		.word	1072693248
+ 408 013c 00002440 		.word	1076101120
+ 409              		.cfi_endproc
+ 410              	.LFE124:
+ 411              		.size	CA_CFAR, .-CA_CFAR
+ 412              		.text
+ 413              	.Letext0:
+ 414              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 415              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 416              		.file 4 ".\\bsw/global.h"
+ 417              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 418              		.file 6 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 419              		.section	.debug_info,"",%progbits
+ 420              	.Ldebug_info0:
+ 421 0000 D8030000 		.4byte	0x3d8
+ 422 0004 0400     		.2byte	0x4
+ 423 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 11
+
+
+ 424 000a 04       		.byte	0x4
+ 425 000b 01       		.uleb128 0x1
+ 426 000c DC030000 		.4byte	.LASF71
+ 427 0010 0C       		.byte	0xc
+ 428 0011 87010000 		.4byte	.LASF72
+ 429 0015 08030000 		.4byte	.LASF73
+ 430 0019 60000000 		.4byte	.Ldebug_ranges0+0x60
+ 431 001d 00000000 		.4byte	0
+ 432 0021 00000000 		.4byte	.Ldebug_line0
+ 433 0025 02       		.uleb128 0x2
+ 434 0026 08       		.byte	0x8
+ 435 0027 04       		.byte	0x4
+ 436 0028 68030000 		.4byte	.LASF0
+ 437 002c 03       		.uleb128 0x3
+ 438 002d 04       		.byte	0x4
+ 439 002e 05       		.byte	0x5
+ 440 002f 696E7400 		.ascii	"int\000"
+ 441 0033 02       		.uleb128 0x2
+ 442 0034 04       		.byte	0x4
+ 443 0035 07       		.byte	0x7
+ 444 0036 60020000 		.4byte	.LASF1
+ 445 003a 02       		.uleb128 0x2
+ 446 003b 08       		.byte	0x8
+ 447 003c 05       		.byte	0x5
+ 448 003d 27010000 		.4byte	.LASF2
+ 449 0041 02       		.uleb128 0x2
+ 450 0042 08       		.byte	0x8
+ 451 0043 04       		.byte	0x4
+ 452 0044 11020000 		.4byte	.LASF3
+ 453 0048 02       		.uleb128 0x2
+ 454 0049 01       		.byte	0x1
+ 455 004a 06       		.byte	0x6
+ 456 004b 3D020000 		.4byte	.LASF4
+ 457 004f 04       		.uleb128 0x4
+ 458 0050 C4010000 		.4byte	.LASF7
+ 459 0054 02       		.byte	0x2
+ 460 0055 1D       		.byte	0x1d
+ 461 0056 5A000000 		.4byte	0x5a
+ 462 005a 02       		.uleb128 0x2
+ 463 005b 01       		.byte	0x1
+ 464 005c 08       		.byte	0x8
+ 465 005d 26020000 		.4byte	.LASF5
+ 466 0061 02       		.uleb128 0x2
+ 467 0062 02       		.byte	0x2
+ 468 0063 05       		.byte	0x5
+ 469 0064 46000000 		.4byte	.LASF6
+ 470 0068 04       		.uleb128 0x4
+ 471 0069 AF000000 		.4byte	.LASF8
+ 472 006d 02       		.byte	0x2
+ 473 006e 2B       		.byte	0x2b
+ 474 006f 73000000 		.4byte	0x73
+ 475 0073 02       		.uleb128 0x2
+ 476 0074 02       		.byte	0x2
+ 477 0075 07       		.byte	0x7
+ 478 0076 AD020000 		.4byte	.LASF9
+ 479 007a 04       		.uleb128 0x4
+ 480 007b 91030000 		.4byte	.LASF10
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 12
+
+
+ 481 007f 02       		.byte	0x2
+ 482 0080 3F       		.byte	0x3f
+ 483 0081 85000000 		.4byte	0x85
+ 484 0085 02       		.uleb128 0x2
+ 485 0086 04       		.byte	0x4
+ 486 0087 05       		.byte	0x5
+ 487 0088 6C010000 		.4byte	.LASF11
+ 488 008c 02       		.uleb128 0x2
+ 489 008d 04       		.byte	0x4
+ 490 008e 07       		.byte	0x7
+ 491 008f A4010000 		.4byte	.LASF12
+ 492 0093 02       		.uleb128 0x2
+ 493 0094 08       		.byte	0x8
+ 494 0095 07       		.byte	0x7
+ 495 0096 49020000 		.4byte	.LASF13
+ 496 009a 02       		.uleb128 0x2
+ 497 009b 04       		.byte	0x4
+ 498 009c 07       		.byte	0x7
+ 499 009d 76000000 		.4byte	.LASF14
+ 500 00a1 02       		.uleb128 0x2
+ 501 00a2 01       		.byte	0x1
+ 502 00a3 08       		.byte	0x8
+ 503 00a4 C0020000 		.4byte	.LASF15
+ 504 00a8 02       		.uleb128 0x2
+ 505 00a9 04       		.byte	0x4
+ 506 00aa 04       		.byte	0x4
+ 507 00ab 08010000 		.4byte	.LASF16
+ 508 00af 04       		.uleb128 0x4
+ 509 00b0 9B030000 		.4byte	.LASF17
+ 510 00b4 03       		.byte	0x3
+ 511 00b5 18       		.byte	0x18
+ 512 00b6 4F000000 		.4byte	0x4f
+ 513 00ba 04       		.uleb128 0x4
+ 514 00bb 7B020000 		.4byte	.LASF18
+ 515 00bf 03       		.byte	0x3
+ 516 00c0 24       		.byte	0x24
+ 517 00c1 68000000 		.4byte	0x68
+ 518 00c5 04       		.uleb128 0x4
+ 519 00c6 DA020000 		.4byte	.LASF19
+ 520 00ca 03       		.byte	0x3
+ 521 00cb 2C       		.byte	0x2c
+ 522 00cc 7A000000 		.4byte	0x7a
+ 523 00d0 04       		.uleb128 0x4
+ 524 00d1 35010000 		.4byte	.LASF20
+ 525 00d5 04       		.byte	0x4
+ 526 00d6 94       		.byte	0x94
+ 527 00d7 85000000 		.4byte	0x85
+ 528 00db 04       		.uleb128 0x4
+ 529 00dc DF010000 		.4byte	.LASF21
+ 530 00e0 04       		.byte	0x4
+ 531 00e1 98       		.byte	0x98
+ 532 00e2 A8000000 		.4byte	0xa8
+ 533 00e6 04       		.uleb128 0x4
+ 534 00e7 6A040000 		.4byte	.LASF22
+ 535 00eb 04       		.byte	0x4
+ 536 00ec 99       		.byte	0x99
+ 537 00ed 25000000 		.4byte	0x25
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 13
+
+
+ 538 00f1 05       		.uleb128 0x5
+ 539 00f2 01       		.byte	0x1
+ 540 00f3 48000000 		.4byte	0x48
+ 541 00f7 04       		.byte	0x4
+ 542 00f8 CF       		.byte	0xcf
+ 543 00f9 9A010000 		.4byte	0x19a
+ 544 00fd 06       		.uleb128 0x6
+ 545 00fe 27000000 		.4byte	.LASF23
+ 546 0102 00       		.byte	0
+ 547 0103 07       		.uleb128 0x7
+ 548 0104 1D020000 		.4byte	.LASF24
+ 549 0108 7F       		.sleb128 -1
+ 550 0109 07       		.uleb128 0x7
+ 551 010a 89020000 		.4byte	.LASF25
+ 552 010e 7E       		.sleb128 -2
+ 553 010f 07       		.uleb128 0x7
+ 554 0110 5E010000 		.4byte	.LASF26
+ 555 0114 7D       		.sleb128 -3
+ 556 0115 07       		.uleb128 0x7
+ 557 0116 74040000 		.4byte	.LASF27
+ 558 011a 7C       		.sleb128 -4
+ 559 011b 07       		.uleb128 0x7
+ 560 011c EE000000 		.4byte	.LASF28
+ 561 0120 7B       		.sleb128 -5
+ 562 0121 07       		.uleb128 0x7
+ 563 0122 50000000 		.4byte	.LASF29
+ 564 0126 7A       		.sleb128 -6
+ 565 0127 07       		.uleb128 0x7
+ 566 0128 75010000 		.4byte	.LASF30
+ 567 012c 79       		.sleb128 -7
+ 568 012d 07       		.uleb128 0x7
+ 569 012e C5020000 		.4byte	.LASF31
+ 570 0132 78       		.sleb128 -8
+ 571 0133 07       		.uleb128 0x7
+ 572 0134 97020000 		.4byte	.LASF32
+ 573 0138 77       		.sleb128 -9
+ 574 0139 07       		.uleb128 0x7
+ 575 013a B6010000 		.4byte	.LASF33
+ 576 013e 76       		.sleb128 -10
+ 577 013f 07       		.uleb128 0x7
+ 578 0140 89040000 		.4byte	.LASF34
+ 579 0144 75       		.sleb128 -11
+ 580 0145 07       		.uleb128 0x7
+ 581 0146 6D020000 		.4byte	.LASF35
+ 582 014a 74       		.sleb128 -12
+ 583 014b 07       		.uleb128 0x7
+ 584 014c 6F030000 		.4byte	.LASF36
+ 585 0150 73       		.sleb128 -13
+ 586 0151 07       		.uleb128 0x7
+ 587 0152 14000000 		.4byte	.LASF37
+ 588 0156 72       		.sleb128 -14
+ 589 0157 07       		.uleb128 0x7
+ 590 0158 32000000 		.4byte	.LASF38
+ 591 015c 71       		.sleb128 -15
+ 592 015d 07       		.uleb128 0x7
+ 593 015e CE010000 		.4byte	.LASF39
+ 594 0162 70       		.sleb128 -16
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 14
+
+
+ 595 0163 07       		.uleb128 0x7
+ 596 0164 9B000000 		.4byte	.LASF40
+ 597 0168 6F       		.sleb128 -17
+ 598 0169 07       		.uleb128 0x7
+ 599 016a 61000000 		.4byte	.LASF41
+ 600 016e 6E       		.sleb128 -18
+ 601 016f 07       		.uleb128 0x7
+ 602 0170 88000000 		.4byte	.LASF42
+ 603 0174 6D       		.sleb128 -19
+ 604 0175 07       		.uleb128 0x7
+ 605 0176 EA020000 		.4byte	.LASF43
+ 606 017a 6C       		.sleb128 -20
+ 607 017b 07       		.uleb128 0x7
+ 608 017c E9010000 		.4byte	.LASF44
+ 609 0180 6B       		.sleb128 -21
+ 610 0181 07       		.uleb128 0x7
+ 611 0182 B2030000 		.4byte	.LASF45
+ 612 0186 6A       		.sleb128 -22
+ 613 0187 07       		.uleb128 0x7
+ 614 0188 D7000000 		.4byte	.LASF46
+ 615 018c 69       		.sleb128 -23
+ 616 018d 07       		.uleb128 0x7
+ 617 018e 4D010000 		.4byte	.LASF47
+ 618 0192 68       		.sleb128 -24
+ 619 0193 07       		.uleb128 0x7
+ 620 0194 0E010000 		.4byte	.LASF48
+ 621 0198 67       		.sleb128 -25
+ 622 0199 00       		.byte	0
+ 623 019a 04       		.uleb128 0x4
+ 624 019b 84040000 		.4byte	.LASF49
+ 625 019f 04       		.byte	0x4
+ 626 01a0 EA       		.byte	0xea
+ 627 01a1 F1000000 		.4byte	0xf1
+ 628 01a5 08       		.uleb128 0x8
+ 629 01a6 04       		.byte	0x4
+ 630 01a7 BA000000 		.4byte	0xba
+ 631 01ab 09       		.uleb128 0x9
+ 632 01ac 92010000 		.4byte	.LASF59
+ 633 01b0 01       		.byte	0x1
+ 634 01b1 3E       		.byte	0x3e
+ 635 01b2 9A010000 		.4byte	0x19a
+ 636 01b6 00000000 		.4byte	.LFB123
+ 637 01ba AC000000 		.4byte	.LFE123-.LFB123
+ 638 01be 01       		.uleb128 0x1
+ 639 01bf 9C       		.byte	0x9c
+ 640 01c0 7E020000 		.4byte	0x27e
+ 641 01c4 0A       		.uleb128 0xa
+ 642 01c5 FD000000 		.4byte	.LASF50
+ 643 01c9 01       		.byte	0x1
+ 644 01ca 3E       		.byte	0x3e
+ 645 01cb 7E020000 		.4byte	0x27e
+ 646 01cf 00000000 		.4byte	.LLST0
+ 647 01d3 0A       		.uleb128 0xa
+ 648 01d4 C4030000 		.4byte	.LASF51
+ 649 01d8 01       		.byte	0x1
+ 650 01d9 3E       		.byte	0x3e
+ 651 01da BA000000 		.4byte	0xba
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 15
+
+
+ 652 01de 37000000 		.4byte	.LLST1
+ 653 01e2 0A       		.uleb128 0xa
+ 654 01e3 FD020000 		.4byte	.LASF52
+ 655 01e7 01       		.byte	0x1
+ 656 01e8 3E       		.byte	0x3e
+ 657 01e9 7E020000 		.4byte	0x27e
+ 658 01ed 63000000 		.4byte	.LLST2
+ 659 01f1 0A       		.uleb128 0xa
+ 660 01f2 57030000 		.4byte	.LASF53
+ 661 01f6 01       		.byte	0x1
+ 662 01f7 3E       		.byte	0x3e
+ 663 01f8 7E020000 		.4byte	0x27e
+ 664 01fc 8C000000 		.4byte	.LLST3
+ 665 0200 0B       		.uleb128 0xb
+ 666 0201 BA000000 		.4byte	.LASF54
+ 667 0205 01       		.byte	0x1
+ 668 0206 43       		.byte	0x43
+ 669 0207 BA000000 		.4byte	0xba
+ 670 020b B5000000 		.4byte	.LLST4
+ 671 020f 0C       		.uleb128 0xc
+ 672 0210 00000000 		.4byte	.Ldebug_ranges0+0
+ 673 0214 0D       		.uleb128 0xd
+ 674 0215 69647800 		.ascii	"idx\000"
+ 675 0219 01       		.byte	0x1
+ 676 021a 45       		.byte	0x45
+ 677 021b BA000000 		.4byte	0xba
+ 678 021f C8000000 		.4byte	.LLST5
+ 679 0223 0E       		.uleb128 0xe
+ 680 0224 16000000 		.4byte	.LBB3
+ 681 0228 7C000000 		.4byte	.LBE3-.LBB3
+ 682 022c 0B       		.uleb128 0xb
+ 683 022d 48010000 		.4byte	.LASF55
+ 684 0231 01       		.byte	0x1
+ 685 0232 46       		.byte	0x46
+ 686 0233 DB000000 		.4byte	0xdb
+ 687 0237 F2000000 		.4byte	.LLST6
+ 688 023b 0B       		.uleb128 0xb
+ 689 023c 84020000 		.4byte	.LASF56
+ 690 0240 01       		.byte	0x1
+ 691 0241 47       		.byte	0x47
+ 692 0242 DB000000 		.4byte	0xdb
+ 693 0246 10010000 		.4byte	.LLST7
+ 694 024a 0B       		.uleb128 0xb
+ 695 024b 07020000 		.4byte	.LASF57
+ 696 024f 01       		.byte	0x1
+ 697 0250 48       		.byte	0x48
+ 698 0251 E6000000 		.4byte	0xe6
+ 699 0255 2E010000 		.4byte	.LLST8
+ 700 0259 0E       		.uleb128 0xe
+ 701 025a 76000000 		.4byte	.LBB4
+ 702 025e 1C000000 		.4byte	.LBE4-.LBB4
+ 703 0262 0B       		.uleb128 0xb
+ 704 0263 34020000 		.4byte	.LASF58
+ 705 0267 01       		.byte	0x1
+ 706 0268 50       		.byte	0x50
+ 707 0269 A8000000 		.4byte	0xa8
+ 708 026d 46010000 		.4byte	.LLST9
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 16
+
+
+ 709 0271 0F       		.uleb128 0xf
+ 710 0272 7E000000 		.4byte	.LVL19
+ 711 0276 C5030000 		.4byte	0x3c5
+ 712 027a 00       		.byte	0
+ 713 027b 00       		.byte	0
+ 714 027c 00       		.byte	0
+ 715 027d 00       		.byte	0
+ 716 027e 08       		.uleb128 0x8
+ 717 027f 04       		.byte	0x4
+ 718 0280 D0000000 		.4byte	0xd0
+ 719 0284 09       		.uleb128 0x9
+ 720 0285 E2020000 		.4byte	.LASF60
+ 721 0289 01       		.byte	0x1
+ 722 028a 60       		.byte	0x60
+ 723 028b 9A010000 		.4byte	0x19a
+ 724 028f 00000000 		.4byte	.LFB124
+ 725 0293 40010000 		.4byte	.LFE124-.LFB124
+ 726 0297 01       		.uleb128 0x1
+ 727 0298 9C       		.byte	0x9c
+ 728 0299 B4030000 		.4byte	0x3b4
+ 729 029d 0A       		.uleb128 0xa
+ 730 029e 7F000000 		.4byte	.LASF61
+ 731 02a2 01       		.byte	0x1
+ 732 02a3 60       		.byte	0x60
+ 733 02a4 7E020000 		.4byte	0x27e
+ 734 02a8 59010000 		.4byte	.LLST10
+ 735 02ac 10       		.uleb128 0x10
+ 736 02ad 4E00     		.ascii	"N\000"
+ 737 02af 01       		.byte	0x1
+ 738 02b0 60       		.byte	0x60
+ 739 02b1 BA000000 		.4byte	0xba
+ 740 02b5 90010000 		.4byte	.LLST11
+ 741 02b9 10       		.uleb128 0x10
+ 742 02ba 4E4700   		.ascii	"NG\000"
+ 743 02bd 01       		.byte	0x1
+ 744 02be 60       		.byte	0x60
+ 745 02bf AF000000 		.4byte	0xaf
+ 746 02c3 CA010000 		.4byte	.LLST12
+ 747 02c7 10       		.uleb128 0x10
+ 748 02c8 4E5200   		.ascii	"NR\000"
+ 749 02cb 01       		.byte	0x1
+ 750 02cc 60       		.byte	0x60
+ 751 02cd AF000000 		.4byte	0xaf
+ 752 02d1 04020000 		.4byte	.LLST13
+ 753 02d5 10       		.uleb128 0x10
+ 754 02d6 50464100 		.ascii	"PFA\000"
+ 755 02da 01       		.byte	0x1
+ 756 02db 60       		.byte	0x60
+ 757 02dc E6000000 		.4byte	0xe6
+ 758 02e0 3E020000 		.4byte	.LLST14
+ 759 02e4 0A       		.uleb128 0xa
+ 760 02e5 00000000 		.4byte	.LASF62
+ 761 02e9 01       		.byte	0x1
+ 762 02ea 60       		.byte	0x60
+ 763 02eb 7E020000 		.4byte	0x27e
+ 764 02ef 5E020000 		.4byte	.LLST15
+ 765 02f3 0A       		.uleb128 0xa
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 17
+
+
+ 766 02f4 81030000 		.4byte	.LASF63
+ 767 02f8 01       		.byte	0x1
+ 768 02f9 60       		.byte	0x60
+ 769 02fa A5010000 		.4byte	0x1a5
+ 770 02fe 7E020000 		.4byte	.LLST16
+ 771 0302 0A       		.uleb128 0xa
+ 772 0303 A3030000 		.4byte	.LASF64
+ 773 0307 01       		.byte	0x1
+ 774 0308 60       		.byte	0x60
+ 775 0309 A5010000 		.4byte	0x1a5
+ 776 030d 9E020000 		.4byte	.LLST17
+ 777 0311 0B       		.uleb128 0xb
+ 778 0312 D1000000 		.4byte	.LASF65
+ 779 0316 01       		.byte	0x1
+ 780 0317 67       		.byte	0x67
+ 781 0318 E6000000 		.4byte	0xe6
+ 782 031c BE020000 		.4byte	.LLST18
+ 783 0320 11       		.uleb128 0x11
+ 784 0321 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 785 0325 9B030000 		.4byte	0x39b
+ 786 0329 0D       		.uleb128 0xd
+ 787 032a 43555400 		.ascii	"CUT\000"
+ 788 032e 01       		.byte	0x1
+ 789 032f 6B       		.byte	0x6b
+ 790 0330 BA000000 		.4byte	0xba
+ 791 0334 E2020000 		.4byte	.LLST19
+ 792 0338 0C       		.uleb128 0xc
+ 793 0339 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 794 033d 0B       		.uleb128 0xb
+ 795 033e C6000000 		.4byte	.LASF66
+ 796 0342 01       		.byte	0x1
+ 797 0343 6F       		.byte	0x6f
+ 798 0344 E6000000 		.4byte	0xe6
+ 799 0348 0C030000 		.4byte	.LLST20
+ 800 034c 0B       		.uleb128 0xb
+ 801 034d FB010000 		.4byte	.LASF67
+ 802 0351 01       		.byte	0x1
+ 803 0352 70       		.byte	0x70
+ 804 0353 E6000000 		.4byte	0xe6
+ 805 0357 48030000 		.4byte	.LLST21
+ 806 035b 0B       		.uleb128 0xb
+ 807 035c 5D030000 		.4byte	.LASF68
+ 808 0360 01       		.byte	0x1
+ 809 0361 77       		.byte	0x77
+ 810 0362 E6000000 		.4byte	0xe6
+ 811 0366 78030000 		.4byte	.LLST22
+ 812 036a 0B       		.uleb128 0xb
+ 813 036b 3E010000 		.4byte	.LASF69
+ 814 036f 01       		.byte	0x1
+ 815 0370 7A       		.byte	0x7a
+ 816 0371 E6000000 		.4byte	0xe6
+ 817 0375 90030000 		.4byte	.LLST23
+ 818 0379 11       		.uleb128 0x11
+ 819 037a 48000000 		.4byte	.Ldebug_ranges0+0x48
+ 820 037e 90030000 		.4byte	0x390
+ 821 0382 0D       		.uleb128 0xd
+ 822 0383 6900     		.ascii	"i\000"
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 18
+
+
+ 823 0385 01       		.byte	0x1
+ 824 0386 72       		.byte	0x72
+ 825 0387 AF000000 		.4byte	0xaf
+ 826 038b A8030000 		.4byte	.LLST24
+ 827 038f 00       		.byte	0
+ 828 0390 0F       		.uleb128 0xf
+ 829 0391 02010000 		.4byte	.LVL53
+ 830 0395 C5030000 		.4byte	0x3c5
+ 831 0399 00       		.byte	0
+ 832 039a 00       		.byte	0
+ 833 039b 12       		.uleb128 0x12
+ 834 039c 40000000 		.4byte	.LVL31
+ 835 03a0 D0030000 		.4byte	0x3d0
+ 836 03a4 13       		.uleb128 0x13
+ 837 03a5 06       		.uleb128 0x6
+ 838 03a6 50       		.byte	0x50
+ 839 03a7 93       		.byte	0x93
+ 840 03a8 04       		.uleb128 0x4
+ 841 03a9 51       		.byte	0x51
+ 842 03aa 93       		.byte	0x93
+ 843 03ab 04       		.uleb128 0x4
+ 844 03ac 05       		.uleb128 0x5
+ 845 03ad 91       		.byte	0x91
+ 846 03ae 00       		.sleb128 0
+ 847 03af F6       		.byte	0xf6
+ 848 03b0 08       		.byte	0x8
+ 849 03b1 25       		.uleb128 0x25
+ 850 03b2 00       		.byte	0
+ 851 03b3 00       		.byte	0
+ 852 03b4 14       		.uleb128 0x14
+ 853 03b5 CF030000 		.4byte	.LASF74
+ 854 03b9 05       		.byte	0x5
+ 855 03ba 1207     		.2byte	0x712
+ 856 03bc C0030000 		.4byte	0x3c0
+ 857 03c0 15       		.uleb128 0x15
+ 858 03c1 C5000000 		.4byte	0xc5
+ 859 03c5 16       		.uleb128 0x16
+ 860 03c6 0E000000 		.4byte	.LASF70
+ 861 03ca 0E000000 		.4byte	.LASF70
+ 862 03ce 06       		.byte	0x6
+ 863 03cf 85       		.byte	0x85
+ 864 03d0 17       		.uleb128 0x17
+ 865 03d1 706F7700 		.ascii	"pow\000"
+ 866 03d5 706F7700 		.ascii	"pow\000"
+ 867 03d9 06       		.byte	0x6
+ 868 03da 86       		.byte	0x86
+ 869 03db 00       		.byte	0
+ 870              		.section	.debug_abbrev,"",%progbits
+ 871              	.Ldebug_abbrev0:
+ 872 0000 01       		.uleb128 0x1
+ 873 0001 11       		.uleb128 0x11
+ 874 0002 01       		.byte	0x1
+ 875 0003 25       		.uleb128 0x25
+ 876 0004 0E       		.uleb128 0xe
+ 877 0005 13       		.uleb128 0x13
+ 878 0006 0B       		.uleb128 0xb
+ 879 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 19
+
+
+ 880 0008 0E       		.uleb128 0xe
+ 881 0009 1B       		.uleb128 0x1b
+ 882 000a 0E       		.uleb128 0xe
+ 883 000b 55       		.uleb128 0x55
+ 884 000c 17       		.uleb128 0x17
+ 885 000d 11       		.uleb128 0x11
+ 886 000e 01       		.uleb128 0x1
+ 887 000f 10       		.uleb128 0x10
+ 888 0010 17       		.uleb128 0x17
+ 889 0011 00       		.byte	0
+ 890 0012 00       		.byte	0
+ 891 0013 02       		.uleb128 0x2
+ 892 0014 24       		.uleb128 0x24
+ 893 0015 00       		.byte	0
+ 894 0016 0B       		.uleb128 0xb
+ 895 0017 0B       		.uleb128 0xb
+ 896 0018 3E       		.uleb128 0x3e
+ 897 0019 0B       		.uleb128 0xb
+ 898 001a 03       		.uleb128 0x3
+ 899 001b 0E       		.uleb128 0xe
+ 900 001c 00       		.byte	0
+ 901 001d 00       		.byte	0
+ 902 001e 03       		.uleb128 0x3
+ 903 001f 24       		.uleb128 0x24
+ 904 0020 00       		.byte	0
+ 905 0021 0B       		.uleb128 0xb
+ 906 0022 0B       		.uleb128 0xb
+ 907 0023 3E       		.uleb128 0x3e
+ 908 0024 0B       		.uleb128 0xb
+ 909 0025 03       		.uleb128 0x3
+ 910 0026 08       		.uleb128 0x8
+ 911 0027 00       		.byte	0
+ 912 0028 00       		.byte	0
+ 913 0029 04       		.uleb128 0x4
+ 914 002a 16       		.uleb128 0x16
+ 915 002b 00       		.byte	0
+ 916 002c 03       		.uleb128 0x3
+ 917 002d 0E       		.uleb128 0xe
+ 918 002e 3A       		.uleb128 0x3a
+ 919 002f 0B       		.uleb128 0xb
+ 920 0030 3B       		.uleb128 0x3b
+ 921 0031 0B       		.uleb128 0xb
+ 922 0032 49       		.uleb128 0x49
+ 923 0033 13       		.uleb128 0x13
+ 924 0034 00       		.byte	0
+ 925 0035 00       		.byte	0
+ 926 0036 05       		.uleb128 0x5
+ 927 0037 04       		.uleb128 0x4
+ 928 0038 01       		.byte	0x1
+ 929 0039 0B       		.uleb128 0xb
+ 930 003a 0B       		.uleb128 0xb
+ 931 003b 49       		.uleb128 0x49
+ 932 003c 13       		.uleb128 0x13
+ 933 003d 3A       		.uleb128 0x3a
+ 934 003e 0B       		.uleb128 0xb
+ 935 003f 3B       		.uleb128 0x3b
+ 936 0040 0B       		.uleb128 0xb
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 20
+
+
+ 937 0041 01       		.uleb128 0x1
+ 938 0042 13       		.uleb128 0x13
+ 939 0043 00       		.byte	0
+ 940 0044 00       		.byte	0
+ 941 0045 06       		.uleb128 0x6
+ 942 0046 28       		.uleb128 0x28
+ 943 0047 00       		.byte	0
+ 944 0048 03       		.uleb128 0x3
+ 945 0049 0E       		.uleb128 0xe
+ 946 004a 1C       		.uleb128 0x1c
+ 947 004b 0B       		.uleb128 0xb
+ 948 004c 00       		.byte	0
+ 949 004d 00       		.byte	0
+ 950 004e 07       		.uleb128 0x7
+ 951 004f 28       		.uleb128 0x28
+ 952 0050 00       		.byte	0
+ 953 0051 03       		.uleb128 0x3
+ 954 0052 0E       		.uleb128 0xe
+ 955 0053 1C       		.uleb128 0x1c
+ 956 0054 0D       		.uleb128 0xd
+ 957 0055 00       		.byte	0
+ 958 0056 00       		.byte	0
+ 959 0057 08       		.uleb128 0x8
+ 960 0058 0F       		.uleb128 0xf
+ 961 0059 00       		.byte	0
+ 962 005a 0B       		.uleb128 0xb
+ 963 005b 0B       		.uleb128 0xb
+ 964 005c 49       		.uleb128 0x49
+ 965 005d 13       		.uleb128 0x13
+ 966 005e 00       		.byte	0
+ 967 005f 00       		.byte	0
+ 968 0060 09       		.uleb128 0x9
+ 969 0061 2E       		.uleb128 0x2e
+ 970 0062 01       		.byte	0x1
+ 971 0063 3F       		.uleb128 0x3f
+ 972 0064 19       		.uleb128 0x19
+ 973 0065 03       		.uleb128 0x3
+ 974 0066 0E       		.uleb128 0xe
+ 975 0067 3A       		.uleb128 0x3a
+ 976 0068 0B       		.uleb128 0xb
+ 977 0069 3B       		.uleb128 0x3b
+ 978 006a 0B       		.uleb128 0xb
+ 979 006b 27       		.uleb128 0x27
+ 980 006c 19       		.uleb128 0x19
+ 981 006d 49       		.uleb128 0x49
+ 982 006e 13       		.uleb128 0x13
+ 983 006f 11       		.uleb128 0x11
+ 984 0070 01       		.uleb128 0x1
+ 985 0071 12       		.uleb128 0x12
+ 986 0072 06       		.uleb128 0x6
+ 987 0073 40       		.uleb128 0x40
+ 988 0074 18       		.uleb128 0x18
+ 989 0075 9642     		.uleb128 0x2116
+ 990 0077 19       		.uleb128 0x19
+ 991 0078 01       		.uleb128 0x1
+ 992 0079 13       		.uleb128 0x13
+ 993 007a 00       		.byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 21
+
+
+ 994 007b 00       		.byte	0
+ 995 007c 0A       		.uleb128 0xa
+ 996 007d 05       		.uleb128 0x5
+ 997 007e 00       		.byte	0
+ 998 007f 03       		.uleb128 0x3
+ 999 0080 0E       		.uleb128 0xe
+ 1000 0081 3A       		.uleb128 0x3a
+ 1001 0082 0B       		.uleb128 0xb
+ 1002 0083 3B       		.uleb128 0x3b
+ 1003 0084 0B       		.uleb128 0xb
+ 1004 0085 49       		.uleb128 0x49
+ 1005 0086 13       		.uleb128 0x13
+ 1006 0087 02       		.uleb128 0x2
+ 1007 0088 17       		.uleb128 0x17
+ 1008 0089 00       		.byte	0
+ 1009 008a 00       		.byte	0
+ 1010 008b 0B       		.uleb128 0xb
+ 1011 008c 34       		.uleb128 0x34
+ 1012 008d 00       		.byte	0
+ 1013 008e 03       		.uleb128 0x3
+ 1014 008f 0E       		.uleb128 0xe
+ 1015 0090 3A       		.uleb128 0x3a
+ 1016 0091 0B       		.uleb128 0xb
+ 1017 0092 3B       		.uleb128 0x3b
+ 1018 0093 0B       		.uleb128 0xb
+ 1019 0094 49       		.uleb128 0x49
+ 1020 0095 13       		.uleb128 0x13
+ 1021 0096 02       		.uleb128 0x2
+ 1022 0097 17       		.uleb128 0x17
+ 1023 0098 00       		.byte	0
+ 1024 0099 00       		.byte	0
+ 1025 009a 0C       		.uleb128 0xc
+ 1026 009b 0B       		.uleb128 0xb
+ 1027 009c 01       		.byte	0x1
+ 1028 009d 55       		.uleb128 0x55
+ 1029 009e 17       		.uleb128 0x17
+ 1030 009f 00       		.byte	0
+ 1031 00a0 00       		.byte	0
+ 1032 00a1 0D       		.uleb128 0xd
+ 1033 00a2 34       		.uleb128 0x34
+ 1034 00a3 00       		.byte	0
+ 1035 00a4 03       		.uleb128 0x3
+ 1036 00a5 08       		.uleb128 0x8
+ 1037 00a6 3A       		.uleb128 0x3a
+ 1038 00a7 0B       		.uleb128 0xb
+ 1039 00a8 3B       		.uleb128 0x3b
+ 1040 00a9 0B       		.uleb128 0xb
+ 1041 00aa 49       		.uleb128 0x49
+ 1042 00ab 13       		.uleb128 0x13
+ 1043 00ac 02       		.uleb128 0x2
+ 1044 00ad 17       		.uleb128 0x17
+ 1045 00ae 00       		.byte	0
+ 1046 00af 00       		.byte	0
+ 1047 00b0 0E       		.uleb128 0xe
+ 1048 00b1 0B       		.uleb128 0xb
+ 1049 00b2 01       		.byte	0x1
+ 1050 00b3 11       		.uleb128 0x11
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 22
+
+
+ 1051 00b4 01       		.uleb128 0x1
+ 1052 00b5 12       		.uleb128 0x12
+ 1053 00b6 06       		.uleb128 0x6
+ 1054 00b7 00       		.byte	0
+ 1055 00b8 00       		.byte	0
+ 1056 00b9 0F       		.uleb128 0xf
+ 1057 00ba 898201   		.uleb128 0x4109
+ 1058 00bd 00       		.byte	0
+ 1059 00be 11       		.uleb128 0x11
+ 1060 00bf 01       		.uleb128 0x1
+ 1061 00c0 31       		.uleb128 0x31
+ 1062 00c1 13       		.uleb128 0x13
+ 1063 00c2 00       		.byte	0
+ 1064 00c3 00       		.byte	0
+ 1065 00c4 10       		.uleb128 0x10
+ 1066 00c5 05       		.uleb128 0x5
+ 1067 00c6 00       		.byte	0
+ 1068 00c7 03       		.uleb128 0x3
+ 1069 00c8 08       		.uleb128 0x8
+ 1070 00c9 3A       		.uleb128 0x3a
+ 1071 00ca 0B       		.uleb128 0xb
+ 1072 00cb 3B       		.uleb128 0x3b
+ 1073 00cc 0B       		.uleb128 0xb
+ 1074 00cd 49       		.uleb128 0x49
+ 1075 00ce 13       		.uleb128 0x13
+ 1076 00cf 02       		.uleb128 0x2
+ 1077 00d0 17       		.uleb128 0x17
+ 1078 00d1 00       		.byte	0
+ 1079 00d2 00       		.byte	0
+ 1080 00d3 11       		.uleb128 0x11
+ 1081 00d4 0B       		.uleb128 0xb
+ 1082 00d5 01       		.byte	0x1
+ 1083 00d6 55       		.uleb128 0x55
+ 1084 00d7 17       		.uleb128 0x17
+ 1085 00d8 01       		.uleb128 0x1
+ 1086 00d9 13       		.uleb128 0x13
+ 1087 00da 00       		.byte	0
+ 1088 00db 00       		.byte	0
+ 1089 00dc 12       		.uleb128 0x12
+ 1090 00dd 898201   		.uleb128 0x4109
+ 1091 00e0 01       		.byte	0x1
+ 1092 00e1 11       		.uleb128 0x11
+ 1093 00e2 01       		.uleb128 0x1
+ 1094 00e3 31       		.uleb128 0x31
+ 1095 00e4 13       		.uleb128 0x13
+ 1096 00e5 00       		.byte	0
+ 1097 00e6 00       		.byte	0
+ 1098 00e7 13       		.uleb128 0x13
+ 1099 00e8 8A8201   		.uleb128 0x410a
+ 1100 00eb 00       		.byte	0
+ 1101 00ec 02       		.uleb128 0x2
+ 1102 00ed 18       		.uleb128 0x18
+ 1103 00ee 9142     		.uleb128 0x2111
+ 1104 00f0 18       		.uleb128 0x18
+ 1105 00f1 00       		.byte	0
+ 1106 00f2 00       		.byte	0
+ 1107 00f3 14       		.uleb128 0x14
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 23
+
+
+ 1108 00f4 34       		.uleb128 0x34
+ 1109 00f5 00       		.byte	0
+ 1110 00f6 03       		.uleb128 0x3
+ 1111 00f7 0E       		.uleb128 0xe
+ 1112 00f8 3A       		.uleb128 0x3a
+ 1113 00f9 0B       		.uleb128 0xb
+ 1114 00fa 3B       		.uleb128 0x3b
+ 1115 00fb 05       		.uleb128 0x5
+ 1116 00fc 49       		.uleb128 0x49
+ 1117 00fd 13       		.uleb128 0x13
+ 1118 00fe 3F       		.uleb128 0x3f
+ 1119 00ff 19       		.uleb128 0x19
+ 1120 0100 3C       		.uleb128 0x3c
+ 1121 0101 19       		.uleb128 0x19
+ 1122 0102 00       		.byte	0
+ 1123 0103 00       		.byte	0
+ 1124 0104 15       		.uleb128 0x15
+ 1125 0105 35       		.uleb128 0x35
+ 1126 0106 00       		.byte	0
+ 1127 0107 49       		.uleb128 0x49
+ 1128 0108 13       		.uleb128 0x13
+ 1129 0109 00       		.byte	0
+ 1130 010a 00       		.byte	0
+ 1131 010b 16       		.uleb128 0x16
+ 1132 010c 2E       		.uleb128 0x2e
+ 1133 010d 00       		.byte	0
+ 1134 010e 3F       		.uleb128 0x3f
+ 1135 010f 19       		.uleb128 0x19
+ 1136 0110 3C       		.uleb128 0x3c
+ 1137 0111 19       		.uleb128 0x19
+ 1138 0112 6E       		.uleb128 0x6e
+ 1139 0113 0E       		.uleb128 0xe
+ 1140 0114 03       		.uleb128 0x3
+ 1141 0115 0E       		.uleb128 0xe
+ 1142 0116 3A       		.uleb128 0x3a
+ 1143 0117 0B       		.uleb128 0xb
+ 1144 0118 3B       		.uleb128 0x3b
+ 1145 0119 0B       		.uleb128 0xb
+ 1146 011a 00       		.byte	0
+ 1147 011b 00       		.byte	0
+ 1148 011c 17       		.uleb128 0x17
+ 1149 011d 2E       		.uleb128 0x2e
+ 1150 011e 00       		.byte	0
+ 1151 011f 3F       		.uleb128 0x3f
+ 1152 0120 19       		.uleb128 0x19
+ 1153 0121 3C       		.uleb128 0x3c
+ 1154 0122 19       		.uleb128 0x19
+ 1155 0123 6E       		.uleb128 0x6e
+ 1156 0124 08       		.uleb128 0x8
+ 1157 0125 03       		.uleb128 0x3
+ 1158 0126 08       		.uleb128 0x8
+ 1159 0127 3A       		.uleb128 0x3a
+ 1160 0128 0B       		.uleb128 0xb
+ 1161 0129 3B       		.uleb128 0x3b
+ 1162 012a 0B       		.uleb128 0xb
+ 1163 012b 00       		.byte	0
+ 1164 012c 00       		.byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 24
+
+
+ 1165 012d 00       		.byte	0
+ 1166              		.section	.debug_loc,"",%progbits
+ 1167              	.Ldebug_loc0:
+ 1168              	.LLST0:
+ 1169 0000 00000000 		.4byte	.LVL0
+ 1170 0004 16000000 		.4byte	.LVL2
+ 1171 0008 0100     		.2byte	0x1
+ 1172 000a 50       		.byte	0x50
+ 1173 000b 16000000 		.4byte	.LVL2
+ 1174 000f A0000000 		.4byte	.LVL25
+ 1175 0013 0100     		.2byte	0x1
+ 1176 0015 56       		.byte	0x56
+ 1177 0016 A0000000 		.4byte	.LVL25
+ 1178 001a A4000000 		.4byte	.LVL26
+ 1179 001e 0100     		.2byte	0x1
+ 1180 0020 50       		.byte	0x50
+ 1181 0021 A4000000 		.4byte	.LVL26
+ 1182 0025 AC000000 		.4byte	.LFE123
+ 1183 0029 0400     		.2byte	0x4
+ 1184 002b F3       		.byte	0xf3
+ 1185 002c 01       		.uleb128 0x1
+ 1186 002d 50       		.byte	0x50
+ 1187 002e 9F       		.byte	0x9f
+ 1188 002f 00000000 		.4byte	0
+ 1189 0033 00000000 		.4byte	0
+ 1190              	.LLST1:
+ 1191 0037 00000000 		.4byte	.LVL0
+ 1192 003b 16000000 		.4byte	.LVL2
+ 1193 003f 0100     		.2byte	0x1
+ 1194 0041 51       		.byte	0x51
+ 1195 0042 16000000 		.4byte	.LVL2
+ 1196 0046 A0000000 		.4byte	.LVL25
+ 1197 004a 0400     		.2byte	0x4
+ 1198 004c F3       		.byte	0xf3
+ 1199 004d 01       		.uleb128 0x1
+ 1200 004e 51       		.byte	0x51
+ 1201 004f 9F       		.byte	0x9f
+ 1202 0050 A0000000 		.4byte	.LVL25
+ 1203 0054 AC000000 		.4byte	.LFE123
+ 1204 0058 0100     		.2byte	0x1
+ 1205 005a 51       		.byte	0x51
+ 1206 005b 00000000 		.4byte	0
+ 1207 005f 00000000 		.4byte	0
+ 1208              	.LLST2:
+ 1209 0063 00000000 		.4byte	.LVL0
+ 1210 0067 16000000 		.4byte	.LVL2
+ 1211 006b 0100     		.2byte	0x1
+ 1212 006d 52       		.byte	0x52
+ 1213 006e 16000000 		.4byte	.LVL2
+ 1214 0072 A0000000 		.4byte	.LVL25
+ 1215 0076 0100     		.2byte	0x1
+ 1216 0078 5A       		.byte	0x5a
+ 1217 0079 A0000000 		.4byte	.LVL25
+ 1218 007d AC000000 		.4byte	.LFE123
+ 1219 0081 0100     		.2byte	0x1
+ 1220 0083 52       		.byte	0x52
+ 1221 0084 00000000 		.4byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 25
+
+
+ 1222 0088 00000000 		.4byte	0
+ 1223              	.LLST3:
+ 1224 008c 00000000 		.4byte	.LVL0
+ 1225 0090 16000000 		.4byte	.LVL2
+ 1226 0094 0100     		.2byte	0x1
+ 1227 0096 53       		.byte	0x53
+ 1228 0097 16000000 		.4byte	.LVL2
+ 1229 009b A0000000 		.4byte	.LVL25
+ 1230 009f 0100     		.2byte	0x1
+ 1231 00a1 5B       		.byte	0x5b
+ 1232 00a2 A0000000 		.4byte	.LVL25
+ 1233 00a6 AC000000 		.4byte	.LFE123
+ 1234 00aa 0100     		.2byte	0x1
+ 1235 00ac 53       		.byte	0x53
+ 1236 00ad 00000000 		.4byte	0
+ 1237 00b1 00000000 		.4byte	0
+ 1238              	.LLST4:
+ 1239 00b5 12000000 		.4byte	.LVL1
+ 1240 00b9 A0000000 		.4byte	.LVL25
+ 1241 00bd 0100     		.2byte	0x1
+ 1242 00bf 57       		.byte	0x57
+ 1243 00c0 00000000 		.4byte	0
+ 1244 00c4 00000000 		.4byte	0
+ 1245              	.LLST5:
+ 1246 00c8 12000000 		.4byte	.LVL1
+ 1247 00cc 16000000 		.4byte	.LVL2
+ 1248 00d0 0200     		.2byte	0x2
+ 1249 00d2 30       		.byte	0x30
+ 1250 00d3 9F       		.byte	0x9f
+ 1251 00d4 16000000 		.4byte	.LVL2
+ 1252 00d8 94000000 		.4byte	.LVL23
+ 1253 00dc 0100     		.2byte	0x1
+ 1254 00de 54       		.byte	0x54
+ 1255 00df 96000000 		.4byte	.LVL24
+ 1256 00e3 A0000000 		.4byte	.LVL25
+ 1257 00e7 0100     		.2byte	0x1
+ 1258 00e9 54       		.byte	0x54
+ 1259 00ea 00000000 		.4byte	0
+ 1260 00ee 00000000 		.4byte	0
+ 1261              	.LLST6:
+ 1262 00f2 22000000 		.4byte	.LVL4
+ 1263 00f6 26000000 		.4byte	.LVL5
+ 1264 00fa 0100     		.2byte	0x1
+ 1265 00fc 50       		.byte	0x50
+ 1266 00fd 26000000 		.4byte	.LVL5
+ 1267 0101 36000000 		.4byte	.LVL10
+ 1268 0105 0100     		.2byte	0x1
+ 1269 0107 58       		.byte	0x58
+ 1270 0108 00000000 		.4byte	0
+ 1271 010c 00000000 		.4byte	0
+ 1272              	.LLST7:
+ 1273 0110 2C000000 		.4byte	.LVL7
+ 1274 0114 30000000 		.4byte	.LVL8
+ 1275 0118 0100     		.2byte	0x1
+ 1276 011a 50       		.byte	0x50
+ 1277 011b 30000000 		.4byte	.LVL8
+ 1278 011f 4E000000 		.4byte	.LVL14
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 26
+
+
+ 1279 0123 0100     		.2byte	0x1
+ 1280 0125 55       		.byte	0x55
+ 1281 0126 00000000 		.4byte	0
+ 1282 012a 00000000 		.4byte	0
+ 1283              	.LLST8:
+ 1284 012e 56000000 		.4byte	.LVL16
+ 1285 0132 96000000 		.4byte	.LVL24
+ 1286 0136 0600     		.2byte	0x6
+ 1287 0138 58       		.byte	0x58
+ 1288 0139 93       		.byte	0x93
+ 1289 013a 04       		.uleb128 0x4
+ 1290 013b 59       		.byte	0x59
+ 1291 013c 93       		.byte	0x93
+ 1292 013d 04       		.uleb128 0x4
+ 1293 013e 00000000 		.4byte	0
+ 1294 0142 00000000 		.4byte	0
+ 1295              	.LLST9:
+ 1296 0146 8A000000 		.4byte	.LVL21
+ 1297 014a 8D000000 		.4byte	.LVL22-1
+ 1298 014e 0100     		.2byte	0x1
+ 1299 0150 50       		.byte	0x50
+ 1300 0151 00000000 		.4byte	0
+ 1301 0155 00000000 		.4byte	0
+ 1302              	.LLST10:
+ 1303 0159 00000000 		.4byte	.LVL27
+ 1304 015d 20000000 		.4byte	.LVL28
+ 1305 0161 0100     		.2byte	0x1
+ 1306 0163 50       		.byte	0x50
+ 1307 0164 20000000 		.4byte	.LVL28
+ 1308 0168 2A010000 		.4byte	.LVL59
+ 1309 016c 0100     		.2byte	0x1
+ 1310 016e 5A       		.byte	0x5a
+ 1311 016f 2A010000 		.4byte	.LVL59
+ 1312 0173 2E010000 		.4byte	.LVL60
+ 1313 0177 0100     		.2byte	0x1
+ 1314 0179 50       		.byte	0x50
+ 1315 017a 2E010000 		.4byte	.LVL60
+ 1316 017e 40010000 		.4byte	.LFE124
+ 1317 0182 0400     		.2byte	0x4
+ 1318 0184 F3       		.byte	0xf3
+ 1319 0185 01       		.uleb128 0x1
+ 1320 0186 50       		.byte	0x50
+ 1321 0187 9F       		.byte	0x9f
+ 1322 0188 00000000 		.4byte	0
+ 1323 018c 00000000 		.4byte	0
+ 1324              	.LLST11:
+ 1325 0190 00000000 		.4byte	.LVL27
+ 1326 0194 23000000 		.4byte	.LVL29-1
+ 1327 0198 0100     		.2byte	0x1
+ 1328 019a 51       		.byte	0x51
+ 1329 019b 23000000 		.4byte	.LVL29-1
+ 1330 019f 2A010000 		.4byte	.LVL59
+ 1331 01a3 0400     		.2byte	0x4
+ 1332 01a5 F3       		.byte	0xf3
+ 1333 01a6 01       		.uleb128 0x1
+ 1334 01a7 51       		.byte	0x51
+ 1335 01a8 9F       		.byte	0x9f
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 27
+
+
+ 1336 01a9 2A010000 		.4byte	.LVL59
+ 1337 01ad 2E010000 		.4byte	.LVL60
+ 1338 01b1 0100     		.2byte	0x1
+ 1339 01b3 51       		.byte	0x51
+ 1340 01b4 2E010000 		.4byte	.LVL60
+ 1341 01b8 40010000 		.4byte	.LFE124
+ 1342 01bc 0400     		.2byte	0x4
+ 1343 01be F3       		.byte	0xf3
+ 1344 01bf 01       		.uleb128 0x1
+ 1345 01c0 51       		.byte	0x51
+ 1346 01c1 9F       		.byte	0x9f
+ 1347 01c2 00000000 		.4byte	0
+ 1348 01c6 00000000 		.4byte	0
+ 1349              	.LLST12:
+ 1350 01ca 00000000 		.4byte	.LVL27
+ 1351 01ce 23000000 		.4byte	.LVL29-1
+ 1352 01d2 0100     		.2byte	0x1
+ 1353 01d4 52       		.byte	0x52
+ 1354 01d5 23000000 		.4byte	.LVL29-1
+ 1355 01d9 2A010000 		.4byte	.LVL59
+ 1356 01dd 0400     		.2byte	0x4
+ 1357 01df F3       		.byte	0xf3
+ 1358 01e0 01       		.uleb128 0x1
+ 1359 01e1 52       		.byte	0x52
+ 1360 01e2 9F       		.byte	0x9f
+ 1361 01e3 2A010000 		.4byte	.LVL59
+ 1362 01e7 2E010000 		.4byte	.LVL60
+ 1363 01eb 0100     		.2byte	0x1
+ 1364 01ed 52       		.byte	0x52
+ 1365 01ee 2E010000 		.4byte	.LVL60
+ 1366 01f2 40010000 		.4byte	.LFE124
+ 1367 01f6 0400     		.2byte	0x4
+ 1368 01f8 F3       		.byte	0xf3
+ 1369 01f9 01       		.uleb128 0x1
+ 1370 01fa 52       		.byte	0x52
+ 1371 01fb 9F       		.byte	0x9f
+ 1372 01fc 00000000 		.4byte	0
+ 1373 0200 00000000 		.4byte	0
+ 1374              	.LLST13:
+ 1375 0204 00000000 		.4byte	.LVL27
+ 1376 0208 23000000 		.4byte	.LVL29-1
+ 1377 020c 0100     		.2byte	0x1
+ 1378 020e 53       		.byte	0x53
+ 1379 020f 23000000 		.4byte	.LVL29-1
+ 1380 0213 2A010000 		.4byte	.LVL59
+ 1381 0217 0400     		.2byte	0x4
+ 1382 0219 F3       		.byte	0xf3
+ 1383 021a 01       		.uleb128 0x1
+ 1384 021b 53       		.byte	0x53
+ 1385 021c 9F       		.byte	0x9f
+ 1386 021d 2A010000 		.4byte	.LVL59
+ 1387 0221 2E010000 		.4byte	.LVL60
+ 1388 0225 0100     		.2byte	0x1
+ 1389 0227 53       		.byte	0x53
+ 1390 0228 2E010000 		.4byte	.LVL60
+ 1391 022c 40010000 		.4byte	.LFE124
+ 1392 0230 0400     		.2byte	0x4
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 28
+
+
+ 1393 0232 F3       		.byte	0xf3
+ 1394 0233 01       		.uleb128 0x1
+ 1395 0234 53       		.byte	0x53
+ 1396 0235 9F       		.byte	0x9f
+ 1397 0236 00000000 		.4byte	0
+ 1398 023a 00000000 		.4byte	0
+ 1399              	.LLST14:
+ 1400 023e 00000000 		.4byte	.LVL27
+ 1401 0242 34010000 		.4byte	.LVL61
+ 1402 0246 0200     		.2byte	0x2
+ 1403 0248 91       		.byte	0x91
+ 1404 0249 00       		.sleb128 0
+ 1405 024a 34010000 		.4byte	.LVL61
+ 1406 024e 40010000 		.4byte	.LFE124
+ 1407 0252 0200     		.2byte	0x2
+ 1408 0254 7D       		.byte	0x7d
+ 1409 0255 00       		.sleb128 0
+ 1410 0256 00000000 		.4byte	0
+ 1411 025a 00000000 		.4byte	0
+ 1412              	.LLST15:
+ 1413 025e 00000000 		.4byte	.LVL27
+ 1414 0262 34010000 		.4byte	.LVL61
+ 1415 0266 0200     		.2byte	0x2
+ 1416 0268 91       		.byte	0x91
+ 1417 0269 08       		.sleb128 8
+ 1418 026a 34010000 		.4byte	.LVL61
+ 1419 026e 40010000 		.4byte	.LFE124
+ 1420 0272 0200     		.2byte	0x2
+ 1421 0274 7D       		.byte	0x7d
+ 1422 0275 08       		.sleb128 8
+ 1423 0276 00000000 		.4byte	0
+ 1424 027a 00000000 		.4byte	0
+ 1425              	.LLST16:
+ 1426 027e 00000000 		.4byte	.LVL27
+ 1427 0282 34010000 		.4byte	.LVL61
+ 1428 0286 0200     		.2byte	0x2
+ 1429 0288 91       		.byte	0x91
+ 1430 0289 0C       		.sleb128 12
+ 1431 028a 34010000 		.4byte	.LVL61
+ 1432 028e 40010000 		.4byte	.LFE124
+ 1433 0292 0200     		.2byte	0x2
+ 1434 0294 7D       		.byte	0x7d
+ 1435 0295 0C       		.sleb128 12
+ 1436 0296 00000000 		.4byte	0
+ 1437 029a 00000000 		.4byte	0
+ 1438              	.LLST17:
+ 1439 029e 00000000 		.4byte	.LVL27
+ 1440 02a2 34010000 		.4byte	.LVL61
+ 1441 02a6 0200     		.2byte	0x2
+ 1442 02a8 91       		.byte	0x91
+ 1443 02a9 10       		.sleb128 16
+ 1444 02aa 34010000 		.4byte	.LVL61
+ 1445 02ae 40010000 		.4byte	.LFE124
+ 1446 02b2 0200     		.2byte	0x2
+ 1447 02b4 7D       		.byte	0x7d
+ 1448 02b5 10       		.sleb128 16
+ 1449 02b6 00000000 		.4byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 29
+
+
+ 1450 02ba 00000000 		.4byte	0
+ 1451              	.LLST18:
+ 1452 02be 58000000 		.4byte	.LVL34
+ 1453 02c2 74000000 		.4byte	.LVL36
+ 1454 02c6 0600     		.2byte	0x6
+ 1455 02c8 50       		.byte	0x50
+ 1456 02c9 93       		.byte	0x93
+ 1457 02ca 04       		.uleb128 0x4
+ 1458 02cb 51       		.byte	0x51
+ 1459 02cc 93       		.byte	0x93
+ 1460 02cd 04       		.uleb128 0x4
+ 1461 02ce 74000000 		.4byte	.LVL36
+ 1462 02d2 2A010000 		.4byte	.LVL59
+ 1463 02d6 0200     		.2byte	0x2
+ 1464 02d8 91       		.byte	0x91
+ 1465 02d9 50       		.sleb128 -48
+ 1466 02da 00000000 		.4byte	0
+ 1467 02de 00000000 		.4byte	0
+ 1468              	.LLST19:
+ 1469 02e2 70000000 		.4byte	.LVL35
+ 1470 02e6 74000000 		.4byte	.LVL36
+ 1471 02ea 0200     		.2byte	0x2
+ 1472 02ec 30       		.byte	0x30
+ 1473 02ed 9F       		.byte	0x9f
+ 1474 02ee 74000000 		.4byte	.LVL36
+ 1475 02f2 20010000 		.4byte	.LVL57
+ 1476 02f6 0100     		.2byte	0x1
+ 1477 02f8 55       		.byte	0x55
+ 1478 02f9 22010000 		.4byte	.LVL58
+ 1479 02fd 2A010000 		.4byte	.LVL59
+ 1480 0301 0100     		.2byte	0x1
+ 1481 0303 55       		.byte	0x55
+ 1482 0304 00000000 		.4byte	0
+ 1483 0308 00000000 		.4byte	0
+ 1484              	.LLST20:
+ 1485 030c 86000000 		.4byte	.LVL37
+ 1486 0310 A6000000 		.4byte	.LVL40
+ 1487 0314 0200     		.2byte	0x2
+ 1488 0316 7D       		.byte	0x7d
+ 1489 0317 00       		.sleb128 0
+ 1490 0318 A6000000 		.4byte	.LVL40
+ 1491 031c B2000000 		.4byte	.LVL41
+ 1492 0320 0600     		.2byte	0x6
+ 1493 0322 50       		.byte	0x50
+ 1494 0323 93       		.byte	0x93
+ 1495 0324 04       		.uleb128 0x4
+ 1496 0325 51       		.byte	0x51
+ 1497 0326 93       		.byte	0x93
+ 1498 0327 04       		.uleb128 0x4
+ 1499 0328 B2000000 		.4byte	.LVL41
+ 1500 032c CC000000 		.4byte	.LVL47
+ 1501 0330 0200     		.2byte	0x2
+ 1502 0332 7D       		.byte	0x7d
+ 1503 0333 00       		.sleb128 0
+ 1504 0334 DA000000 		.4byte	.LVL48
+ 1505 0338 16010000 		.4byte	.LVL56
+ 1506 033c 0200     		.2byte	0x2
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 30
+
+
+ 1507 033e 7D       		.byte	0x7d
+ 1508 033f 00       		.sleb128 0
+ 1509 0340 00000000 		.4byte	0
+ 1510 0344 00000000 		.4byte	0
+ 1511              	.LLST21:
+ 1512 0348 86000000 		.4byte	.LVL37
+ 1513 034c C6000000 		.4byte	.LVL44
+ 1514 0350 0200     		.2byte	0x2
+ 1515 0352 91       		.byte	0x91
+ 1516 0353 40       		.sleb128 -64
+ 1517 0354 C6000000 		.4byte	.LVL44
+ 1518 0358 CC000000 		.4byte	.LVL47
+ 1519 035c 0600     		.2byte	0x6
+ 1520 035e 50       		.byte	0x50
+ 1521 035f 93       		.byte	0x93
+ 1522 0360 04       		.uleb128 0x4
+ 1523 0361 51       		.byte	0x51
+ 1524 0362 93       		.byte	0x93
+ 1525 0363 04       		.uleb128 0x4
+ 1526 0364 DA000000 		.4byte	.LVL48
+ 1527 0368 16010000 		.4byte	.LVL56
+ 1528 036c 0200     		.2byte	0x2
+ 1529 036e 91       		.byte	0x91
+ 1530 036f 40       		.sleb128 -64
+ 1531 0370 00000000 		.4byte	0
+ 1532 0374 00000000 		.4byte	0
+ 1533              	.LLST22:
+ 1534 0378 F2000000 		.4byte	.LVL50
+ 1535 037c FA000000 		.4byte	.LVL51
+ 1536 0380 0600     		.2byte	0x6
+ 1537 0382 50       		.byte	0x50
+ 1538 0383 93       		.byte	0x93
+ 1539 0384 04       		.uleb128 0x4
+ 1540 0385 51       		.byte	0x51
+ 1541 0386 93       		.byte	0x93
+ 1542 0387 04       		.uleb128 0x4
+ 1543 0388 00000000 		.4byte	0
+ 1544 038c 00000000 		.4byte	0
+ 1545              	.LLST23:
+ 1546 0390 FE000000 		.4byte	.LVL52
+ 1547 0394 01010000 		.4byte	.LVL53-1
+ 1548 0398 0600     		.2byte	0x6
+ 1549 039a 50       		.byte	0x50
+ 1550 039b 93       		.byte	0x93
+ 1551 039c 04       		.uleb128 0x4
+ 1552 039d 51       		.byte	0x51
+ 1553 039e 93       		.byte	0x93
+ 1554 039f 04       		.uleb128 0x4
+ 1555 03a0 00000000 		.4byte	0
+ 1556 03a4 00000000 		.4byte	0
+ 1557              	.LLST24:
+ 1558 03a8 86000000 		.4byte	.LVL37
+ 1559 03ac C8000000 		.4byte	.LVL45
+ 1560 03b0 0100     		.2byte	0x1
+ 1561 03b2 54       		.byte	0x54
+ 1562 03b3 CA000000 		.4byte	.LVL46
+ 1563 03b7 CC000000 		.4byte	.LVL47
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 31
+
+
+ 1564 03bb 0100     		.2byte	0x1
+ 1565 03bd 54       		.byte	0x54
+ 1566 03be DA000000 		.4byte	.LVL48
+ 1567 03c2 16010000 		.4byte	.LVL56
+ 1568 03c6 0100     		.2byte	0x1
+ 1569 03c8 54       		.byte	0x54
+ 1570 03c9 00000000 		.4byte	0
+ 1571 03cd 00000000 		.4byte	0
+ 1572              		.section	.debug_aranges,"",%progbits
+ 1573 0000 24000000 		.4byte	0x24
+ 1574 0004 0200     		.2byte	0x2
+ 1575 0006 00000000 		.4byte	.Ldebug_info0
+ 1576 000a 04       		.byte	0x4
+ 1577 000b 00       		.byte	0
+ 1578 000c 0000     		.2byte	0
+ 1579 000e 0000     		.2byte	0
+ 1580 0010 00000000 		.4byte	.LFB123
+ 1581 0014 AC000000 		.4byte	.LFE123-.LFB123
+ 1582 0018 00000000 		.4byte	.LFB124
+ 1583 001c 40010000 		.4byte	.LFE124-.LFB124
+ 1584 0020 00000000 		.4byte	0
+ 1585 0024 00000000 		.4byte	0
+ 1586              		.section	.debug_ranges,"",%progbits
+ 1587              	.Ldebug_ranges0:
+ 1588 0000 12000000 		.4byte	.LBB2
+ 1589 0004 9A000000 		.4byte	.LBE2
+ 1590 0008 9C000000 		.4byte	.LBB5
+ 1591 000c A0000000 		.4byte	.LBE5
+ 1592 0010 00000000 		.4byte	0
+ 1593 0014 00000000 		.4byte	0
+ 1594 0018 70000000 		.4byte	.LBB6
+ 1595 001c 26010000 		.4byte	.LBE6
+ 1596 0020 28010000 		.4byte	.LBB11
+ 1597 0024 2A010000 		.4byte	.LBE11
+ 1598 0028 00000000 		.4byte	0
+ 1599 002c 00000000 		.4byte	0
+ 1600 0030 86000000 		.4byte	.LBB7
+ 1601 0034 CC000000 		.4byte	.LBE7
+ 1602 0038 DA000000 		.4byte	.LBB10
+ 1603 003c 14010000 		.4byte	.LBE10
+ 1604 0040 00000000 		.4byte	0
+ 1605 0044 00000000 		.4byte	0
+ 1606 0048 86000000 		.4byte	.LBB8
+ 1607 004c CC000000 		.4byte	.LBE8
+ 1608 0050 DA000000 		.4byte	.LBB9
+ 1609 0054 DE000000 		.4byte	.LBE9
+ 1610 0058 00000000 		.4byte	0
+ 1611 005c 00000000 		.4byte	0
+ 1612 0060 00000000 		.4byte	.LFB123
+ 1613 0064 AC000000 		.4byte	.LFE123
+ 1614 0068 00000000 		.4byte	.LFB124
+ 1615 006c 40010000 		.4byte	.LFE124
+ 1616 0070 00000000 		.4byte	0
+ 1617 0074 00000000 		.4byte	0
+ 1618              		.section	.debug_line,"",%progbits
+ 1619              	.Ldebug_line0:
+ 1620 0000 51020000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 32
+
+
+ 1620      0200C701 
+ 1620      00000201 
+ 1620      FB0E0D00 
+ 1620      01010101 
+ 1621              	.LASF62:
+ 1622 0000 43414652 		.ascii	"CAFRThreshold\000"
+ 1622      54687265 
+ 1622      73686F6C 
+ 1622      6400
+ 1623              	.LASF70:
+ 1624 000e 6C6F6731 		.ascii	"log10\000"
+ 1624      3000
+ 1625              	.LASF37:
+ 1626 0014 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 1626      52524F52 
+ 1626      5F524541 
+ 1626      445F4F4E 
+ 1626      4C5900
+ 1627              	.LASF23:
+ 1628 0027 52435F53 		.ascii	"RC_SUCCESS\000"
+ 1628      55434345 
+ 1628      535300
+ 1629              	.LASF38:
+ 1630 0032 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 1630      52524F52 
+ 1630      5F575249 
+ 1630      54455F4F 
+ 1630      4E4C5900 
+ 1631              	.LASF6:
+ 1632 0046 73686F72 		.ascii	"short int\000"
+ 1632      7420696E 
+ 1632      7400
+ 1633              	.LASF29:
+ 1634 0050 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 1634      52524F52 
+ 1634      5F4F5645 
+ 1634      5252554E 
+ 1634      00
+ 1635              	.LASF41:
+ 1636 0061 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 1636      52524F52 
+ 1636      5F575249 
+ 1636      54455F46 
+ 1636      41494C53 
+ 1637              	.LASF14:
+ 1638 0076 73697A65 		.ascii	"sizetype\000"
+ 1638      74797065 
+ 1638      00
+ 1639              	.LASF61:
+ 1640 007f 66667449 		.ascii	"fftInput\000"
+ 1640      6E707574 
+ 1640      00
+ 1641              	.LASF42:
+ 1642 0088 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 1642      52524F52 
+ 1642      5F4E4F54 
+ 1642      5F4D4154 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 33
+
+
+ 1642      434800
+ 1643              	.LASF40:
+ 1644 009b 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 1644      52524F52 
+ 1644      5F524541 
+ 1644      445F4641 
+ 1644      494C5300 
+ 1645              	.LASF8:
+ 1646 00af 5F5F7569 		.ascii	"__uint16_t\000"
+ 1646      6E743136 
+ 1646      5F7400
+ 1647              	.LASF54:
+ 1648 00ba 68616C66 		.ascii	"half_length\000"
+ 1648      5F6C656E 
+ 1648      67746800 
+ 1649              	.LASF66:
+ 1650 00c6 73756D4C 		.ascii	"sumLeading\000"
+ 1650      65616469 
+ 1650      6E6700
+ 1651              	.LASF65:
+ 1652 00d1 616C7068 		.ascii	"alpha\000"
+ 1652      6100
+ 1653              	.LASF46:
+ 1654 00d7 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 1654      52524F52 
+ 1654      5F494E56 
+ 1654      414C4944 
+ 1654      5F535441 
+ 1655              	.LASF28:
+ 1656 00ee 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 1656      52524F52 
+ 1656      5F52414E 
+ 1656      474500
+ 1657              	.LASF50:
+ 1658 00fd 6666745F 		.ascii	"fft_buffer\000"
+ 1658      62756666 
+ 1658      657200
+ 1659              	.LASF16:
+ 1660 0108 666C6F61 		.ascii	"float\000"
+ 1660      7400
+ 1661              	.LASF48:
+ 1662 010e 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 1662      52524F52 
+ 1662      5F4E4F54 
+ 1662      5F494D50 
+ 1662      4C454D45 
+ 1663              	.LASF2:
+ 1664 0127 6C6F6E67 		.ascii	"long long int\000"
+ 1664      206C6F6E 
+ 1664      6720696E 
+ 1664      7400
+ 1665              	.LASF20:
+ 1666 0135 73696E74 		.ascii	"sint32_t\000"
+ 1666      33325F74 
+ 1666      00
+ 1667              	.LASF69:
+ 1668 013e 74687265 		.ascii	"threshold\000"
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 34
+
+
+ 1668      73686F6C 
+ 1668      6400
+ 1669              	.LASF55:
+ 1670 0148 7265616C 		.ascii	"real\000"
+ 1670      00
+ 1671              	.LASF47:
+ 1672 014d 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 1672      52524F52 
+ 1672      5F554E4B 
+ 1672      4E4F574E 
+ 1672      00
+ 1673              	.LASF26:
+ 1674 015e 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 1674      52524F52 
+ 1674      5F5A4552 
+ 1674      4F00
+ 1675              	.LASF11:
+ 1676 016c 6C6F6E67 		.ascii	"long int\000"
+ 1676      20696E74 
+ 1676      00
+ 1677              	.LASF30:
+ 1678 0175 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 1678      52524F52 
+ 1678      5F554E44 
+ 1678      45525255 
+ 1678      4E00
+ 1679              	.LASF72:
+ 1680 0187 6173775C 		.ascii	"asw\\cfar.c\000"
+ 1680      63666172 
+ 1680      2E6300
+ 1681              	.LASF59:
+ 1682 0192 63616C63 		.ascii	"calcPowerSpectrum\000"
+ 1682      506F7765 
+ 1682      72537065 
+ 1682      63747275 
+ 1682      6D00
+ 1683              	.LASF12:
+ 1684 01a4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1684      20756E73 
+ 1684      69676E65 
+ 1684      6420696E 
+ 1684      7400
+ 1685              	.LASF33:
+ 1686 01b6 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 1686      52524F52 
+ 1686      5F425553 
+ 1686      5900
+ 1687              	.LASF7:
+ 1688 01c4 5F5F7569 		.ascii	"__uint8_t\000"
+ 1688      6E74385F 
+ 1688      7400
+ 1689              	.LASF39:
+ 1690 01ce 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 1690      52524F52 
+ 1690      5F494E56 
+ 1690      414C4944 
+ 1690      00
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 35
+
+
+ 1691              	.LASF21:
+ 1692 01df 666C6F61 		.ascii	"float32_t\000"
+ 1692      7433325F 
+ 1692      7400
+ 1693              	.LASF44:
+ 1694 01e9 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 1694      52524F52 
+ 1694      5F424144 
+ 1694      5F444154 
+ 1694      4100
+ 1695              	.LASF67:
+ 1696 01fb 73756D54 		.ascii	"sumTrailing\000"
+ 1696      7261696C 
+ 1696      696E6700 
+ 1697              	.LASF57:
+ 1698 0207 6D61676E 		.ascii	"magnitude\000"
+ 1698      69747564 
+ 1698      6500
+ 1699              	.LASF3:
+ 1700 0211 6C6F6E67 		.ascii	"long double\000"
+ 1700      20646F75 
+ 1700      626C6500 
+ 1701              	.LASF24:
+ 1702 021d 52435F45 		.ascii	"RC_ERROR\000"
+ 1702      52524F52 
+ 1702      00
+ 1703              	.LASF5:
+ 1704 0226 756E7369 		.ascii	"unsigned char\000"
+ 1704      676E6564 
+ 1704      20636861 
+ 1704      7200
+ 1705              	.LASF58:
+ 1706 0234 706F7765 		.ascii	"power_dB\000"
+ 1706      725F6442 
+ 1706      00
+ 1707              	.LASF4:
+ 1708 023d 7369676E 		.ascii	"signed char\000"
+ 1708      65642063 
+ 1708      68617200 
+ 1709              	.LASF13:
+ 1710 0249 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1710      206C6F6E 
+ 1710      6720756E 
+ 1710      7369676E 
+ 1710      65642069 
+ 1711              	.LASF1:
+ 1712 0260 756E7369 		.ascii	"unsigned int\000"
+ 1712      676E6564 
+ 1712      20696E74 
+ 1712      00
+ 1713              	.LASF35:
+ 1714 026d 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 1714      52524F52 
+ 1714      5F4F5045 
+ 1714      4E00
+ 1715              	.LASF18:
+ 1716 027b 75696E74 		.ascii	"uint16_t\000"
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 36
+
+
+ 1716      31365F74 
+ 1716      00
+ 1717              	.LASF56:
+ 1718 0284 696D6167 		.ascii	"imag\000"
+ 1718      00
+ 1719              	.LASF25:
+ 1720 0289 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 1720      52524F52 
+ 1720      5F4E554C 
+ 1720      4C00
+ 1721              	.LASF32:
+ 1722 0297 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 1722      52524F52 
+ 1722      5F425546 
+ 1722      4645525F 
+ 1722      454D5450 
+ 1723              	.LASF9:
+ 1724 02ad 73686F72 		.ascii	"short unsigned int\000"
+ 1724      7420756E 
+ 1724      7369676E 
+ 1724      65642069 
+ 1724      6E7400
+ 1725              	.LASF15:
+ 1726 02c0 63686172 		.ascii	"char\000"
+ 1726      00
+ 1727              	.LASF31:
+ 1728 02c5 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 1728      52524F52 
+ 1728      5F425546 
+ 1728      4645525F 
+ 1728      46554C4C 
+ 1729              	.LASF19:
+ 1730 02da 696E7433 		.ascii	"int32_t\000"
+ 1730      325F7400 
+ 1731              	.LASF60:
+ 1732 02e2 43415F43 		.ascii	"CA_CFAR\000"
+ 1732      46415200 
+ 1733              	.LASF43:
+ 1734 02ea 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 1734      52524F52 
+ 1734      5F424144 
+ 1734      5F504152 
+ 1734      414D00
+ 1735              	.LASF52:
+ 1736 02fd 6D61675F 		.ascii	"mag_square\000"
+ 1736      73717561 
+ 1736      726500
+ 1737              	.LASF73:
+ 1738 0308 433A5C55 		.ascii	"C:\\Users\\vboxuser\\Documents\\GitHub\\SDHD_Design"
+ 1738      73657273 
+ 1738      5C76626F 
+ 1738      78757365 
+ 1738      725C446F 
+ 1739 0336 5C534448 		.ascii	"\\SDHD_Lab\\PSOC_MATLAB_CFAR.cydsn\000"
+ 1739      445F4C61 
+ 1739      625C5053 
+ 1739      4F435F4D 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 37
+
+
+ 1739      41544C41 
+ 1740              	.LASF53:
+ 1741 0357 706F7765 		.ascii	"power\000"
+ 1741      7200
+ 1742              	.LASF68:
+ 1743 035d 6E6F6973 		.ascii	"noiseLevel\000"
+ 1743      654C6576 
+ 1743      656C00
+ 1744              	.LASF0:
+ 1745 0368 646F7562 		.ascii	"double\000"
+ 1745      6C6500
+ 1746              	.LASF36:
+ 1747 036f 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 1747      52524F52 
+ 1747      5F434845 
+ 1747      434B5355 
+ 1747      4D00
+ 1748              	.LASF63:
+ 1749 0381 66697273 		.ascii	"first_CUT_Index\000"
+ 1749      745F4355 
+ 1749      545F496E 
+ 1749      64657800 
+ 1750              	.LASF10:
+ 1751 0391 5F5F696E 		.ascii	"__int32_t\000"
+ 1751      7433325F 
+ 1751      7400
+ 1752              	.LASF17:
+ 1753 039b 75696E74 		.ascii	"uint8_t\000"
+ 1753      385F7400 
+ 1754              	.LASF64:
+ 1755 03a3 6C617374 		.ascii	"last_CUT_index\000"
+ 1755      5F435554 
+ 1755      5F696E64 
+ 1755      657800
+ 1756              	.LASF45:
+ 1757 03b2 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 1757      52524F52 
+ 1757      5F43414E 
+ 1757      43454C45 
+ 1757      4400
+ 1758              	.LASF51:
+ 1759 03c4 6666745F 		.ascii	"fft_length\000"
+ 1759      6C656E67 
+ 1759      746800
+ 1760              	.LASF74:
+ 1761 03cf 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1761      52784275 
+ 1761      66666572 
+ 1761      00
+ 1762              	.LASF71:
+ 1763 03dc 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1763      43313120 
+ 1763      352E342E 
+ 1763      31203230 
+ 1763      31363036 
+ 1764 040f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1764      20726576 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccyZNGFK.s 			page 38
+
+
+ 1764      6973696F 
+ 1764      6E203233 
+ 1764      37373135 
+ 1765 0442 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1765      66756E63 
+ 1765      74696F6E 
+ 1765      2D736563 
+ 1765      74696F6E 
+ 1766              	.LASF22:
+ 1767 046a 666C6F61 		.ascii	"float64_t\000"
+ 1767      7436345F 
+ 1767      7400
+ 1768              	.LASF27:
+ 1769 0474 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 1769      52524F52 
+ 1769      5F4D454D 
+ 1769      4F525900 
+ 1770              	.LASF49:
+ 1771 0484 52435F74 		.ascii	"RC_t\000"
+ 1771      00
+ 1772              	.LASF34:
+ 1773 0489 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 1773      52524F52 
+ 1773      5F54494D 
+ 1773      455F4F55 
+ 1773      5400
+ 1774              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

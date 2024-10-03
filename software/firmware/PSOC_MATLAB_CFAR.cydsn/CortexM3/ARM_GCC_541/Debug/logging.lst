@@ -1,0 +1,1410 @@
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"logging.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.LOG_Init,"ax",%progbits
+  20              		.align	2
+  21              		.global	LOG_Init
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	LOG_Init, %function
+  25              	LOG_Init:
+  26              	.LFB67:
+  27              		.file 1 "bsw\\Services\\logging.c"
+   1:bsw\Services/logging.c **** /**
+   2:bsw\Services/logging.c ****  * \file 	logging.c
+   3:bsw\Services/logging.c ****  * \author 	Thomas Barth	- Hochschule Darmstadt thomas.barth@h-da.de
+   4:bsw\Services/logging.c ****  * \date 	26.11.2016
+   5:bsw\Services/logging.c ****  * \version 0.1
+   6:bsw\Services/logging.c ****  *
+   7:bsw\Services/logging.c ****  * \brief  Logging mechanism
+   8:bsw\Services/logging.c ****  *
+   9:bsw\Services/logging.c ****  * \copyright Copyright ©2016
+  10:bsw\Services/logging.c ****  * Department of electrical engineering and information technology, Hochschule Darmstadt - Universi
+  11:bsw\Services/logging.c ****  * Permission to use, copy, modify, and distribute this software and its documentation for educatio
+  12:bsw\Services/logging.c ****  * (unless permitted by h_da) and official h_da projects, is hereby granted for enrolled students o
+  13:bsw\Services/logging.c ****  * this paragraph and the following paragraph appear in all copies, modifications, and distribution
+  14:bsw\Services/logging.c ****  * Contact Prof.Dr.-Ing. Peter Fromm, peter.fromm@h-da.de, Birkenweg 8 64295 Darmstadt - GERMANY fo
+  15:bsw\Services/logging.c ****  *
+  16:bsw\Services/logging.c ****  * \warning This software is a PROTOTYPE version and is not designed or intended for use in product
+  17:bsw\Services/logging.c ****  * The user represents and warrants that it will NOT use or redistribute the Software for such purp
+  18:bsw\Services/logging.c ****  * This prototype is for research purposes only. This software is provided "AS IS," without a warra
+  19:bsw\Services/logging.c ****  */
+  20:bsw\Services/logging.c **** /*=======================[ Includes ]==============================================================
+  21:bsw\Services/logging.c **** #include <project.h>
+  22:bsw\Services/logging.c **** #include "logging.h"
+  23:bsw\Services/logging.c **** 
+  24:bsw\Services/logging.c **** 
+  25:bsw\Services/logging.c **** /*=======================[ constant data ]=========================================================
+  26:bsw\Services/logging.c **** 
+  27:bsw\Services/logging.c **** const char logLevel2String[6][CFG_LOGGING_LEVEL_L+1]={
+  28:bsw\Services/logging.c ****     "Verbose",
+  29:bsw\Services/logging.c ****     "Info",
+  30:bsw\Services/logging.c ****     "Warning",
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 2
+
+
+  31:bsw\Services/logging.c ****     "Error",
+  32:bsw\Services/logging.c ****     "Debug",
+  33:bsw\Services/logging.c ****     "Off"
+  34:bsw\Services/logging.c **** };
+  35:bsw\Services/logging.c **** 
+  36:bsw\Services/logging.c **** /*=======================[ variable data ]=========================================================
+  37:bsw\Services/logging.c **** 
+  38:bsw\Services/logging.c **** /*=======================[ Function implementation ]===============================================
+  39:bsw\Services/logging.c **** 
+  40:bsw\Services/logging.c **** RC_t LOG_Init(void){
+  28              		.loc 1 40 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  41:bsw\Services/logging.c **** #if (CFG_LOGGING_ENABLE==ON)   
+  42:bsw\Services/logging.c ****     //Start logging service HW module
+  43:bsw\Services/logging.c ****     MODULE_LOG(Start)();
+  36              		.loc 1 43 0
+  37 0002 FFF7FEFF 		bl	UART_LOG_Start
+  38              	.LVL0:
+  44:bsw\Services/logging.c ****     
+  45:bsw\Services/logging.c ****     //indicate DEBUG Start
+  46:bsw\Services/logging.c ****     MODULE_LOG(PutString)(CFG_LOGGING_NL_CHAR);
+  39              		.loc 1 46 0
+  40 0006 074C     		ldr	r4, .L3
+  41 0008 2046     		mov	r0, r4
+  42 000a FFF7FEFF 		bl	UART_LOG_PutString
+  43              	.LVL1:
+  47:bsw\Services/logging.c ****     MODULE_LOG(PutString)(CFG_LOGGING_NL_CHAR);
+  44              		.loc 1 47 0
+  45 000e 2046     		mov	r0, r4
+  46 0010 FFF7FEFF 		bl	UART_LOG_PutString
+  47              	.LVL2:
+  48:bsw\Services/logging.c ****     MODULE_LOG(PutString)("UART started");
+  48              		.loc 1 48 0
+  49 0014 0448     		ldr	r0, .L3+4
+  50 0016 FFF7FEFF 		bl	UART_LOG_PutString
+  51              	.LVL3:
+  49:bsw\Services/logging.c ****     MODULE_LOG(PutString)(CFG_LOGGING_NL_CHAR);
+  52              		.loc 1 49 0
+  53 001a 2046     		mov	r0, r4
+  54 001c FFF7FEFF 		bl	UART_LOG_PutString
+  55              	.LVL4:
+  50:bsw\Services/logging.c **** 
+  51:bsw\Services/logging.c **** #else
+  52:bsw\Services/logging.c ****     return RC_ERROR_INVALID_STATE;
+  53:bsw\Services/logging.c **** #endif
+  54:bsw\Services/logging.c ****     return RC_SUCCESS;
+  55:bsw\Services/logging.c **** }
+  56              		.loc 1 55 0
+  57 0020 0020     		movs	r0, #0
+  58 0022 10BD     		pop	{r4, pc}
+  59              	.L4:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 3
+
+
+  60              		.align	2
+  61              	.L3:
+  62 0024 00000000 		.word	.LC0
+  63 0028 04000000 		.word	.LC1
+  64              		.cfi_endproc
+  65              	.LFE67:
+  66              		.size	LOG_Init, .-LOG_Init
+  67              		.section	.text.LOG_send,"ax",%progbits
+  68              		.align	2
+  69              		.global	LOG_send
+  70              		.thumb
+  71              		.thumb_func
+  72              		.type	LOG_send, %function
+  73              	LOG_send:
+  74              	.LFB68:
+  56:bsw\Services/logging.c **** 
+  57:bsw\Services/logging.c **** RC_t LOG_send(logging_t* entry){
+  75              		.loc 1 57 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79              	.LVL5:
+  80 0000 10B5     		push	{r4, lr}
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 4, -8
+  83              		.cfi_offset 14, -4
+  84 0002 0446     		mov	r4, r0
+  85              	.LVL6:
+  58:bsw\Services/logging.c ****     
+  59:bsw\Services/logging.c ****     //result buffer
+  60:bsw\Services/logging.c ****     RC_t result=RC_ERROR_INVALID_STATE;
+  61:bsw\Services/logging.c **** #if (CFG_LOGGING_ENABLE==ON)     
+  62:bsw\Services/logging.c ****     MODULE_LOG(PutString)(entry->sender);
+  86              		.loc 1 62 0
+  87 0004 0130     		adds	r0, r0, #1
+  88              	.LVL7:
+  89 0006 FFF7FEFF 		bl	UART_LOG_PutString
+  90              	.LVL8:
+  63:bsw\Services/logging.c ****     MODULE_LOG(PutString)(" : ");
+  91              		.loc 1 63 0
+  92 000a 0648     		ldr	r0, .L7
+  93 000c FFF7FEFF 		bl	UART_LOG_PutString
+  94              	.LVL9:
+  64:bsw\Services/logging.c ****     MODULE_LOG(PutString)(entry->message);
+  95              		.loc 1 64 0
+  96 0010 04F11100 		add	r0, r4, #17
+  97 0014 FFF7FEFF 		bl	UART_LOG_PutString
+  98              	.LVL10:
+  65:bsw\Services/logging.c ****     MODULE_LOG(PutString)(CFG_LOGGING_NL_CHAR);
+  99              		.loc 1 65 0
+ 100 0018 0348     		ldr	r0, .L7+4
+ 101 001a FFF7FEFF 		bl	UART_LOG_PutString
+ 102              	.LVL11:
+  66:bsw\Services/logging.c ****     
+  67:bsw\Services/logging.c ****     result = RC_SUCCESS;
+  68:bsw\Services/logging.c ****     
+  69:bsw\Services/logging.c **** #endif
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 4
+
+
+  70:bsw\Services/logging.c **** 
+  71:bsw\Services/logging.c ****     return result;
+  72:bsw\Services/logging.c **** 
+  73:bsw\Services/logging.c **** }
+ 103              		.loc 1 73 0
+ 104 001e 0020     		movs	r0, #0
+ 105 0020 10BD     		pop	{r4, pc}
+ 106              	.LVL12:
+ 107              	.L8:
+ 108 0022 00BF     		.align	2
+ 109              	.L7:
+ 110 0024 14000000 		.word	.LC2
+ 111 0028 00000000 		.word	.LC0
+ 112              		.cfi_endproc
+ 113              	.LFE68:
+ 114              		.size	LOG_send, .-LOG_send
+ 115              		.global	logLevel2String
+ 116              		.section	.rodata
+ 117              		.align	2
+ 118              		.type	logLevel2String, %object
+ 119              		.size	logLevel2String, 48
+ 120              	logLevel2String:
+ 121 0000 56657262 		.ascii	"Verbose\000"
+ 121      6F736500 
+ 122 0008 496E666F 		.ascii	"Info\000"
+ 122      00
+ 123 000d 000000   		.space	3
+ 124 0010 5761726E 		.ascii	"Warning\000"
+ 124      696E6700 
+ 125 0018 4572726F 		.ascii	"Error\000"
+ 125      7200
+ 126 001e 0000     		.space	2
+ 127 0020 44656275 		.ascii	"Debug\000"
+ 127      6700
+ 128 0026 0000     		.space	2
+ 129 0028 4F666600 		.ascii	"Off\000"
+ 130 002c 00000000 		.space	4
+ 131              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 132              		.align	2
+ 133              	.LC0:
+ 134 0000 0A00     		.ascii	"\012\000"
+ 135 0002 0000     		.space	2
+ 136              	.LC1:
+ 137 0004 55415254 		.ascii	"UART started\000"
+ 137      20737461 
+ 137      72746564 
+ 137      00
+ 138 0011 000000   		.space	3
+ 139              	.LC2:
+ 140 0014 203A2000 		.ascii	" : \000"
+ 141              		.text
+ 142              	.Letext0:
+ 143              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 144              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.4\\psoc creator\\import\\gnu\\arm\\5.4.
+ 145              		.file 4 ".\\bsw/global.h"
+ 146              		.file 5 "bsw\\Services\\logging.h"
+ 147              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 5
+
+
+ 148              		.file 7 "Generated_Source\\PSoC5/UART_LOG.h"
+ 149              		.section	.debug_info,"",%progbits
+ 150              	.Ldebug_info0:
+ 151 0000 43030000 		.4byte	0x343
+ 152 0004 0400     		.2byte	0x4
+ 153 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 154 000a 04       		.byte	0x4
+ 155 000b 01       		.uleb128 0x1
+ 156 000c 76020000 		.4byte	.LASF60
+ 157 0010 0C       		.byte	0xc
+ 158 0011 C1000000 		.4byte	.LASF61
+ 159 0015 52030000 		.4byte	.LASF62
+ 160 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 161 001d 00000000 		.4byte	0
+ 162 0021 00000000 		.4byte	.Ldebug_line0
+ 163 0025 02       		.uleb128 0x2
+ 164 0026 01       		.byte	0x1
+ 165 0027 06       		.byte	0x6
+ 166 0028 DF010000 		.4byte	.LASF0
+ 167 002c 02       		.uleb128 0x2
+ 168 002d 01       		.byte	0x1
+ 169 002e 08       		.byte	0x8
+ 170 002f D1010000 		.4byte	.LASF1
+ 171 0033 02       		.uleb128 0x2
+ 172 0034 02       		.byte	0x2
+ 173 0035 05       		.byte	0x5
+ 174 0036 66000000 		.4byte	.LASF2
+ 175 003a 02       		.uleb128 0x2
+ 176 003b 02       		.byte	0x2
+ 177 003c 07       		.byte	0x7
+ 178 003d 63020000 		.4byte	.LASF3
+ 179 0041 03       		.uleb128 0x3
+ 180 0042 D8030000 		.4byte	.LASF9
+ 181 0046 02       		.byte	0x2
+ 182 0047 3F       		.byte	0x3f
+ 183 0048 4C000000 		.4byte	0x4c
+ 184 004c 02       		.uleb128 0x2
+ 185 004d 04       		.byte	0x4
+ 186 004e 05       		.byte	0x5
+ 187 004f 56010000 		.4byte	.LASF4
+ 188 0053 02       		.uleb128 0x2
+ 189 0054 04       		.byte	0x4
+ 190 0055 07       		.byte	0x7
+ 191 0056 2D020000 		.4byte	.LASF5
+ 192 005a 02       		.uleb128 0x2
+ 193 005b 08       		.byte	0x8
+ 194 005c 05       		.byte	0x5
+ 195 005d 24010000 		.4byte	.LASF6
+ 196 0061 02       		.uleb128 0x2
+ 197 0062 08       		.byte	0x8
+ 198 0063 07       		.byte	0x7
+ 199 0064 EB010000 		.4byte	.LASF7
+ 200 0068 04       		.uleb128 0x4
+ 201 0069 04       		.byte	0x4
+ 202 006a 05       		.byte	0x5
+ 203 006b 696E7400 		.ascii	"int\000"
+ 204 006f 02       		.uleb128 0x2
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 6
+
+
+ 205 0070 04       		.byte	0x4
+ 206 0071 07       		.byte	0x7
+ 207 0072 12020000 		.4byte	.LASF8
+ 208 0076 03       		.uleb128 0x3
+ 209 0077 1E030000 		.4byte	.LASF10
+ 210 007b 03       		.byte	0x3
+ 211 007c 2C       		.byte	0x2c
+ 212 007d 41000000 		.4byte	0x41
+ 213 0081 02       		.uleb128 0x2
+ 214 0082 04       		.byte	0x4
+ 215 0083 04       		.byte	0x4
+ 216 0084 05010000 		.4byte	.LASF11
+ 217 0088 02       		.uleb128 0x2
+ 218 0089 08       		.byte	0x8
+ 219 008a 04       		.byte	0x4
+ 220 008b B3030000 		.4byte	.LASF12
+ 221 008f 02       		.uleb128 0x2
+ 222 0090 01       		.byte	0x1
+ 223 0091 08       		.byte	0x8
+ 224 0092 04030000 		.4byte	.LASF13
+ 225 0096 02       		.uleb128 0x2
+ 226 0097 08       		.byte	0x8
+ 227 0098 04       		.byte	0x4
+ 228 0099 C5010000 		.4byte	.LASF14
+ 229 009d 02       		.uleb128 0x2
+ 230 009e 04       		.byte	0x4
+ 231 009f 07       		.byte	0x7
+ 232 00a0 96000000 		.4byte	.LASF15
+ 233 00a4 05       		.uleb128 0x5
+ 234 00a5 8F000000 		.4byte	0x8f
+ 235 00a9 06       		.uleb128 0x6
+ 236 00aa 01       		.byte	0x1
+ 237 00ab 25000000 		.4byte	0x25
+ 238 00af 04       		.byte	0x4
+ 239 00b0 CF       		.byte	0xcf
+ 240 00b1 52010000 		.4byte	0x152
+ 241 00b5 07       		.uleb128 0x7
+ 242 00b6 29000000 		.4byte	.LASF16
+ 243 00ba 00       		.byte	0
+ 244 00bb 08       		.uleb128 0x8
+ 245 00bc 19040000 		.4byte	.LASF17
+ 246 00c0 7F       		.sleb128 -1
+ 247 00c1 08       		.uleb128 0x8
+ 248 00c2 3F020000 		.4byte	.LASF18
+ 249 00c6 7E       		.sleb128 -2
+ 250 00c7 08       		.uleb128 0x8
+ 251 00c8 9F000000 		.4byte	.LASF19
+ 252 00cc 7D       		.sleb128 -3
+ 253 00cd 08       		.uleb128 0x8
+ 254 00ce 22040000 		.4byte	.LASF20
+ 255 00d2 7C       		.sleb128 -4
+ 256 00d3 08       		.uleb128 0x8
+ 257 00d4 EF000000 		.4byte	.LASF21
+ 258 00d8 7B       		.sleb128 -5
+ 259 00d9 08       		.uleb128 0x8
+ 260 00da 70000000 		.4byte	.LASF22
+ 261 00de 7A       		.sleb128 -6
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 7
+
+
+ 262 00df 08       		.uleb128 0x8
+ 263 00e0 5F010000 		.4byte	.LASF23
+ 264 00e4 79       		.sleb128 -7
+ 265 00e5 08       		.uleb128 0x8
+ 266 00e6 09030000 		.4byte	.LASF24
+ 267 00ea 78       		.sleb128 -8
+ 268 00eb 08       		.uleb128 0x8
+ 269 00ec 4D020000 		.4byte	.LASF25
+ 270 00f0 77       		.sleb128 -9
+ 271 00f1 08       		.uleb128 0x8
+ 272 00f2 71010000 		.4byte	.LASF26
+ 273 00f6 76       		.sleb128 -10
+ 274 00f7 08       		.uleb128 0x8
+ 275 00f8 37040000 		.4byte	.LASF27
+ 276 00fc 75       		.sleb128 -11
+ 277 00fd 08       		.uleb128 0x8
+ 278 00fe 1F020000 		.4byte	.LASF28
+ 279 0102 74       		.sleb128 -12
+ 280 0103 08       		.uleb128 0x8
+ 281 0104 C6030000 		.4byte	.LASF29
+ 282 0108 73       		.sleb128 -13
+ 283 0109 08       		.uleb128 0x8
+ 284 010a 16000000 		.4byte	.LASF30
+ 285 010e 72       		.sleb128 -14
+ 286 010f 08       		.uleb128 0x8
+ 287 0110 52000000 		.4byte	.LASF31
+ 288 0114 71       		.sleb128 -15
+ 289 0115 08       		.uleb128 0x8
+ 290 0116 7F010000 		.4byte	.LASF32
+ 291 011a 70       		.sleb128 -16
+ 292 011b 08       		.uleb128 0x8
+ 293 011c AD000000 		.4byte	.LASF33
+ 294 0120 6F       		.sleb128 -17
+ 295 0121 08       		.uleb128 0x8
+ 296 0122 81000000 		.4byte	.LASF34
+ 297 0126 6E       		.sleb128 -18
+ 298 0127 08       		.uleb128 0x8
+ 299 0128 32010000 		.4byte	.LASF35
+ 300 012c 6D       		.sleb128 -19
+ 301 012d 08       		.uleb128 0x8
+ 302 012e 3F030000 		.4byte	.LASF36
+ 303 0132 6C       		.sleb128 -20
+ 304 0133 08       		.uleb128 0x8
+ 305 0134 90010000 		.4byte	.LASF37
+ 306 0138 6B       		.sleb128 -21
+ 307 0139 08       		.uleb128 0x8
+ 308 013a FA030000 		.4byte	.LASF38
+ 309 013e 6A       		.sleb128 -22
+ 310 013f 08       		.uleb128 0x8
+ 311 0140 D8000000 		.4byte	.LASF39
+ 312 0144 69       		.sleb128 -23
+ 313 0145 08       		.uleb128 0x8
+ 314 0146 45010000 		.4byte	.LASF40
+ 315 014a 68       		.sleb128 -24
+ 316 014b 08       		.uleb128 0x8
+ 317 014c 0B010000 		.4byte	.LASF41
+ 318 0150 67       		.sleb128 -25
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 8
+
+
+ 319 0151 00       		.byte	0
+ 320 0152 03       		.uleb128 0x3
+ 321 0153 32040000 		.4byte	.LASF42
+ 322 0157 04       		.byte	0x4
+ 323 0158 EA       		.byte	0xea
+ 324 0159 A9000000 		.4byte	0xa9
+ 325 015d 06       		.uleb128 0x6
+ 326 015e 01       		.byte	0x1
+ 327 015f 2C000000 		.4byte	0x2c
+ 328 0163 05       		.byte	0x5
+ 329 0164 3D       		.byte	0x3d
+ 330 0165 8E010000 		.4byte	0x18e
+ 331 0169 07       		.uleb128 0x7
+ 332 016a 46000000 		.4byte	.LASF43
+ 333 016e 00       		.byte	0
+ 334 016f 07       		.uleb128 0x7
+ 335 0170 F1030000 		.4byte	.LASF44
+ 336 0174 01       		.byte	0x1
+ 337 0175 07       		.uleb128 0x7
+ 338 0176 BA030000 		.4byte	.LASF45
+ 339 017a 02       		.byte	0x2
+ 340 017b 07       		.uleb128 0x7
+ 341 017c A1030000 		.4byte	.LASF46
+ 342 0180 03       		.byte	0x3
+ 343 0181 07       		.uleb128 0x7
+ 344 0182 A2010000 		.4byte	.LASF47
+ 345 0186 04       		.byte	0x4
+ 346 0187 07       		.uleb128 0x7
+ 347 0188 34000000 		.4byte	.LASF48
+ 348 018c 05       		.byte	0x5
+ 349 018d 00       		.byte	0
+ 350 018e 03       		.uleb128 0x3
+ 351 018f 2F030000 		.4byte	.LASF49
+ 352 0193 05       		.byte	0x5
+ 353 0194 44       		.byte	0x44
+ 354 0195 5D010000 		.4byte	0x15d
+ 355 0199 09       		.uleb128 0x9
+ 356 019a A8       		.byte	0xa8
+ 357 019b 05       		.byte	0x5
+ 358 019c 4B       		.byte	0x4b
+ 359 019d C6010000 		.4byte	0x1c6
+ 360 01a1 0A       		.uleb128 0xa
+ 361 01a2 E2030000 		.4byte	.LASF50
+ 362 01a6 05       		.byte	0x5
+ 363 01a7 4C       		.byte	0x4c
+ 364 01a8 8E010000 		.4byte	0x18e
+ 365 01ac 00       		.byte	0
+ 366 01ad 0A       		.uleb128 0xa
+ 367 01ae FE000000 		.4byte	.LASF51
+ 368 01b2 05       		.byte	0x5
+ 369 01b3 4D       		.byte	0x4d
+ 370 01b4 C6010000 		.4byte	0x1c6
+ 371 01b8 01       		.byte	0x1
+ 372 01b9 0A       		.uleb128 0xa
+ 373 01ba AB030000 		.4byte	.LASF52
+ 374 01be 05       		.byte	0x5
+ 375 01bf 4E       		.byte	0x4e
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 9
+
+
+ 376 01c0 D6010000 		.4byte	0x1d6
+ 377 01c4 11       		.byte	0x11
+ 378 01c5 00       		.byte	0
+ 379 01c6 0B       		.uleb128 0xb
+ 380 01c7 8F000000 		.4byte	0x8f
+ 381 01cb D6010000 		.4byte	0x1d6
+ 382 01cf 0C       		.uleb128 0xc
+ 383 01d0 9D000000 		.4byte	0x9d
+ 384 01d4 0F       		.byte	0xf
+ 385 01d5 00       		.byte	0
+ 386 01d6 0B       		.uleb128 0xb
+ 387 01d7 8F000000 		.4byte	0x8f
+ 388 01db E6010000 		.4byte	0x1e6
+ 389 01df 0C       		.uleb128 0xc
+ 390 01e0 9D000000 		.4byte	0x9d
+ 391 01e4 96       		.byte	0x96
+ 392 01e5 00       		.byte	0
+ 393 01e6 03       		.uleb128 0x3
+ 394 01e7 3C000000 		.4byte	.LASF53
+ 395 01eb 05       		.byte	0x5
+ 396 01ec 4F       		.byte	0x4f
+ 397 01ed 99010000 		.4byte	0x199
+ 398 01f1 0D       		.uleb128 0xd
+ 399 01f2 26030000 		.4byte	.LASF54
+ 400 01f6 01       		.byte	0x1
+ 401 01f7 28       		.byte	0x28
+ 402 01f8 52010000 		.4byte	0x152
+ 403 01fc 00000000 		.4byte	.LFB67
+ 404 0200 2C000000 		.4byte	.LFE67-.LFB67
+ 405 0204 01       		.uleb128 0x1
+ 406 0205 9C       		.byte	0x9c
+ 407 0206 63020000 		.4byte	0x263
+ 408 020a 0E       		.uleb128 0xe
+ 409 020b 06000000 		.4byte	.LVL0
+ 410 020f 30030000 		.4byte	0x330
+ 411 0213 0F       		.uleb128 0xf
+ 412 0214 0E000000 		.4byte	.LVL1
+ 413 0218 3B030000 		.4byte	0x33b
+ 414 021c 27020000 		.4byte	0x227
+ 415 0220 10       		.uleb128 0x10
+ 416 0221 01       		.uleb128 0x1
+ 417 0222 50       		.byte	0x50
+ 418 0223 02       		.uleb128 0x2
+ 419 0224 74       		.byte	0x74
+ 420 0225 00       		.sleb128 0
+ 421 0226 00       		.byte	0
+ 422 0227 0F       		.uleb128 0xf
+ 423 0228 14000000 		.4byte	.LVL2
+ 424 022c 3B030000 		.4byte	0x33b
+ 425 0230 3B020000 		.4byte	0x23b
+ 426 0234 10       		.uleb128 0x10
+ 427 0235 01       		.uleb128 0x1
+ 428 0236 50       		.byte	0x50
+ 429 0237 02       		.uleb128 0x2
+ 430 0238 74       		.byte	0x74
+ 431 0239 00       		.sleb128 0
+ 432 023a 00       		.byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 10
+
+
+ 433 023b 0F       		.uleb128 0xf
+ 434 023c 1A000000 		.4byte	.LVL3
+ 435 0240 3B030000 		.4byte	0x33b
+ 436 0244 52020000 		.4byte	0x252
+ 437 0248 10       		.uleb128 0x10
+ 438 0249 01       		.uleb128 0x1
+ 439 024a 50       		.byte	0x50
+ 440 024b 05       		.uleb128 0x5
+ 441 024c 03       		.byte	0x3
+ 442 024d 04000000 		.4byte	.LC1
+ 443 0251 00       		.byte	0
+ 444 0252 11       		.uleb128 0x11
+ 445 0253 20000000 		.4byte	.LVL4
+ 446 0257 3B030000 		.4byte	0x33b
+ 447 025b 10       		.uleb128 0x10
+ 448 025c 01       		.uleb128 0x1
+ 449 025d 50       		.byte	0x50
+ 450 025e 02       		.uleb128 0x2
+ 451 025f 74       		.byte	0x74
+ 452 0260 00       		.sleb128 0
+ 453 0261 00       		.byte	0
+ 454 0262 00       		.byte	0
+ 455 0263 0D       		.uleb128 0xd
+ 456 0264 E8030000 		.4byte	.LASF55
+ 457 0268 01       		.byte	0x1
+ 458 0269 39       		.byte	0x39
+ 459 026a 52010000 		.4byte	0x152
+ 460 026e 00000000 		.4byte	.LFB68
+ 461 0272 2C000000 		.4byte	.LFE68-.LFB68
+ 462 0276 01       		.uleb128 0x1
+ 463 0277 9C       		.byte	0x9c
+ 464 0278 ED020000 		.4byte	0x2ed
+ 465 027c 12       		.uleb128 0x12
+ 466 027d BF010000 		.4byte	.LASF63
+ 467 0281 01       		.byte	0x1
+ 468 0282 39       		.byte	0x39
+ 469 0283 ED020000 		.4byte	0x2ed
+ 470 0287 00000000 		.4byte	.LLST0
+ 471 028b 13       		.uleb128 0x13
+ 472 028c 0F000000 		.4byte	.LASF64
+ 473 0290 01       		.byte	0x1
+ 474 0291 3C       		.byte	0x3c
+ 475 0292 52010000 		.4byte	0x152
+ 476 0296 2C000000 		.4byte	.LLST1
+ 477 029a 0F       		.uleb128 0xf
+ 478 029b 0A000000 		.4byte	.LVL8
+ 479 029f 3B030000 		.4byte	0x33b
+ 480 02a3 AE020000 		.4byte	0x2ae
+ 481 02a7 10       		.uleb128 0x10
+ 482 02a8 01       		.uleb128 0x1
+ 483 02a9 50       		.byte	0x50
+ 484 02aa 02       		.uleb128 0x2
+ 485 02ab 74       		.byte	0x74
+ 486 02ac 01       		.sleb128 1
+ 487 02ad 00       		.byte	0
+ 488 02ae 0F       		.uleb128 0xf
+ 489 02af 10000000 		.4byte	.LVL9
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 11
+
+
+ 490 02b3 3B030000 		.4byte	0x33b
+ 491 02b7 C5020000 		.4byte	0x2c5
+ 492 02bb 10       		.uleb128 0x10
+ 493 02bc 01       		.uleb128 0x1
+ 494 02bd 50       		.byte	0x50
+ 495 02be 05       		.uleb128 0x5
+ 496 02bf 03       		.byte	0x3
+ 497 02c0 14000000 		.4byte	.LC2
+ 498 02c4 00       		.byte	0
+ 499 02c5 0F       		.uleb128 0xf
+ 500 02c6 18000000 		.4byte	.LVL10
+ 501 02ca 3B030000 		.4byte	0x33b
+ 502 02ce D9020000 		.4byte	0x2d9
+ 503 02d2 10       		.uleb128 0x10
+ 504 02d3 01       		.uleb128 0x1
+ 505 02d4 50       		.byte	0x50
+ 506 02d5 02       		.uleb128 0x2
+ 507 02d6 74       		.byte	0x74
+ 508 02d7 11       		.sleb128 17
+ 509 02d8 00       		.byte	0
+ 510 02d9 11       		.uleb128 0x11
+ 511 02da 1E000000 		.4byte	.LVL11
+ 512 02de 3B030000 		.4byte	0x33b
+ 513 02e2 10       		.uleb128 0x10
+ 514 02e3 01       		.uleb128 0x1
+ 515 02e4 50       		.byte	0x50
+ 516 02e5 05       		.uleb128 0x5
+ 517 02e6 03       		.byte	0x3
+ 518 02e7 00000000 		.4byte	.LC0
+ 519 02eb 00       		.byte	0
+ 520 02ec 00       		.byte	0
+ 521 02ed 14       		.uleb128 0x14
+ 522 02ee 04       		.byte	0x4
+ 523 02ef E6010000 		.4byte	0x1e6
+ 524 02f3 15       		.uleb128 0x15
+ 525 02f4 0C040000 		.4byte	.LASF56
+ 526 02f8 06       		.byte	0x6
+ 527 02f9 1207     		.2byte	0x712
+ 528 02fb FF020000 		.4byte	0x2ff
+ 529 02ff 16       		.uleb128 0x16
+ 530 0300 76000000 		.4byte	0x76
+ 531 0304 0B       		.uleb128 0xb
+ 532 0305 A4000000 		.4byte	0xa4
+ 533 0309 1A030000 		.4byte	0x31a
+ 534 030d 0C       		.uleb128 0xc
+ 535 030e 9D000000 		.4byte	0x9d
+ 536 0312 05       		.byte	0x5
+ 537 0313 0C       		.uleb128 0xc
+ 538 0314 9D000000 		.4byte	0x9d
+ 539 0318 07       		.byte	0x7
+ 540 0319 00       		.byte	0
+ 541 031a 17       		.uleb128 0x17
+ 542 031b 02020000 		.4byte	.LASF57
+ 543 031f 01       		.byte	0x1
+ 544 0320 1B       		.byte	0x1b
+ 545 0321 2B030000 		.4byte	0x32b
+ 546 0325 05       		.uleb128 0x5
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 12
+
+
+ 547 0326 03       		.byte	0x3
+ 548 0327 00000000 		.4byte	logLevel2String
+ 549 032b 05       		.uleb128 0x5
+ 550 032c 04030000 		.4byte	0x304
+ 551 0330 18       		.uleb128 0x18
+ 552 0331 00000000 		.4byte	.LASF58
+ 553 0335 00000000 		.4byte	.LASF58
+ 554 0339 07       		.byte	0x7
+ 555 033a 54       		.byte	0x54
+ 556 033b 18       		.uleb128 0x18
+ 557 033c AC010000 		.4byte	.LASF59
+ 558 0340 AC010000 		.4byte	.LASF59
+ 559 0344 07       		.byte	0x7
+ 560 0345 8B       		.byte	0x8b
+ 561 0346 00       		.byte	0
+ 562              		.section	.debug_abbrev,"",%progbits
+ 563              	.Ldebug_abbrev0:
+ 564 0000 01       		.uleb128 0x1
+ 565 0001 11       		.uleb128 0x11
+ 566 0002 01       		.byte	0x1
+ 567 0003 25       		.uleb128 0x25
+ 568 0004 0E       		.uleb128 0xe
+ 569 0005 13       		.uleb128 0x13
+ 570 0006 0B       		.uleb128 0xb
+ 571 0007 03       		.uleb128 0x3
+ 572 0008 0E       		.uleb128 0xe
+ 573 0009 1B       		.uleb128 0x1b
+ 574 000a 0E       		.uleb128 0xe
+ 575 000b 55       		.uleb128 0x55
+ 576 000c 17       		.uleb128 0x17
+ 577 000d 11       		.uleb128 0x11
+ 578 000e 01       		.uleb128 0x1
+ 579 000f 10       		.uleb128 0x10
+ 580 0010 17       		.uleb128 0x17
+ 581 0011 00       		.byte	0
+ 582 0012 00       		.byte	0
+ 583 0013 02       		.uleb128 0x2
+ 584 0014 24       		.uleb128 0x24
+ 585 0015 00       		.byte	0
+ 586 0016 0B       		.uleb128 0xb
+ 587 0017 0B       		.uleb128 0xb
+ 588 0018 3E       		.uleb128 0x3e
+ 589 0019 0B       		.uleb128 0xb
+ 590 001a 03       		.uleb128 0x3
+ 591 001b 0E       		.uleb128 0xe
+ 592 001c 00       		.byte	0
+ 593 001d 00       		.byte	0
+ 594 001e 03       		.uleb128 0x3
+ 595 001f 16       		.uleb128 0x16
+ 596 0020 00       		.byte	0
+ 597 0021 03       		.uleb128 0x3
+ 598 0022 0E       		.uleb128 0xe
+ 599 0023 3A       		.uleb128 0x3a
+ 600 0024 0B       		.uleb128 0xb
+ 601 0025 3B       		.uleb128 0x3b
+ 602 0026 0B       		.uleb128 0xb
+ 603 0027 49       		.uleb128 0x49
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 13
+
+
+ 604 0028 13       		.uleb128 0x13
+ 605 0029 00       		.byte	0
+ 606 002a 00       		.byte	0
+ 607 002b 04       		.uleb128 0x4
+ 608 002c 24       		.uleb128 0x24
+ 609 002d 00       		.byte	0
+ 610 002e 0B       		.uleb128 0xb
+ 611 002f 0B       		.uleb128 0xb
+ 612 0030 3E       		.uleb128 0x3e
+ 613 0031 0B       		.uleb128 0xb
+ 614 0032 03       		.uleb128 0x3
+ 615 0033 08       		.uleb128 0x8
+ 616 0034 00       		.byte	0
+ 617 0035 00       		.byte	0
+ 618 0036 05       		.uleb128 0x5
+ 619 0037 26       		.uleb128 0x26
+ 620 0038 00       		.byte	0
+ 621 0039 49       		.uleb128 0x49
+ 622 003a 13       		.uleb128 0x13
+ 623 003b 00       		.byte	0
+ 624 003c 00       		.byte	0
+ 625 003d 06       		.uleb128 0x6
+ 626 003e 04       		.uleb128 0x4
+ 627 003f 01       		.byte	0x1
+ 628 0040 0B       		.uleb128 0xb
+ 629 0041 0B       		.uleb128 0xb
+ 630 0042 49       		.uleb128 0x49
+ 631 0043 13       		.uleb128 0x13
+ 632 0044 3A       		.uleb128 0x3a
+ 633 0045 0B       		.uleb128 0xb
+ 634 0046 3B       		.uleb128 0x3b
+ 635 0047 0B       		.uleb128 0xb
+ 636 0048 01       		.uleb128 0x1
+ 637 0049 13       		.uleb128 0x13
+ 638 004a 00       		.byte	0
+ 639 004b 00       		.byte	0
+ 640 004c 07       		.uleb128 0x7
+ 641 004d 28       		.uleb128 0x28
+ 642 004e 00       		.byte	0
+ 643 004f 03       		.uleb128 0x3
+ 644 0050 0E       		.uleb128 0xe
+ 645 0051 1C       		.uleb128 0x1c
+ 646 0052 0B       		.uleb128 0xb
+ 647 0053 00       		.byte	0
+ 648 0054 00       		.byte	0
+ 649 0055 08       		.uleb128 0x8
+ 650 0056 28       		.uleb128 0x28
+ 651 0057 00       		.byte	0
+ 652 0058 03       		.uleb128 0x3
+ 653 0059 0E       		.uleb128 0xe
+ 654 005a 1C       		.uleb128 0x1c
+ 655 005b 0D       		.uleb128 0xd
+ 656 005c 00       		.byte	0
+ 657 005d 00       		.byte	0
+ 658 005e 09       		.uleb128 0x9
+ 659 005f 13       		.uleb128 0x13
+ 660 0060 01       		.byte	0x1
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 14
+
+
+ 661 0061 0B       		.uleb128 0xb
+ 662 0062 0B       		.uleb128 0xb
+ 663 0063 3A       		.uleb128 0x3a
+ 664 0064 0B       		.uleb128 0xb
+ 665 0065 3B       		.uleb128 0x3b
+ 666 0066 0B       		.uleb128 0xb
+ 667 0067 01       		.uleb128 0x1
+ 668 0068 13       		.uleb128 0x13
+ 669 0069 00       		.byte	0
+ 670 006a 00       		.byte	0
+ 671 006b 0A       		.uleb128 0xa
+ 672 006c 0D       		.uleb128 0xd
+ 673 006d 00       		.byte	0
+ 674 006e 03       		.uleb128 0x3
+ 675 006f 0E       		.uleb128 0xe
+ 676 0070 3A       		.uleb128 0x3a
+ 677 0071 0B       		.uleb128 0xb
+ 678 0072 3B       		.uleb128 0x3b
+ 679 0073 0B       		.uleb128 0xb
+ 680 0074 49       		.uleb128 0x49
+ 681 0075 13       		.uleb128 0x13
+ 682 0076 38       		.uleb128 0x38
+ 683 0077 0B       		.uleb128 0xb
+ 684 0078 00       		.byte	0
+ 685 0079 00       		.byte	0
+ 686 007a 0B       		.uleb128 0xb
+ 687 007b 01       		.uleb128 0x1
+ 688 007c 01       		.byte	0x1
+ 689 007d 49       		.uleb128 0x49
+ 690 007e 13       		.uleb128 0x13
+ 691 007f 01       		.uleb128 0x1
+ 692 0080 13       		.uleb128 0x13
+ 693 0081 00       		.byte	0
+ 694 0082 00       		.byte	0
+ 695 0083 0C       		.uleb128 0xc
+ 696 0084 21       		.uleb128 0x21
+ 697 0085 00       		.byte	0
+ 698 0086 49       		.uleb128 0x49
+ 699 0087 13       		.uleb128 0x13
+ 700 0088 2F       		.uleb128 0x2f
+ 701 0089 0B       		.uleb128 0xb
+ 702 008a 00       		.byte	0
+ 703 008b 00       		.byte	0
+ 704 008c 0D       		.uleb128 0xd
+ 705 008d 2E       		.uleb128 0x2e
+ 706 008e 01       		.byte	0x1
+ 707 008f 3F       		.uleb128 0x3f
+ 708 0090 19       		.uleb128 0x19
+ 709 0091 03       		.uleb128 0x3
+ 710 0092 0E       		.uleb128 0xe
+ 711 0093 3A       		.uleb128 0x3a
+ 712 0094 0B       		.uleb128 0xb
+ 713 0095 3B       		.uleb128 0x3b
+ 714 0096 0B       		.uleb128 0xb
+ 715 0097 27       		.uleb128 0x27
+ 716 0098 19       		.uleb128 0x19
+ 717 0099 49       		.uleb128 0x49
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 15
+
+
+ 718 009a 13       		.uleb128 0x13
+ 719 009b 11       		.uleb128 0x11
+ 720 009c 01       		.uleb128 0x1
+ 721 009d 12       		.uleb128 0x12
+ 722 009e 06       		.uleb128 0x6
+ 723 009f 40       		.uleb128 0x40
+ 724 00a0 18       		.uleb128 0x18
+ 725 00a1 9742     		.uleb128 0x2117
+ 726 00a3 19       		.uleb128 0x19
+ 727 00a4 01       		.uleb128 0x1
+ 728 00a5 13       		.uleb128 0x13
+ 729 00a6 00       		.byte	0
+ 730 00a7 00       		.byte	0
+ 731 00a8 0E       		.uleb128 0xe
+ 732 00a9 898201   		.uleb128 0x4109
+ 733 00ac 00       		.byte	0
+ 734 00ad 11       		.uleb128 0x11
+ 735 00ae 01       		.uleb128 0x1
+ 736 00af 31       		.uleb128 0x31
+ 737 00b0 13       		.uleb128 0x13
+ 738 00b1 00       		.byte	0
+ 739 00b2 00       		.byte	0
+ 740 00b3 0F       		.uleb128 0xf
+ 741 00b4 898201   		.uleb128 0x4109
+ 742 00b7 01       		.byte	0x1
+ 743 00b8 11       		.uleb128 0x11
+ 744 00b9 01       		.uleb128 0x1
+ 745 00ba 31       		.uleb128 0x31
+ 746 00bb 13       		.uleb128 0x13
+ 747 00bc 01       		.uleb128 0x1
+ 748 00bd 13       		.uleb128 0x13
+ 749 00be 00       		.byte	0
+ 750 00bf 00       		.byte	0
+ 751 00c0 10       		.uleb128 0x10
+ 752 00c1 8A8201   		.uleb128 0x410a
+ 753 00c4 00       		.byte	0
+ 754 00c5 02       		.uleb128 0x2
+ 755 00c6 18       		.uleb128 0x18
+ 756 00c7 9142     		.uleb128 0x2111
+ 757 00c9 18       		.uleb128 0x18
+ 758 00ca 00       		.byte	0
+ 759 00cb 00       		.byte	0
+ 760 00cc 11       		.uleb128 0x11
+ 761 00cd 898201   		.uleb128 0x4109
+ 762 00d0 01       		.byte	0x1
+ 763 00d1 11       		.uleb128 0x11
+ 764 00d2 01       		.uleb128 0x1
+ 765 00d3 31       		.uleb128 0x31
+ 766 00d4 13       		.uleb128 0x13
+ 767 00d5 00       		.byte	0
+ 768 00d6 00       		.byte	0
+ 769 00d7 12       		.uleb128 0x12
+ 770 00d8 05       		.uleb128 0x5
+ 771 00d9 00       		.byte	0
+ 772 00da 03       		.uleb128 0x3
+ 773 00db 0E       		.uleb128 0xe
+ 774 00dc 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 16
+
+
+ 775 00dd 0B       		.uleb128 0xb
+ 776 00de 3B       		.uleb128 0x3b
+ 777 00df 0B       		.uleb128 0xb
+ 778 00e0 49       		.uleb128 0x49
+ 779 00e1 13       		.uleb128 0x13
+ 780 00e2 02       		.uleb128 0x2
+ 781 00e3 17       		.uleb128 0x17
+ 782 00e4 00       		.byte	0
+ 783 00e5 00       		.byte	0
+ 784 00e6 13       		.uleb128 0x13
+ 785 00e7 34       		.uleb128 0x34
+ 786 00e8 00       		.byte	0
+ 787 00e9 03       		.uleb128 0x3
+ 788 00ea 0E       		.uleb128 0xe
+ 789 00eb 3A       		.uleb128 0x3a
+ 790 00ec 0B       		.uleb128 0xb
+ 791 00ed 3B       		.uleb128 0x3b
+ 792 00ee 0B       		.uleb128 0xb
+ 793 00ef 49       		.uleb128 0x49
+ 794 00f0 13       		.uleb128 0x13
+ 795 00f1 02       		.uleb128 0x2
+ 796 00f2 17       		.uleb128 0x17
+ 797 00f3 00       		.byte	0
+ 798 00f4 00       		.byte	0
+ 799 00f5 14       		.uleb128 0x14
+ 800 00f6 0F       		.uleb128 0xf
+ 801 00f7 00       		.byte	0
+ 802 00f8 0B       		.uleb128 0xb
+ 803 00f9 0B       		.uleb128 0xb
+ 804 00fa 49       		.uleb128 0x49
+ 805 00fb 13       		.uleb128 0x13
+ 806 00fc 00       		.byte	0
+ 807 00fd 00       		.byte	0
+ 808 00fe 15       		.uleb128 0x15
+ 809 00ff 34       		.uleb128 0x34
+ 810 0100 00       		.byte	0
+ 811 0101 03       		.uleb128 0x3
+ 812 0102 0E       		.uleb128 0xe
+ 813 0103 3A       		.uleb128 0x3a
+ 814 0104 0B       		.uleb128 0xb
+ 815 0105 3B       		.uleb128 0x3b
+ 816 0106 05       		.uleb128 0x5
+ 817 0107 49       		.uleb128 0x49
+ 818 0108 13       		.uleb128 0x13
+ 819 0109 3F       		.uleb128 0x3f
+ 820 010a 19       		.uleb128 0x19
+ 821 010b 3C       		.uleb128 0x3c
+ 822 010c 19       		.uleb128 0x19
+ 823 010d 00       		.byte	0
+ 824 010e 00       		.byte	0
+ 825 010f 16       		.uleb128 0x16
+ 826 0110 35       		.uleb128 0x35
+ 827 0111 00       		.byte	0
+ 828 0112 49       		.uleb128 0x49
+ 829 0113 13       		.uleb128 0x13
+ 830 0114 00       		.byte	0
+ 831 0115 00       		.byte	0
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 17
+
+
+ 832 0116 17       		.uleb128 0x17
+ 833 0117 34       		.uleb128 0x34
+ 834 0118 00       		.byte	0
+ 835 0119 03       		.uleb128 0x3
+ 836 011a 0E       		.uleb128 0xe
+ 837 011b 3A       		.uleb128 0x3a
+ 838 011c 0B       		.uleb128 0xb
+ 839 011d 3B       		.uleb128 0x3b
+ 840 011e 0B       		.uleb128 0xb
+ 841 011f 49       		.uleb128 0x49
+ 842 0120 13       		.uleb128 0x13
+ 843 0121 3F       		.uleb128 0x3f
+ 844 0122 19       		.uleb128 0x19
+ 845 0123 02       		.uleb128 0x2
+ 846 0124 18       		.uleb128 0x18
+ 847 0125 00       		.byte	0
+ 848 0126 00       		.byte	0
+ 849 0127 18       		.uleb128 0x18
+ 850 0128 2E       		.uleb128 0x2e
+ 851 0129 00       		.byte	0
+ 852 012a 3F       		.uleb128 0x3f
+ 853 012b 19       		.uleb128 0x19
+ 854 012c 3C       		.uleb128 0x3c
+ 855 012d 19       		.uleb128 0x19
+ 856 012e 6E       		.uleb128 0x6e
+ 857 012f 0E       		.uleb128 0xe
+ 858 0130 03       		.uleb128 0x3
+ 859 0131 0E       		.uleb128 0xe
+ 860 0132 3A       		.uleb128 0x3a
+ 861 0133 0B       		.uleb128 0xb
+ 862 0134 3B       		.uleb128 0x3b
+ 863 0135 0B       		.uleb128 0xb
+ 864 0136 00       		.byte	0
+ 865 0137 00       		.byte	0
+ 866 0138 00       		.byte	0
+ 867              		.section	.debug_loc,"",%progbits
+ 868              	.Ldebug_loc0:
+ 869              	.LLST0:
+ 870 0000 00000000 		.4byte	.LVL5
+ 871 0004 06000000 		.4byte	.LVL7
+ 872 0008 0100     		.2byte	0x1
+ 873 000a 50       		.byte	0x50
+ 874 000b 06000000 		.4byte	.LVL7
+ 875 000f 22000000 		.4byte	.LVL12
+ 876 0013 0100     		.2byte	0x1
+ 877 0015 54       		.byte	0x54
+ 878 0016 22000000 		.4byte	.LVL12
+ 879 001a 2C000000 		.4byte	.LFE68
+ 880 001e 0400     		.2byte	0x4
+ 881 0020 F3       		.byte	0xf3
+ 882 0021 01       		.uleb128 0x1
+ 883 0022 50       		.byte	0x50
+ 884 0023 9F       		.byte	0x9f
+ 885 0024 00000000 		.4byte	0
+ 886 0028 00000000 		.4byte	0
+ 887              	.LLST1:
+ 888 002c 04000000 		.4byte	.LVL6
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 18
+
+
+ 889 0030 1E000000 		.4byte	.LVL11
+ 890 0034 0300     		.2byte	0x3
+ 891 0036 09       		.byte	0x9
+ 892 0037 E9       		.byte	0xe9
+ 893 0038 9F       		.byte	0x9f
+ 894 0039 1E000000 		.4byte	.LVL11
+ 895 003d 2C000000 		.4byte	.LFE68
+ 896 0041 0200     		.2byte	0x2
+ 897 0043 30       		.byte	0x30
+ 898 0044 9F       		.byte	0x9f
+ 899 0045 00000000 		.4byte	0
+ 900 0049 00000000 		.4byte	0
+ 901              		.section	.debug_aranges,"",%progbits
+ 902 0000 24000000 		.4byte	0x24
+ 903 0004 0200     		.2byte	0x2
+ 904 0006 00000000 		.4byte	.Ldebug_info0
+ 905 000a 04       		.byte	0x4
+ 906 000b 00       		.byte	0
+ 907 000c 0000     		.2byte	0
+ 908 000e 0000     		.2byte	0
+ 909 0010 00000000 		.4byte	.LFB67
+ 910 0014 2C000000 		.4byte	.LFE67-.LFB67
+ 911 0018 00000000 		.4byte	.LFB68
+ 912 001c 2C000000 		.4byte	.LFE68-.LFB68
+ 913 0020 00000000 		.4byte	0
+ 914 0024 00000000 		.4byte	0
+ 915              		.section	.debug_ranges,"",%progbits
+ 916              	.Ldebug_ranges0:
+ 917 0000 00000000 		.4byte	.LFB67
+ 918 0004 2C000000 		.4byte	.LFE67
+ 919 0008 00000000 		.4byte	.LFB68
+ 920 000c 2C000000 		.4byte	.LFE68
+ 921 0010 00000000 		.4byte	0
+ 922 0014 00000000 		.4byte	0
+ 923              		.section	.debug_line,"",%progbits
+ 924              	.Ldebug_line0:
+ 925 0000 AB010000 		.section	.debug_str,"MS",%progbits,1
+ 925      02007C01 
+ 925      00000201 
+ 925      FB0E0D00 
+ 925      01010101 
+ 926              	.LASF58:
+ 927 0000 55415254 		.ascii	"UART_LOG_Start\000"
+ 927      5F4C4F47 
+ 927      5F537461 
+ 927      727400
+ 928              	.LASF64:
+ 929 000f 72657375 		.ascii	"result\000"
+ 929      6C7400
+ 930              	.LASF30:
+ 931 0016 52435F45 		.ascii	"RC_ERROR_READ_ONLY\000"
+ 931      52524F52 
+ 931      5F524541 
+ 931      445F4F4E 
+ 931      4C5900
+ 932              	.LASF16:
+ 933 0029 52435F53 		.ascii	"RC_SUCCESS\000"
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 19
+
+
+ 933      55434345 
+ 933      535300
+ 934              	.LASF48:
+ 935 0034 4C4F475F 		.ascii	"LOG_OFF\000"
+ 935      4F464600 
+ 936              	.LASF53:
+ 937 003c 6C6F6767 		.ascii	"logging_t\000"
+ 937      696E675F 
+ 937      7400
+ 938              	.LASF43:
+ 939 0046 4C4F475F 		.ascii	"LOG_VERBOSE\000"
+ 939      56455242 
+ 939      4F534500 
+ 940              	.LASF31:
+ 941 0052 52435F45 		.ascii	"RC_ERROR_WRITE_ONLY\000"
+ 941      52524F52 
+ 941      5F575249 
+ 941      54455F4F 
+ 941      4E4C5900 
+ 942              	.LASF2:
+ 943 0066 73686F72 		.ascii	"short int\000"
+ 943      7420696E 
+ 943      7400
+ 944              	.LASF22:
+ 945 0070 52435F45 		.ascii	"RC_ERROR_OVERRUN\000"
+ 945      52524F52 
+ 945      5F4F5645 
+ 945      5252554E 
+ 945      00
+ 946              	.LASF34:
+ 947 0081 52435F45 		.ascii	"RC_ERROR_WRITE_FAILS\000"
+ 947      52524F52 
+ 947      5F575249 
+ 947      54455F46 
+ 947      41494C53 
+ 948              	.LASF15:
+ 949 0096 73697A65 		.ascii	"sizetype\000"
+ 949      74797065 
+ 949      00
+ 950              	.LASF19:
+ 951 009f 52435F45 		.ascii	"RC_ERROR_ZERO\000"
+ 951      52524F52 
+ 951      5F5A4552 
+ 951      4F00
+ 952              	.LASF33:
+ 953 00ad 52435F45 		.ascii	"RC_ERROR_READ_FAILS\000"
+ 953      52524F52 
+ 953      5F524541 
+ 953      445F4641 
+ 953      494C5300 
+ 954              	.LASF61:
+ 955 00c1 6273775C 		.ascii	"bsw\\Services\\logging.c\000"
+ 955      53657276 
+ 955      69636573 
+ 955      5C6C6F67 
+ 955      67696E67 
+ 956              	.LASF39:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 20
+
+
+ 957 00d8 52435F45 		.ascii	"RC_ERROR_INVALID_STATE\000"
+ 957      52524F52 
+ 957      5F494E56 
+ 957      414C4944 
+ 957      5F535441 
+ 958              	.LASF21:
+ 959 00ef 52435F45 		.ascii	"RC_ERROR_RANGE\000"
+ 959      52524F52 
+ 959      5F52414E 
+ 959      474500
+ 960              	.LASF51:
+ 961 00fe 73656E64 		.ascii	"sender\000"
+ 961      657200
+ 962              	.LASF11:
+ 963 0105 666C6F61 		.ascii	"float\000"
+ 963      7400
+ 964              	.LASF41:
+ 965 010b 52435F45 		.ascii	"RC_ERROR_NOT_IMPLEMENTED\000"
+ 965      52524F52 
+ 965      5F4E4F54 
+ 965      5F494D50 
+ 965      4C454D45 
+ 966              	.LASF6:
+ 967 0124 6C6F6E67 		.ascii	"long long int\000"
+ 967      206C6F6E 
+ 967      6720696E 
+ 967      7400
+ 968              	.LASF35:
+ 969 0132 52435F45 		.ascii	"RC_ERROR_NOT_MATCH\000"
+ 969      52524F52 
+ 969      5F4E4F54 
+ 969      5F4D4154 
+ 969      434800
+ 970              	.LASF40:
+ 971 0145 52435F45 		.ascii	"RC_ERROR_UNKNOWN\000"
+ 971      52524F52 
+ 971      5F554E4B 
+ 971      4E4F574E 
+ 971      00
+ 972              	.LASF4:
+ 973 0156 6C6F6E67 		.ascii	"long int\000"
+ 973      20696E74 
+ 973      00
+ 974              	.LASF23:
+ 975 015f 52435F45 		.ascii	"RC_ERROR_UNDERRUN\000"
+ 975      52524F52 
+ 975      5F554E44 
+ 975      45525255 
+ 975      4E00
+ 976              	.LASF26:
+ 977 0171 52435F45 		.ascii	"RC_ERROR_BUSY\000"
+ 977      52524F52 
+ 977      5F425553 
+ 977      5900
+ 978              	.LASF32:
+ 979 017f 52435F45 		.ascii	"RC_ERROR_INVALID\000"
+ 979      52524F52 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 21
+
+
+ 979      5F494E56 
+ 979      414C4944 
+ 979      00
+ 980              	.LASF37:
+ 981 0190 52435F45 		.ascii	"RC_ERROR_BAD_DATA\000"
+ 981      52524F52 
+ 981      5F424144 
+ 981      5F444154 
+ 981      4100
+ 982              	.LASF47:
+ 983 01a2 4C4F475F 		.ascii	"LOG_DEBUG\000"
+ 983      44454255 
+ 983      4700
+ 984              	.LASF59:
+ 985 01ac 55415254 		.ascii	"UART_LOG_PutString\000"
+ 985      5F4C4F47 
+ 985      5F507574 
+ 985      53747269 
+ 985      6E6700
+ 986              	.LASF63:
+ 987 01bf 656E7472 		.ascii	"entry\000"
+ 987      7900
+ 988              	.LASF14:
+ 989 01c5 6C6F6E67 		.ascii	"long double\000"
+ 989      20646F75 
+ 989      626C6500 
+ 990              	.LASF1:
+ 991 01d1 756E7369 		.ascii	"unsigned char\000"
+ 991      676E6564 
+ 991      20636861 
+ 991      7200
+ 992              	.LASF0:
+ 993 01df 7369676E 		.ascii	"signed char\000"
+ 993      65642063 
+ 993      68617200 
+ 994              	.LASF7:
+ 995 01eb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 995      206C6F6E 
+ 995      6720756E 
+ 995      7369676E 
+ 995      65642069 
+ 996              	.LASF57:
+ 997 0202 6C6F674C 		.ascii	"logLevel2String\000"
+ 997      6576656C 
+ 997      32537472 
+ 997      696E6700 
+ 998              	.LASF8:
+ 999 0212 756E7369 		.ascii	"unsigned int\000"
+ 999      676E6564 
+ 999      20696E74 
+ 999      00
+ 1000              	.LASF28:
+ 1001 021f 52435F45 		.ascii	"RC_ERROR_OPEN\000"
+ 1001      52524F52 
+ 1001      5F4F5045 
+ 1001      4E00
+ 1002              	.LASF5:
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 22
+
+
+ 1003 022d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1003      20756E73 
+ 1003      69676E65 
+ 1003      6420696E 
+ 1003      7400
+ 1004              	.LASF18:
+ 1005 023f 52435F45 		.ascii	"RC_ERROR_NULL\000"
+ 1005      52524F52 
+ 1005      5F4E554C 
+ 1005      4C00
+ 1006              	.LASF25:
+ 1007 024d 52435F45 		.ascii	"RC_ERROR_BUFFER_EMTPY\000"
+ 1007      52524F52 
+ 1007      5F425546 
+ 1007      4645525F 
+ 1007      454D5450 
+ 1008              	.LASF3:
+ 1009 0263 73686F72 		.ascii	"short unsigned int\000"
+ 1009      7420756E 
+ 1009      7369676E 
+ 1009      65642069 
+ 1009      6E7400
+ 1010              	.LASF60:
+ 1011 0276 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1011      43313120 
+ 1011      352E342E 
+ 1011      31203230 
+ 1011      31363036 
+ 1012 02a9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1012      20726576 
+ 1012      6973696F 
+ 1012      6E203233 
+ 1012      37373135 
+ 1013 02dc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1013      66756E63 
+ 1013      74696F6E 
+ 1013      2D736563 
+ 1013      74696F6E 
+ 1014              	.LASF13:
+ 1015 0304 63686172 		.ascii	"char\000"
+ 1015      00
+ 1016              	.LASF24:
+ 1017 0309 52435F45 		.ascii	"RC_ERROR_BUFFER_FULL\000"
+ 1017      52524F52 
+ 1017      5F425546 
+ 1017      4645525F 
+ 1017      46554C4C 
+ 1018              	.LASF10:
+ 1019 031e 696E7433 		.ascii	"int32_t\000"
+ 1019      325F7400 
+ 1020              	.LASF54:
+ 1021 0326 4C4F475F 		.ascii	"LOG_Init\000"
+ 1021      496E6974 
+ 1021      00
+ 1022              	.LASF49:
+ 1023 032f 6C6F6767 		.ascii	"logging_level_t\000"
+ 1023      696E675F 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 23
+
+
+ 1023      6C657665 
+ 1023      6C5F7400 
+ 1024              	.LASF36:
+ 1025 033f 52435F45 		.ascii	"RC_ERROR_BAD_PARAM\000"
+ 1025      52524F52 
+ 1025      5F424144 
+ 1025      5F504152 
+ 1025      414D00
+ 1026              	.LASF62:
+ 1027 0352 433A5C55 		.ascii	"C:\\Users\\vboxuser\\Documents\\GitHub\\SDHD_Design"
+ 1027      73657273 
+ 1027      5C76626F 
+ 1027      78757365 
+ 1027      725C446F 
+ 1028 0380 5C534448 		.ascii	"\\SDHD_Lab\\PSOC_MATLAB_CFAR.cydsn\000"
+ 1028      445F4C61 
+ 1028      625C5053 
+ 1028      4F435F4D 
+ 1028      41544C41 
+ 1029              	.LASF46:
+ 1030 03a1 4C4F475F 		.ascii	"LOG_ERROR\000"
+ 1030      4552524F 
+ 1030      5200
+ 1031              	.LASF52:
+ 1032 03ab 6D657373 		.ascii	"message\000"
+ 1032      61676500 
+ 1033              	.LASF12:
+ 1034 03b3 646F7562 		.ascii	"double\000"
+ 1034      6C6500
+ 1035              	.LASF45:
+ 1036 03ba 4C4F475F 		.ascii	"LOG_WARNING\000"
+ 1036      5741524E 
+ 1036      494E4700 
+ 1037              	.LASF29:
+ 1038 03c6 52435F45 		.ascii	"RC_ERROR_CHECKSUM\000"
+ 1038      52524F52 
+ 1038      5F434845 
+ 1038      434B5355 
+ 1038      4D00
+ 1039              	.LASF9:
+ 1040 03d8 5F5F696E 		.ascii	"__int32_t\000"
+ 1040      7433325F 
+ 1040      7400
+ 1041              	.LASF50:
+ 1042 03e2 6C657665 		.ascii	"level\000"
+ 1042      6C00
+ 1043              	.LASF55:
+ 1044 03e8 4C4F475F 		.ascii	"LOG_send\000"
+ 1044      73656E64 
+ 1044      00
+ 1045              	.LASF44:
+ 1046 03f1 4C4F475F 		.ascii	"LOG_INFO\000"
+ 1046      494E464F 
+ 1046      00
+ 1047              	.LASF38:
+ 1048 03fa 52435F45 		.ascii	"RC_ERROR_CANCELED\000"
+ 1048      52524F52 
+ARM GAS  C:\Users\vboxuser\AppData\Local\Temp\ccWSiBGn.s 			page 24
+
+
+ 1048      5F43414E 
+ 1048      43454C45 
+ 1048      4400
+ 1049              	.LASF56:
+ 1050 040c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1050      52784275 
+ 1050      66666572 
+ 1050      00
+ 1051              	.LASF17:
+ 1052 0419 52435F45 		.ascii	"RC_ERROR\000"
+ 1052      52524F52 
+ 1052      00
+ 1053              	.LASF20:
+ 1054 0422 52435F45 		.ascii	"RC_ERROR_MEMORY\000"
+ 1054      52524F52 
+ 1054      5F4D454D 
+ 1054      4F525900 
+ 1055              	.LASF42:
+ 1056 0432 52435F74 		.ascii	"RC_t\000"
+ 1056      00
+ 1057              	.LASF27:
+ 1058 0437 52435F45 		.ascii	"RC_ERROR_TIME_OUT\000"
+ 1058      52524F52 
+ 1058      5F54494D 
+ 1058      455F4F55 
+ 1058      5400
+ 1059              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

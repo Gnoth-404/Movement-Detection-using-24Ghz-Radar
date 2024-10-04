@@ -45,5 +45,5 @@ This project implements a radar-based movement detection system using the IPM165
 
 
 ## Results and Performance
-![Results](./docs/fig/results.png)
+![Results](./docs/fig/result.png)
 

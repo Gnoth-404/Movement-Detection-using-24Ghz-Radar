@@ -11,7 +11,7 @@ Adaptive movement detection using 24Ghz Radar and CFAR Algorithm
 
 
 ## Project Overview
-This project implements a radar-based movement detection system using the IPM165 radar sensor, FreeSoc2 Development, and CA-CFAR algorithm. The system includes custom PCB design, radar signal processing, and 3D-printed enclosure.
+This project implemented a radar-based movement detection system using  IPM165 radar sensor, FreeSoc2 Development Board, along with CA-CFAR algorithm. The system included custom PCB design, radar signal processing, and 3D-printed enclosure.
 
 ## Features
 - 4-layer PCB design integrating IPM165 radar sensor
@@ -29,7 +29,7 @@ This project implements a radar-based movement detection system using the IPM165
 
 
 ### Enclosure
-- Custom 3D-printed design in Onshape
+- Custom 3D-printed designed in Onshape
 
 ![Enclosure](./docs/fig/enclosure.png)
 

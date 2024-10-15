@@ -27,6 +27,8 @@ This project implemented a radar-based movement detection system using  IPM165 r
 - Integrates IPM165 radar sensor
 - Includes two-stage bandpass filter (Gain = 300)
 
+![PCB](./docs/fig/top_pcb.png)
+
 
 ### Enclosure
 - Custom 3D-printed designed in Onshape
